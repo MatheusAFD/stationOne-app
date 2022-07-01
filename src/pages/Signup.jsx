@@ -1,12 +1,11 @@
 import { Link } from "react-router-dom";
 import { InputAccount } from "../components/InputAccount";
+import { Logo } from "../components/Logo";
 
 export function Signup() {
   return (
     <>
-      <div className="flex justify-center mt-14 lg:justify-start lg: ml-5">
-        <strong className="text-2xl">Signup</strong>
-      </div>
+      <Logo name="Signup" />
 
       <form className="mt-12 ml-4">
         <div className="mb-4">
@@ -31,7 +30,7 @@ export function Signup() {
             Password
           </label>
           <input
-            type="email"
+            type="password"
             name=""
             id="password"
             placeholder="Enter password..."
@@ -45,7 +44,6 @@ export function Signup() {
           class="bg-orange-900 h-10 mt-9 text-white w-[358px]"
         />
       </form>
-
       <Link to={"/login"}>
         <InputAccount
           value="ALREADY HAVE AN ACCOUNT?"

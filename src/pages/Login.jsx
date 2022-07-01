@@ -1,14 +1,21 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { InputAccount } from "../components/InputAccount";
+import { Logo } from "../components/Logo";
 
 export function Login() {
+  const navigate = useNavigate();
+
+  function LoginUser(event) {
+    event.preventDefault();
+
+    navigate("/home");
+  }
+
   return (
     <>
-      <div className="flex justify-center mt-12 lg:justify-start lg: ml-5">
-        <strong className="text-2xl">Login</strong>
-      </div>
+      <Logo name="Login" />
 
-      <form className="mt-12 ml-4 sans">
+      <form className="mt-12 ml-4 sans" onSubmit={LoginUser}>
         <div className="mb-4">
           <label
             htmlFor="email"
@@ -31,7 +38,7 @@ export function Login() {
             Password
           </label>
           <input
-            type="email"
+            type="password"
             name=""
             id="password"
             placeholder="Enter password..."
@@ -40,6 +47,7 @@ export function Login() {
         </div>
 
         <InputAccount
+          type="submit"
           value="LOGIN"
           size="sm"
           class="bg-orange-900 h-10 mt-9 text-white w-[358px]"
