@@ -54,9 +54,12 @@ export function Login() {
         />
       </form>
 
-      <span className="flex justify-center text-sm font-bold text-[#999999] mt-6 tracking-widest lg:justify-start lg:ml-28">
+      <Link
+        to="/resetpassword"
+        className="flex justify-center text-sm font-bold text-[#999999] mt-6 tracking-widest lg:justify-start lg:ml-28"
+      >
         FORGOT PASSWORD?
-      </span>
+      </Link>
 
       <Link to={"/signup"}>
         <InputAccount

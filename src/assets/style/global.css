@@ -5,3 +5,7 @@
 body {
   -webkit-font-smoothing: antialiased;
 }
+
+.detail {
+  @apply w-2 h-2 bg-orange-900 rounded-full;
+}
