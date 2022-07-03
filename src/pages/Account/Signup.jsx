@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
-import { InputAccount } from "../components/InputAccount";
-import { Logo } from "../components/Logo";
+import { InputAccount } from "../../components/InputAccount";
+import { Logo } from "../../components/Logo";
 
 export function Signup() {
   return (
@@ -44,7 +44,7 @@ export function Signup() {
           class="bg-orange-900 h-10 mt-9 text-white w-[358px]"
         />
       </form>
-      <Link to={"/login"}>
+      <Link to="/login">
         <InputAccount
           value="ALREADY HAVE AN ACCOUNT?"
           size="sm"

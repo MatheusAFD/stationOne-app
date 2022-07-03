@@ -1,6 +1,6 @@
-import { Link, useNavigate } from "react-router-dom";
-import { InputAccount } from "../components/InputAccount";
-import { Logo } from "../components/Logo";
+import { Link, useNavigate, useParams } from "react-router-dom";
+import { InputAccount } from "../../components/InputAccount";
+import { Logo } from "../../components/Logo";
 
 export function Login() {
   const navigate = useNavigate();
@@ -14,7 +14,6 @@ export function Login() {
   return (
     <>
       <Logo name="Login" />
-
       <form className="mt-12 ml-4 sans" onSubmit={LoginUser}>
         <div className="mb-4">
           <label
@@ -53,15 +52,13 @@ export function Login() {
           class="bg-orange-900 h-10 mt-9 text-white w-[358px]"
         />
       </form>
-
       <Link
         to="/resetpassword"
         className="flex justify-center text-sm font-bold text-[#999999] mt-6 tracking-widest lg:justify-start lg:ml-28"
       >
         FORGOT PASSWORD?
       </Link>
-
-      <Link to={"/signup"}>
+      <Link to="/signup">
         <InputAccount
           value="SIGN UP"
           size="sm"
