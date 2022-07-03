@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import { InputAccount } from "../../components/InputAccount";
 import { Logo } from "../../components/Logo";
 
@@ -44,13 +44,13 @@ export function Signup() {
           class="bg-orange-900 h-10 mt-9 text-white w-[358px]"
         />
       </form>
-      <Link to="/login">
+      <NavLink to="/login">
         <InputAccount
           value="ALREADY HAVE AN ACCOUNT?"
           size="sm"
           class="w-[358px] h-9 mt-9 text-[#999999] font-bold border absolute m-auto bottom-5 left-0 right-0 tracking-widest"
         />
-      </Link>
+      </NavLink>
     </>
   );
 }

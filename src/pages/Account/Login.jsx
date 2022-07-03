@@ -1,4 +1,4 @@
-import { Link, useNavigate, useParams } from "react-router-dom";
+import { NavLink, useNavigate, useParams } from "react-router-dom";
 import { InputAccount } from "../../components/InputAccount";
 import { Logo } from "../../components/Logo";
 
@@ -8,7 +8,7 @@ export function Login() {
   function LoginUser(event) {
     event.preventDefault();
 
-    navigate("/home");
+    navigate("/home/food");
   }
 
   return (
@@ -52,19 +52,19 @@ export function Login() {
           class="bg-orange-900 h-10 mt-9 text-white w-[358px]"
         />
       </form>
-      <Link
+      <NavLink
         to="/resetpassword"
         className="flex justify-center text-sm font-bold text-[#999999] mt-6 tracking-widest lg:justify-start lg:ml-28"
       >
         FORGOT PASSWORD?
-      </Link>
-      <Link to="/signup">
+      </NavLink>
+      <NavLink to="/signup">
         <InputAccount
           value="SIGN UP"
           size="sm"
           class="w-[358px] h-9 mt-9 text-[#999999] font-bold border absolute m-auto bottom-5 left-0 right-0 tracking-widest"
         />
-      </Link>
+      </NavLink>
     </>
   );
 }

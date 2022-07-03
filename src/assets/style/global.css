@@ -9,3 +9,11 @@ body {
 .detail {
   @apply w-2 h-2 bg-orange-900 rounded-full;
 }
+
+.link-active * {
+  @apply text-orange-900;
+}
+
+.link {
+  @apply text-orange-50;
+}
