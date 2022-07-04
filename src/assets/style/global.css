@@ -13,7 +13,3 @@ body {
 .link-active * {
   @apply text-orange-900;
 }
-
-.link {
-  @apply text-orange-50;
-}

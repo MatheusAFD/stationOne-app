@@ -3,7 +3,7 @@ export function InputAccount(props) {
     <input
       type="submit"
       value={props.value}
-      className={`${props.class} rounded-3xl text-${props.size} cursor-pointer`}
+      className={`${props.class} rounded-3xl text-${props.size} cursor-pointer uppercase`}
     />
   );
 }

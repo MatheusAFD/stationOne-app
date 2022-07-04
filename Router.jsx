@@ -5,9 +5,9 @@ import { TabMenu } from "./src/components/TabMenu";
 import { Login } from "./src/pages/Account/Login";
 import { Signup } from "./src/pages/Account/Signup";
 import { PasswordReset } from "./src/pages/Account/PasswordReset";
-import { Food } from "./src/pages/Categories/Food";
-import { Orders } from "./src/pages/Categories/Orders";
-import { Profile } from "./src/pages/Categories/Profile";
+import { Food } from "./src/pages/MenuItems/Food";
+import { Orders } from "./src/pages/MenuItems/Orders";
+import { Profile } from "./src/pages/MenuItems/Profile";
 
 export function Router() {
   return (

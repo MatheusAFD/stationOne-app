@@ -11,7 +11,7 @@ export function TabMenu() {
     },
     ORDER: {
       id: 2,
-      title: "Order",
+      title: "Orders",
       icon: <Note size={24} className="text-gray-400" />,
       link: "/home/order",
     },
@@ -25,23 +25,23 @@ export function TabMenu() {
   return (
     <>
       <nav
-        className="flex justify-around gap-3 absolute bottom-1 left-0 right-0"
+        className="flex justify-around gap-3 fixed bottom-0 left-0 right-0 z-10 bg-white"
         type="button"
       >
-        <ul className="flex gap-20 mt-2 shadow-5xl w-full justify-center py-2">
+        <ul className="flex gap-20 mt-2 shadow-3xl w-full justify-center py-2 ">
           {Object.entries(menuItems).map(([key, value]) => {
             return (
               <li>
                 <NavLink
                   to={value.link}
                   key={value.id}
-                  className={({ isActive }) =>
-                    isActive ? "link-active" : "link"
-                  }
+                  className={({ isActive }) => (isActive ? "link-active" : "")}
                 >
                   <div className="flex flex-col justify-center items-center px-2">
                     {value.icon}
-                    <span className="text-xs text-gray-400">{value.title}</span>
+                    <span className="text-[11px] text-gray-400">
+                      {value.title}
+                    </span>
                   </div>
                 </NavLink>
               </li>

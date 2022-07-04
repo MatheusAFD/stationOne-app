@@ -12,17 +12,17 @@ export function Index() {
       <div className="flex flex-col justify-center items-center font-semibold sans text-sm tracking-wide gap-[14px] absolute bottom-10 left-0 right-0">
         <NavLink to="/signup">
           <InputAccount
-            value="SIGN UP"
+            value="sign up"
             size="sm"
-            class="bg-orange-900 w-[299px] h-9 tracking-widest shadow-3xl"
+            class="bg-orange-900 w-[299px] h-9 tracking-widest shadow-3xl uppercase"
           />
         </NavLink>
 
         <NavLink to="/login" className="flex ">
           <InputAccount
-            value="LOG IN"
+            value="log in"
             size="sm"
-            class={`border border-[#862924] text-[#862924] ')] w-[299px] h-9 tracking-widest`}
+            class={`border border-[#862924] text-[#862924] ')] w-[299px] h-9 tracking-widest uppercase`}
           />
         </NavLink>
       </div>

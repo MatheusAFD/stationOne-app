@@ -47,20 +47,20 @@ export function Login() {
 
         <InputAccount
           type="submit"
-          value="LOGIN"
+          value="login"
           size="sm"
           class="bg-orange-900 h-10 mt-9 text-white w-[358px]"
         />
       </form>
       <NavLink
         to="/resetpassword"
-        className="flex justify-center text-sm font-bold text-[#999999] mt-6 tracking-widest lg:justify-start lg:ml-28"
+        className="flex justify-center text-sm font-bold text-[#999999] mt-6 tracking-widest uppercase lg:justify-start lg:ml-28"
       >
-        FORGOT PASSWORD?
+        forgot password
       </NavLink>
       <NavLink to="/signup">
         <InputAccount
-          value="SIGN UP"
+          value="sign up"
           size="sm"
           class="w-[358px] h-9 mt-9 text-[#999999] font-bold border absolute m-auto bottom-5 left-0 right-0 tracking-widest"
         />
