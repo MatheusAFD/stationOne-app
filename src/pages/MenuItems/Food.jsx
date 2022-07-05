@@ -1,29 +1,29 @@
 import { NavLink } from "react-router-dom";
-import Patissier from "../../assets/img/Patissier.jpg";
-import CursosImg from "../../assets/img/Cursos.jpg";
 import { MapPin } from "phosphor-react";
 
+import { gql, useQuery } from "@apollo/client";
+
 export function Food() {
-  const foodCategories = {
-    PATISSIER: {
-      id: 1,
-      name: "Patissier",
-      img: Patissier,
-      address: "R. Cônego Valadão, 725 - Gopouva, Garulhos - SP, 07040-000",
-      description:
-        "Modern take on old school Vietnamese street food. You'll love it, we promise :)",
-      buttonLinkTo: "/", // /food/patissier
-    },
-    CURSOS_ONLINE: {
-      id: 2,
-      name: "Cursos online",
-      img: CursosImg,
-      address: "Online",
-      description:
-        "Artisan Sausage truck is a spot for bomb sausage made from ground pork, beef, or poultry, along with salt, special blend of spices and other flavorings and combos.  Some sausages include other ingredients for flavor. Stop by, and check for yourself!",
-      buttonLinkTo: "/", // /food/cursos-online
-    },
-  };
+  const GET_PRODUCTS_QUERY = gql`
+    query MyQuery {
+      products {
+        id
+        imgURL
+        name
+        description
+        adrress {
+          distance(from: { latitude: 1.5, longitude: 1.5 })
+          latitude
+          longitude
+        }
+      }
+    }
+  `;
+
+  const { loading, data, error } = useQuery(GET_PRODUCTS_QUERY);
+
+  if (loading) return "Loading...";
+  if (error) return `Error! ${error.message}`;
 
   return (
     <>
@@ -35,9 +35,8 @@ export function Food() {
           className=" w-[376px] h-10 px-6 border mt-8 rounded-full border-[#bdbdbd]"
         />
       </div>
-
       <section className="flex flex-col justify-center items-center rounded-full mb-24">
-        {Object.entries(foodCategories).map(([key, value]) => {
+        {data.products.map((value) => {
           return (
             <div
               className=" mt-4 w-[376px] shadow-md rounded-xl"
@@ -47,7 +46,7 @@ export function Food() {
                 {value.name}
               </h2>
               <img
-                src={value.img}
+                src={value.imgURL}
                 alt=""
                 className="h-56 w-full object-cover"
               />
@@ -55,7 +54,9 @@ export function Food() {
               <div className="mt-2 ml-[14px]">
                 <address className="flex gap-1 text-[13px] font-semibold text-[#424242] not-italic leading-normal">
                   <MapPin size={26} color="gray" />
-                  {value.address}
+                  {value.adrress == null
+                    ? "Online"
+                    : `${value.adrress.latitude} ${value.adrress.longitude}`}
                 </address>
 
                 <p className="text-[#424242] text-sm mt-[13px] max-w-[345px] font-light">
@@ -63,7 +64,7 @@ export function Food() {
                 </p>
 
                 <NavLink
-                  to={value.buttonLinkTo}
+                  to={"/"}
                   className="flex justify-center items-center mt-8 mb-4"
                 >
                   <p className="flex justify-center items-center bg-orange-900 w-[164px] h-9 rounded-full text-[14px] font-bold uppercase tracking-widest">
