@@ -1,14 +1,45 @@
-import { NavLink, useNavigate, useParams } from "react-router-dom";
+import { gql, useQuery } from "@apollo/client";
+import { useState } from "react";
+import { NavLink, useNavigate } from "react-router-dom";
 import { InputAccount } from "../../components/InputAccount";
+import { LoadingCircle } from "../../components/LoadingCircle";
 import { Logo } from "../../components/Logo";
+import bcrypt from "bcryptjs";
 
 export function Login() {
   const navigate = useNavigate();
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
 
-  function LoginUser(event) {
-    event.preventDefault();
+  const GET_USER_BY_EMAIL = gql`
+    query MyQuery {
+      userContent(where: { email: "matheus.alst@outlook.com" }) {
+        id
+        name
+        email
+        password
+      }
+    }
+  `;
 
-    navigate("/home/food");
+  const { loading, data, error } = useQuery(GET_USER_BY_EMAIL);
+
+  if (loading) return <LoadingCircle />;
+  if (error) return `Error! ${error.message}`;
+
+  function LoginUser() {
+    if (email == data.userContent.email) {
+      console.log("mesmo email");
+
+      const isValidPassword = bcrypt.compare(
+        password,
+        data.userContent.password
+      );
+
+      if (isValidPassword) {
+        navigate("/home/food");
+      }
+    }
   }
 
   return (
@@ -24,6 +55,9 @@ export function Login() {
           </label>
 
           <input
+            onChange={(e) => {
+              setEmail(e.target.value);
+            }}
             type="email"
             name=""
             id="email"
@@ -37,6 +71,9 @@ export function Login() {
             Password
           </label>
           <input
+            onChange={(e) => {
+              setPassword(e.target.value);
+            }}
             type="password"
             name=""
             id="password"
