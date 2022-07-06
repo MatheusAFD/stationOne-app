@@ -21,8 +21,6 @@ export function Food() {
   if (loading) return <LoadingCircle />;
   if (error) return `Error! ${error.message}`;
 
-  console.log(data);
-
   return (
     <>
       <header className="w-full bg-[#862924] h-14 shadow-4xl"></header>
@@ -33,6 +31,7 @@ export function Food() {
           className=" w-[376px] h-10 px-6 border mt-8 rounded-full border-[#bdbdbd]"
         />
       </div>
+
       <section className="flex flex-col justify-center items-center rounded-full mb-24">
         {data.products.map((value) => {
           return (
