@@ -27,17 +27,19 @@ export function Login() {
   if (loading) return <LoadingCircle />;
   if (error) return `Error! ${error.message}`;
 
-  function LoginUser() {
+  async function LoginUser(event) {
+    event.preventDefault();
     if (email == data.userContent.email) {
-      console.log("mesmo email");
-
-      const isValidPassword = bcrypt.compare(
+      const isValidPassword = await bcrypt.compare(
         password,
         data.userContent.password
       );
 
       if (isValidPassword) {
-        navigate("/home/food");
+        return navigate("/home/food");
+      }
+      if (!isValidPassword) {
+        return alert("Preencha corretamente");
       }
     }
   }
