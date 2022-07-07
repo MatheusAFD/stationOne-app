@@ -6,19 +6,19 @@ export function TabMenu() {
     FOOD: {
       id: 1,
       title: "Food",
-      icon: <Truck size={24} className="text-gray-400" />,
+      icon: <Truck size={24} className="text-gray-400" weight="fill" />,
       link: "/home/food",
     },
     ORDER: {
       id: 2,
       title: "Orders",
-      icon: <Note size={24} className="text-gray-400" />,
+      icon: <Note size={24} className="text-gray-400" weight="fill" />,
       link: "/home/order",
     },
     PROFILE: {
       id: 3,
       title: "Profile",
-      icon: <UserCircle size={24} className="text-gray-400" />,
+      icon: <UserCircle size={24} className="text-gray-400" weight="fill" />,
       link: "/home/profile",
     },
   };
@@ -28,10 +28,9 @@ export function TabMenu() {
         <ul className="flex gap-20 mt-2 shadow-3xl w-full justify-center py-2 ">
           {Object.entries(menuItems).map(([key, value]) => {
             return (
-              <li>
+              <li key={value.id}>
                 <NavLink
                   to={value.link}
-                  key={value.id}
                   className={({ isActive }) => (isActive ? "link-active" : "")}
                 >
                   <div className="flex flex-col justify-center items-center px-2">
