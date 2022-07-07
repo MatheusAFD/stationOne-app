@@ -65,7 +65,7 @@ export function Login() {
   }
 
   if (sessionStorage.getItem("logged") == "1") {
-    return navigate("/home/food");
+    navigate("/home/food");
   }
 
   return (
