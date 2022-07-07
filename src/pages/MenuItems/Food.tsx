@@ -1,7 +1,8 @@
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import { MapPin } from "phosphor-react";
 import { gql, useQuery } from "@apollo/client";
 import { LoadingCircle } from "../../components/LoadingCircle";
+import { Header } from "../../components/Header";
 interface GetFoodQueryResponse {
   products: {
     id: string;
@@ -25,6 +26,8 @@ const GET_FOOD_QUERY = gql`
 `;
 
 export function Food() {
+  const navigate = useNavigate();
+
   const { data } = useQuery<GetFoodQueryResponse>(GET_FOOD_QUERY);
 
   if (!data) {
@@ -33,7 +36,7 @@ export function Food() {
 
   return (
     <>
-      <header className="w-full bg-[#862924] h-14 shadow-4xl"></header>
+      <Header />
       <div className="flex justify-center items-center">
         <input
           type="text"

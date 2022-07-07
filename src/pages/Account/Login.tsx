@@ -2,7 +2,6 @@ import { gql, useQuery } from "@apollo/client";
 import { FormEvent, useState } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
 import { InputAccount } from "../../components/InputAccount";
-import { LoadingCircle } from "../../components/LoadingCircle";
 import { Logo } from "../../components/Logo";
 import bcrypt from "bcryptjs";
 
@@ -11,6 +10,8 @@ interface GetUserQueryResponse {
     name: string;
     email: string;
     password: string;
+    phone: string;
+    avatarURL: string;
   };
 }
 
@@ -21,6 +22,8 @@ const GET_USER_QUERY = gql`
       name
       email
       password
+      phone
+      avatarURL
     }
   }
 `;
@@ -30,9 +33,17 @@ export function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  const { loading, data } = useQuery<GetUserQueryResponse>(GET_USER_QUERY, {
+  const { data } = useQuery<GetUserQueryResponse>(GET_USER_QUERY, {
     variables: { email },
   });
+
+  function SaveUserData(data: any) {
+    sessionStorage.setItem("logged", "1");
+    sessionStorage.setItem("name", data.userContent.name);
+    sessionStorage.setItem("phone", data.userContent.phone);
+    sessionStorage.setItem("email", data.userContent.email);
+    sessionStorage.setItem("avatarURL", data.userContent.avatarURL);
+  }
 
   async function LoginUser(event: FormEvent) {
     event.preventDefault();
@@ -44,12 +55,17 @@ export function Login() {
       );
 
       if (isValidPassword) {
-        return navigate("/home/food");
+        navigate("/home/food");
+        SaveUserData(data);
       }
       if (!isValidPassword) {
         return alert("Preencha corretamente");
       }
     }
+  }
+
+  if (sessionStorage.getItem("logged") == "1") {
+    return navigate("/home/food");
   }
 
   return (
