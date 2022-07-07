@@ -45,7 +45,7 @@ export function Food() {
         />
       </div>
 
-      <section className="flex flex-col justify-center items-center rounded-full mb-24">
+      <section className="flex flex-col justify-center items-center rounded-full mb-24 max-w-screen-lg lg:grid lg:grid-cols-2 lg:m-auto lg:mt-10">
         {data?.products.map((product: any) => {
           return (
             <div

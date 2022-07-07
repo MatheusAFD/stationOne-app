@@ -5,7 +5,7 @@ import HomeImg from "../../assets/img/Logo.jpg";
 export function Index() {
   return (
     <>
-      <div className="flex justify-center items-center mt-[107px] ">
+      <div className="flex justify-center items-center mt-[107px]  ">
         <img src={HomeImg} alt="" className="max-h-[293px] " />
       </div>
 
