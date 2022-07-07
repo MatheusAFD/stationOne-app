@@ -6,7 +6,7 @@ import { LoadingCircle } from "../../components/LoadingCircle";
 import { Logo } from "../../components/Logo";
 import bcrypt from "bcryptjs";
 
-interface GetFoodQueryResponse {
+interface GetUserQueryResponse {
   userContent: {
     name: string;
     email: string;
@@ -30,14 +30,14 @@ export function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  const { loading, data } = useQuery<GetFoodQueryResponse>(GET_USER_QUERY, {
+  const { loading, data } = useQuery<GetUserQueryResponse>(GET_USER_QUERY, {
     variables: { email },
   });
 
   async function LoginUser(event: FormEvent) {
     event.preventDefault();
 
-    if (email == data?.userContent.email) {
+    if (email === data?.userContent.email) {
       const isValidPassword = await bcrypt.compare(
         password,
         data.userContent.password
