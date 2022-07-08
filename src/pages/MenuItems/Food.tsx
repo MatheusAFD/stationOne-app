@@ -1,4 +1,4 @@
-import { NavLink, useNavigate } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import { MapPin } from "phosphor-react";
 import { gql, useQuery } from "@apollo/client";
 import { LoadingCircle } from "../../components/LoadingCircle";
@@ -26,8 +26,6 @@ const GET_FOOD_QUERY = gql`
 `;
 
 export function Food() {
-  const navigate = useNavigate();
-
   const { data } = useQuery<GetFoodQueryResponse>(GET_FOOD_QUERY);
 
   if (!data) {
