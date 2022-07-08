@@ -51,8 +51,7 @@ npm install
 <p>5. Clone GraphCMS Project</p>
 
 <a href="https://bit.ly/3yRFvgN" target="_blank" rel="noreferrer"> 
-
-
+Clone Project here
 </a>
 </br>
 <p>6. Generate your API Key from GraphCMS</p>
