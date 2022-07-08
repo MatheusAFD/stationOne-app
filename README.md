@@ -50,8 +50,8 @@ npm install
 
 <p>5. Clone GraphCMS Project</p>
 
-<a href="https://www.linkedin.com/in/matheus-araujof" target="_blank" rel="noreferrer"> 
-https://bit.ly/3yRFvgN
+<a href="https://bit.ly/3yRFvgN" target="_blank" rel="noreferrer"> 
+
 
 </a>
 </br>
