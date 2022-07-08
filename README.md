@@ -79,7 +79,7 @@ Technologies used in the project:
 
 - React
 - TypeScript
-- Tailwindcss
+- Tailwind CSS
 - GraphQL
 - Apollo Client
 
