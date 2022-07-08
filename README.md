@@ -58,7 +58,7 @@ https://bit.ly/3yRFvgN
 <p>6. Generate your API Key from GraphCMS</p>
 
 ```
- Project Settings > API ACESS > Copy Content API key
+ Project Settings > API ACCESS > Copy Content API key
 ```
 
 <p>7. Create .env file with this code</p>
