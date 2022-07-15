@@ -7,6 +7,7 @@ import { Index } from "./src/pages/Index/Index";
 import { Food } from "./src/pages/MenuItems/Food";
 import { Order } from "./src/pages/MenuItems/Order";
 import { Profile } from "./src/pages/MenuItems/Profile";
+import { ProfileSettings } from "./src/pages/MenuItems/ProfileSettings";
 
 export function Router() {
   return (
@@ -18,6 +19,7 @@ export function Router() {
       <Route path="/home/food" element={[<Food />, <TabMenu />]} />
       <Route path="/home/order" element={[<Order />, <TabMenu />]} />
       <Route path="/home/profile" element={[<Profile />, <TabMenu />]} />
+      <Route path="/home/profile/edit" element={<ProfileSettings />} />
     </Routes>
   );
 }

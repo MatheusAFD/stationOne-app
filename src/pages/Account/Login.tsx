@@ -38,11 +38,11 @@ export function Login() {
   });
 
   function SaveUserData(data: any) {
-    sessionStorage.setItem("logged", "1");
-    sessionStorage.setItem("name", data.userContent.name);
-    sessionStorage.setItem("phone", data.userContent.phone);
-    sessionStorage.setItem("email", data.userContent.email);
-    sessionStorage.setItem("avatarURL", data.userContent.avatarURL);
+    localStorage.setItem("logged", "1");
+    localStorage.setItem("name", data.userContent.name);
+    localStorage.setItem("phone", data.userContent.phone);
+    localStorage.setItem("email", data.userContent.email);
+    localStorage.setItem("avatarURL", data.userContent.avatarURL);
   }
 
   async function LoginUser(event: FormEvent) {
@@ -71,7 +71,7 @@ export function Login() {
   return (
     <>
       <form
-        className="lg:mt-12 sans max-w-lg lg:m-auto sm:m-auto sm:items-center  "
+        className="lg:mt-12 sans max-w-lg lg:m-auto sm:m-auto sm:items-center  min-h-screen h-full"
         onSubmit={LoginUser}
       >
         <Logo name="Login" />
@@ -123,7 +123,7 @@ export function Login() {
         <InputAccount
           value="sign up"
           size="sm"
-          class="w-[358px] h-9 mt-9 text-[#999999] font-bold border absolute m-auto bottom-5 left-0 right-0 tracking-widest"
+          class="w-[358px] h-9 mt-9 text-[#999999] font-bold border fixed m-auto bottom-5 left-0 right-0 tracking-widest "
         />
       </NavLink>
     </>

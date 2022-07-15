@@ -3,32 +3,18 @@ import { Header } from "../../components/Header";
 import { IconStripe } from "../../components/IconStripe";
 
 export function Profile() {
-  const navigate = useNavigate();
-
-  function Redirect() {
-    sessionStorage.setItem("logged", "0");
-    if (sessionStorage.getItem("logged") == "0") {
-      return navigate("/");
-    }
-  }
-
-  function handleButton() {
-    Redirect();
-    sessionStorage.clear();
-  }
-
   return (
     <>
       <Header hasIcon={true} />
       <div className=" flex flex-col justify-center items-center text-center ">
         <h1 className="text-[26px] font-semibold mt-6">
           {" "}
-          {sessionStorage.getItem("name")}
+          {localStorage.getItem("name")}
         </h1>
 
         <div className="flex justify-center items-center mt-5 ">
           <img
-            src={sessionStorage.getItem("avatarURL") || ""}
+            src={localStorage.getItem("avatarURL") || ""}
             alt=""
             className="max-h-[160px] rounded-full"
           />
@@ -37,12 +23,12 @@ export function Profile() {
         <div className="mt-11">
           <span className="text-gray-500 text-sm">Phone Number</span>
 
-          <p className="text-xl">{sessionStorage.getItem("phone")}</p>
+          <p className="text-xl">{localStorage.getItem("phone")}</p>
         </div>
 
         <div className="mt-9">
           <span className="text-gray-500 text-sm">Email</span>
-          <p className="text-xl">{sessionStorage.getItem("email")}</p>
+          <p className="text-xl">{localStorage.getItem("email")}</p>
         </div>
 
         <div className="bg-[#dd3300] rounded-[5px] mt-[53px] max-w-[307px]">
@@ -58,9 +44,6 @@ export function Profile() {
             Connect with Stripe
           </p>
         </div>
-        <button onClick={handleButton} className="mt-10">
-          Logout
-        </button>
       </div>
     </>
   );
