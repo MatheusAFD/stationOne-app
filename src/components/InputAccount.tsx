@@ -2,6 +2,7 @@ interface DataProps {
   value: string;
   class: string;
   size: string;
+  disabled?: any;
 }
 
 export function InputAccount(props: DataProps) {

@@ -66,7 +66,7 @@ export function Food() {
                   {product.address == null ? "Online" : `${product.address}`}
                 </address>
 
-                <p className="text-[#424242] text-sm mt-[13px] max-w-[345px] font-light">
+                <p className="text-[#424242] text-sm mt-[13px] max-w-[345px] font-light ">
                   {product.description}
                 </p>
 
