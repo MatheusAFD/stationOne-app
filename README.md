@@ -50,15 +50,14 @@ npm install
 
 <p>5. Clone GraphCMS Project</p>
 
-<a href="https://www.linkedin.com/in/matheus-araujof" target="_blank" rel="noreferrer"> 
-https://bit.ly/3yRFvgN
-
+<a href="https://bit.ly/3yRFvgN" target="_blank" rel="noreferrer"> 
+Clone Project here
 </a>
 </br>
 <p>6. Generate your API Key from GraphCMS</p>
 
 ```
- Project Settings > API ACESS > Copy Content API key
+ Project Settings > API ACCESS > Copy Content API key
 ```
 
 <p>7. Create .env file with this code</p>
