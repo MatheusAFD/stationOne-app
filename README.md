@@ -50,10 +50,9 @@ npm install
 
 <p>5. Clone GraphCMS Project</p>
 
-<a href="https://bit.ly/3yRFvgN" target="_blank" rel="noreferrer"> 
-Clone Project here
-</a>
+[![Clone project](https://hygraph.com/button)](https://app.hygraph.com/clone/7a1945ef307b4d9c8cb4f7a8ee57f682?name=Doces%20%7C%20P%C3%A2tissier%20-%20Matheus%20Ara%C3%BAjo)
 </br>
+
 <p>6. Generate your API Key from GraphCMS</p>
 
 ```
