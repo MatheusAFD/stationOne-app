@@ -33,7 +33,7 @@ const GET_PRODUCTS_QUERY = gql`
   }
 `;
 
-export function Patissier() {
+export function Product() {
   const { slug } = useParams();
   const slugFormatted = slug?.replace("-", " ");
   const { data } = useQuery<GetProductsQueryResponse>(GET_PRODUCTS_QUERY, {
@@ -54,6 +54,8 @@ export function Patissier() {
           src={data.products[0].shop.imgLogoLoja}
           alt=""
           className="w-[390px] h-[190px] object-cover"
+          width={390}
+          height={190}
         />
 
         <div className="relative top-[-30px] w-[358px] h-16 bg-white rounded">
@@ -63,7 +65,7 @@ export function Patissier() {
         </div>
       </div>
 
-      <section>
+      <section className="flex flex-col justify-center items-center lg:flex-row lg:place-items-start lg:flex-wrap">
         {data?.products.map((product) => {
           return (
             <div
@@ -78,6 +80,8 @@ export function Patissier() {
                   src={product.imgUrl}
                   alt=""
                   className="h-48 w-full object-cover "
+                  width={390}
+                  height={190}
                 />
 
                 <div className="flex justify-between p-3 text-[#424242]">

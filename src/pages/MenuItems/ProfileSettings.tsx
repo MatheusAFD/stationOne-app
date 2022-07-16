@@ -34,6 +34,8 @@ export function ProfileSettings() {
             src={localStorage.getItem("avatarURL") || ""}
             alt=""
             className="w-[326px] h-[227px] object-contain"
+            width={390}
+            height={190}
           />
         </div>
         <p className="flex justify-center mb-4 text-[#f4a15d] cursor-pointer">

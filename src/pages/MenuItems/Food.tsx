@@ -45,11 +45,11 @@ export function Food() {
         />
       </div>
 
-      <section className="flex flex-col justify-center items-center rounded-full max-w-screen-lg lg:grid lg:grid-cols-2 lg:m-auto lg:mt-10">
+      <section className="flex flex-col justify-center items-center rounded-full max-w-screen-lg lg:grid lg:grid-cols-2 lg:m-auto lg:mt-10 lg:place-items-start">
         {data?.shops.map((product) => {
           return (
             <div
-              className=" mt-4 w-[376px] shadow-md rounded-xl last:mb-24"
+              className=" mt-4 w-[376px] shadow-md rounded-xl last:mb-24 "
               key={product.id}
             >
               <h2 className="w-full h-12 bg-brown-900 flex items-center justify-center text-white text-xl font-bold rounded-t-xl">
@@ -58,8 +58,9 @@ export function Food() {
 
               <img
                 src={product.imgLogoProduto}
-                alt=""
                 className="h-56 w-full object-cover"
+                width={390}
+                height={190}
               />
 
               <div className="mt-2 ml-[14px]">

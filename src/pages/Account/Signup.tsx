@@ -11,12 +11,14 @@ const CREATE_USER_MUTATION = gql`
     $name: String!
     $email: String!
     $password: String!
+    $phone: String!
   ) {
     createUserContent(
       data: {
         name: $name
         email: $email
         password: $password
+        phone: $phone
         avatarURL: "https://i.imgur.com/eWAvJId.png"
       }
     ) {
@@ -27,7 +29,7 @@ const CREATE_USER_MUTATION = gql`
 
 const UPDATE_STAGE_STATUS = gql`
   mutation MyMutation($email: String!) {
-    publishUserContent(where: { email: $email }) {
+    publishUserContent(where: { email: $email }, to: PUBLISHED) {
       id
     }
   }
@@ -36,6 +38,7 @@ const UPDATE_STAGE_STATUS = gql`
 export function Signup() {
   const navigate = useNavigate();
   const [name, setName] = useState("");
+  const [phone, setPhone] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
@@ -60,6 +63,7 @@ export function Signup() {
         variables: {
           name,
           email,
+          phone,
           password: passHash,
           featured: true,
         },
@@ -83,9 +87,7 @@ export function Signup() {
   return (
     <>
       {loading === true ? (
-        <>
-          <LoadingCircle />
-        </>
+        <>{<LoadingCircle />}</>
       ) : (
         <>
           <form
@@ -107,6 +109,23 @@ export function Signup() {
                   onChange={(e) => {
                     setName(e.target.value);
                   }}
+                  maxLength={40}
+                />
+              </div>
+
+              <div className="mb-4">
+                <label htmlFor="name" className="block text-sm text-[#424242]">
+                  Phone Number
+                </label>
+                <input
+                  type="text"
+                  id="name"
+                  placeholder="Phone number"
+                  className="border rounded-[4.5px] pl-[10px] h-10 w-[358px] mt-[10px]"
+                  onChange={(e) => {
+                    setPhone(e.target.value);
+                  }}
+                  maxLength={11}
                 />
               </div>
 
@@ -144,11 +163,13 @@ export function Signup() {
                   onChange={(e) => {
                     setPassword(e.target.value);
                   }}
+                  maxLength={11}
+                  minLength={6}
                 />
               </div>
 
               <InputAccount
-                disabled={loading}
+                disabled={setLoading}
                 value="signup"
                 size="sm"
                 class="bg-orange-900 h-10 mt-9 text-white w-[358px] disabled:opacity-50"

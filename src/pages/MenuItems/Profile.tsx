@@ -17,6 +17,8 @@ export function Profile() {
             src={localStorage.getItem("avatarURL") || ""}
             alt=""
             className="max-h-[160px] rounded-full"
+            width={160}
+            height={100}
           />
         </div>
 
@@ -38,7 +40,7 @@ export function Profile() {
           </p>
         </div>
 
-        <div className="flex bg-[#28a0e5] w-[307px] items-center gap-3 rounded-[5px] mt-3 p-1">
+        <div className="flex bg-[#28a0e5] w-[307px] items-center gap-3 rounded-[5px] mt-3 p-1 lg:mb-20">
           <IconStripe />
           <p className="text-white font-semibold text-sm leading-none">
             Connect with Stripe
