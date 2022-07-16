@@ -8,6 +8,7 @@ import { Food } from "./src/pages/MenuItems/Food";
 import { Order } from "./src/pages/MenuItems/Order";
 import { Profile } from "./src/pages/MenuItems/Profile";
 import { ProfileSettings } from "./src/pages/MenuItems/ProfileSettings";
+import { Patissier } from "./src/pages/Products/Patissier";
 
 export function Router() {
   return (
@@ -15,8 +16,9 @@ export function Router() {
       <Route path="/" element={<Index />} />
       <Route path="/login" element={<Login />} />
       <Route path="/signup" element={<Signup />} />
-      <Route path="/resetpassword" element={<PasswordReset />} />
+      <Route path="/resetpassword/" element={<PasswordReset />} />
       <Route path="/home/food" element={[<Food />, <TabMenu />]} />
+      <Route path="/home/food/:slug" element={<Patissier />} />
       <Route path="/home/order" element={[<Order />, <TabMenu />]} />
       <Route path="/home/profile" element={[<Profile />, <TabMenu />]} />
       <Route path="/home/profile/edit" element={<ProfileSettings />} />

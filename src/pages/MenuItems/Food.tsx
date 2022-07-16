@@ -4,23 +4,25 @@ import { gql, useQuery } from "@apollo/client";
 import { LoadingCircle } from "../../components/LoadingCircle";
 import { Header } from "../../components/Header";
 interface GetFoodQueryResponse {
-  products: {
+  shops: {
     id: string;
-    imgURL: string;
+    imgLogoProduto: string;
     name: string;
     description: string;
     address: string;
+    slug: string;
   }[];
 }
 
 const GET_FOOD_QUERY = gql`
   query MyQuery {
-    products {
+    shops {
       id
-      imgURL
+      imgLogoProduto
       name
       description
       address
+      slug
     }
   }
 `;
@@ -43,11 +45,11 @@ export function Food() {
         />
       </div>
 
-      <section className="flex flex-col justify-center items-center rounded-full mb-24 max-w-screen-lg lg:grid lg:grid-cols-2 lg:m-auto lg:mt-10">
-        {data?.products.map((product: any) => {
+      <section className="flex flex-col justify-center items-center rounded-full max-w-screen-lg lg:grid lg:grid-cols-2 lg:m-auto lg:mt-10">
+        {data?.shops.map((product) => {
           return (
             <div
-              className=" mt-4 w-[376px] shadow-md rounded-xl"
+              className=" mt-4 w-[376px] shadow-md rounded-xl last:mb-24"
               key={product.id}
             >
               <h2 className="w-full h-12 bg-brown-900 flex items-center justify-center text-white text-xl font-bold rounded-t-xl">
@@ -55,7 +57,7 @@ export function Food() {
               </h2>
 
               <img
-                src={product.imgURL}
+                src={product.imgLogoProduto}
                 alt=""
                 className="h-56 w-full object-cover"
               />
@@ -71,7 +73,7 @@ export function Food() {
                 </p>
 
                 <NavLink
-                  to={"/"}
+                  to={`/home/${product.slug}`}
                   className="flex justify-center items-center mt-8 mb-4"
                 >
                   <p className="flex justify-center items-center bg-orange-900 w-[164px] h-9 rounded-full text-[14px] font-bold uppercase tracking-widest">

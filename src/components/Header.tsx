@@ -1,14 +1,14 @@
 import { ArrowLeft, GearSix } from "phosphor-react";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 
 interface HeaderProps {
   hasIcon?: true | false;
   hasBack?: true | false;
   title?: string;
-  linkTo?: string;
 }
 
 export function Header(props: HeaderProps) {
+  const navigate = useNavigate();
   return (
     <header className="w-full bg-[#862924] max-h-14 h-14 shadow-4xl">
       {props.hasIcon && (
@@ -27,7 +27,7 @@ export function Header(props: HeaderProps) {
 
       {props.hasBack && (
         <div className="flex justify-around items-center py-3">
-          <NavLink to={`${props.linkTo}`}>
+          <NavLink to={""} onClick={() => navigate(-1)}>
             <ArrowLeft
               size={24}
               color="#ffffff"
@@ -35,7 +35,9 @@ export function Header(props: HeaderProps) {
               className="ml-[-2.3rem]"
             />
           </NavLink>
-          <h1 className="text-white font-semibold text-xl">{props.title}</h1>
+          <h1 className="text-white font-semibold text-xl capitalize">
+            {props.title}
+          </h1>
           <h1></h1>
         </div>
       )}
