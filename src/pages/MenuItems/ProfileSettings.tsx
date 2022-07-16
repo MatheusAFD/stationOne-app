@@ -19,7 +19,7 @@ export function ProfileSettings() {
 
   return (
     <>
-      <Header hasBack={true} linkTo="/home/profile" title="My Profile" />
+      <Header hasBack={true} title="My Profile" />
       <div className="p-4 flex flex-col justify-center items-center">
         <InputEdit nameLabel="Full Name" value={localStorage.getItem("name")} />
 
