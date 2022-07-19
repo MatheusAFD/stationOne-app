@@ -117,15 +117,14 @@ export function Login() {
             class="bg-orange-900 h-10 mt-9 text-white w-[358px]"
           />
         </div>
+        <NavLink to="/signup" className="flex justify-center pb-5">
+          <InputAccount
+            value="sign up"
+            size="sm"
+            class="w-[358px] h-9 mt-9 text-[#999999] font-bold border tracking-widest "
+          />
+        </NavLink>
       </form>
-
-      <NavLink to="/signup" className="flex justify-center">
-        <InputAccount
-          value="sign up"
-          size="sm"
-          class="w-[358px] h-9 mt-9 text-[#999999] font-bold border tracking-widest "
-        />
-      </NavLink>
     </>
   );
 }

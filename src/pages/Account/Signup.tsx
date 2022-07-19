@@ -175,15 +175,14 @@ export function Signup() {
                 class="bg-orange-900 h-10 mt-9 text-white w-[358px] disabled:opacity-50"
               />
             </div>
+            <NavLink to="/login" className="flex justify-center pb-5">
+              <InputAccount
+                value="already have an account?"
+                size="sm"
+                class="w-[358px] h-9 mt-9 text-[#999999] font-bold border tracking-widest "
+              />
+            </NavLink>
           </form>
-
-          <NavLink to="/login" className="flex justify-center">
-            <InputAccount
-              value="already have an account?"
-              size="sm"
-              class="w-[358px] h-9 mt-9 text-[#999999] font-bold border tracking-widest "
-            />
-          </NavLink>
         </>
       )}
     </>
