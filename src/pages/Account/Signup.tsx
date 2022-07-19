@@ -177,11 +177,14 @@ export function Signup() {
             </div>
           </form>
 
-          <NavLink to="/login">
+          <NavLink
+            to="/login"
+            className="flex justify-center absolute m-auto bottom-5 left-0 right-0 400tall:bottom-0 400tall:-bottom-72"
+          >
             <InputAccount
               value="already have an account?"
               size="sm"
-              class="w-[358px] h-9 mt-9 text-[#999999] font-bold border absolute m-auto bottom-5 left-0 right-0 tracking-widest"
+              class="w-[358px] h-9 mt-9 text-[#999999] font-bold border tracking-widest"
             />
           </NavLink>
         </>
