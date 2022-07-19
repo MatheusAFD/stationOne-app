@@ -91,7 +91,7 @@ export function Signup() {
       ) : (
         <>
           <form
-            className="lg:mt-12 sans max-w-lg lg:m-auto sm:m-auto sm:items-center h-[calc(100vh-10rem)] relative"
+            className="lg:mt-12 sans max-w-lg lg:m-auto sm:m-auto sm:items-center relative h-[calc(100vh-10rem)]"
             onSubmit={handleUser}
           >
             <Logo name="Signup" />
