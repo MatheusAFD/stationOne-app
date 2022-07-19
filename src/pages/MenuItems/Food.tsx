@@ -63,13 +63,13 @@ export function Food() {
                 height={190}
               />
 
-              <div className="mt-2 ml-[14px]">
+              <div className="mt-2 ml-[14px] grid lg:grid-rows-4 ">
                 <address className="flex gap-1 text-[13px] font-semibold text-[#424242] not-italic leading-normal">
                   <MapPin size={26} color="gray" />
                   {product.address == null ? "Online" : `${product.address}`}
                 </address>
 
-                <p className="text-[#424242] text-sm mt-[13px] max-w-[345px] font-light ">
+                <p className="text-[#424242] text-sm mt-[13px] max-w-[345px] font-light row-start-2 row-end-6">
                   {product.description}
                 </p>
 

@@ -71,7 +71,7 @@ export function Login() {
   return (
     <>
       <form
-        className="lg:mt-12 sans max-w-lg lg:m-auto sm:m-auto sm:items-center relative h-[calc(100vh-10rem)]"
+        className="lg:mt-12 sans max-w-lg lg:m-auto sm:m-auto sm:items-center "
         onSubmit={LoginUser}
       >
         <Logo name="Login" />
@@ -116,12 +116,22 @@ export function Login() {
             size="sm"
             class="bg-orange-900 h-10 mt-9 text-white w-[358px]"
           />
+
+          <NavLink
+            to="/resetpassword"
+            className="tracking-widest uppercase mt-5 text-[#999999] text-sm font-bold"
+          >
+            <span>forgot password?</span>
+          </NavLink>
         </div>
-        <NavLink to="/signup" className="flex justify-center pb-5">
+        <NavLink
+          to="/signup"
+          className="flex justify-center pb-5 800tall:absolute 800tall:bottom-0 800tall:right-0 800tall:left-0"
+        >
           <InputAccount
             value="sign up"
             size="sm"
-            class="w-[358px] h-9 mt-9 text-[#999999] font-bold border tracking-widest "
+            class="w-[358px] h-9 mt-9 text-[#999999] font-bold border tracking-widest"
           />
         </NavLink>
       </form>
