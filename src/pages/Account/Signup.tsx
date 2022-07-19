@@ -38,6 +38,7 @@ const UPDATE_STAGE_STATUS = gql`
 
 export function Signup() {
   const navigate = useNavigate();
+
   const [name, setName] = useState("");
   const [phone, setPhone] = useState("");
   const [email, setEmail] = useState("");
@@ -80,8 +81,8 @@ export function Signup() {
       navigate("/login");
       setLoading(false);
     } catch (err) {
-      alert(err);
       setLoading(false);
+      navigate("/login");
     }
   }
 
