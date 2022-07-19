@@ -3,6 +3,10 @@ module.exports = {
   content: ["./src/**/*.tsx"],
   theme: {
     extend: {
+      screens: {
+        "400tall": { raw: "(max-height: 350px)" },
+        // => @media (min-height: 800px) { ... }
+      },
       boxShadow: {
         "3xl":
           "rgb(0 0 0 / 50%) 0px 5px 5px -3px, rgb(0 0 0 / 14%) 0px 8px 10px 2px, rgb(0 0 0 / 12%) 0px 3px 14px 5px",

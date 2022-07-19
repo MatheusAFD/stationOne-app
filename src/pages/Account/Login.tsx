@@ -71,7 +71,7 @@ export function Login() {
   return (
     <>
       <form
-        className="lg:mt-12 sans max-w-lg lg:m-auto sm:m-auto sm:items-center  min-h-screen h-full"
+        className="lg:mt-12 sans max-w-lg lg:m-auto sm:m-auto sm:items-center"
         onSubmit={LoginUser}
       >
         <Logo name="Login" />
@@ -123,7 +123,7 @@ export function Login() {
         <InputAccount
           value="sign up"
           size="sm"
-          class="w-[358px] h-9 mt-9 text-[#999999] font-bold border fixed m-auto bottom-5 left-0 right-0 tracking-widest "
+          class="w-[358px] h-9 mt-9 text-[#999999] font-bold border absolute m-auto bottom-5 left-0 right-0 tracking-widest 400tall:hidden "
         />
       </NavLink>
     </>
