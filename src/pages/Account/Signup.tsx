@@ -179,7 +179,7 @@ export function Signup() {
 
           <NavLink
             to="/login"
-            className="flex justify-center absolute m-auto bottom-5 left-0 right-0 400tall:bottom-0 400tall:-bottom-72"
+            className="flex justify-center absolute m-auto bottom-5 left-0 right-0 400tall:-bottom-72"
           >
             <InputAccount
               value="already have an account?"
