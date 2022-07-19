@@ -91,7 +91,7 @@ export function Signup() {
       ) : (
         <>
           <form
-            className="lg:mt-12 sans max-w-lg lg:m-auto sm:m-auto sm:items-center "
+            className="lg:mt-12 sans max-w-lg lg:m-auto sm:m-auto sm:items-center h-[calc(100vh-10rem)] relative"
             onSubmit={handleUser}
           >
             <Logo name="Signup" />
@@ -177,14 +177,11 @@ export function Signup() {
             </div>
           </form>
 
-          <NavLink
-            to="/login"
-            className="flex justify-center absolute m-auto bottom-5 left-0 right-0 400tall:-bottom-72"
-          >
+          <NavLink to="/login" className="flex justify-center">
             <InputAccount
               value="already have an account?"
               size="sm"
-              class="w-[358px] h-9 mt-9 text-[#999999] font-bold border tracking-widest"
+              class="w-[358px] h-9 mt-9 text-[#999999] font-bold border tracking-widest "
             />
           </NavLink>
         </>
