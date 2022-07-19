@@ -4,7 +4,7 @@ module.exports = {
   theme: {
     extend: {
       screens: {
-        "400tall": { raw: "(max-height: 350px)" },
+        "800tall": { raw: "(max-height: 375px)" },
         // => @media (min-height: 800px) { ... }
       },
       boxShadow: {
