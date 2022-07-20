@@ -121,8 +121,8 @@ export function Signup() {
                 </label>
 
                 <InputMask
-                  mask="(99) 99999-9999"
-                  placeholder="(00) 00000-0000"
+                  mask="(99) 9 9999-9999"
+                  placeholder="(00) 0 0000-0000"
                   className="border rounded-[4.5px] pl-[10px] h-10 w-[358px] mt-[10px]"
                   onChange={(e) => {
                     setPhone(e.target.value);
