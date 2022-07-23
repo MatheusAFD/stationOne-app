@@ -1,8 +1,7 @@
 import { gql, useMutation } from "@apollo/client";
-import { FormEvent, useState } from "react";
+import { FormEvent, useEffect, useState } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
 import { InputAccount } from "../../components/InputAccount";
-import { LoadingCircle } from "../../components/LoadingCircle";
 import { Logo } from "../../components/Logo";
 import bcrypt from "bcryptjs";
 import InputMask from "react-input-mask";
@@ -77,8 +76,6 @@ export function Signup() {
         },
       });
 
-      alert("Cadastro executado com sucesso");
-      navigate("/login");
       setLoading(false);
     } catch (err) {
       setLoading(false);

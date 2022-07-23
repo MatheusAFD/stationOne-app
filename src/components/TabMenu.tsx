@@ -7,19 +7,19 @@ export function TabMenu() {
       id: 1,
       title: "Food",
       icon: <Truck size={24} className="text-gray-400" weight="fill" />,
-      link: "/home/food",
+      link: "/food",
     },
     ORDER: {
       id: 2,
       title: "Orders",
       icon: <Note size={24} className="text-gray-400" weight="fill" />,
-      link: "/home/order",
+      link: "/order",
     },
     PROFILE: {
       id: 3,
       title: "Profile",
       icon: <UserCircle size={24} className="text-gray-400" weight="fill" />,
-      link: "/home/profile",
+      link: "/profile",
     },
   };
   return (

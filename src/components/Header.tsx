@@ -12,10 +12,7 @@ export function Header(props: HeaderProps) {
   return (
     <header className="w-full bg-[#862924] max-h-14 h-14 shadow-4xl">
       {props.hasIcon && (
-        <NavLink
-          to="/home/profile/edit"
-          className="absolute right-3 m-auto py-4"
-        >
+        <NavLink to="/profile/edit" className="absolute right-3 m-auto py-4">
           <GearSix
             size={24}
             color="#ffffff"
