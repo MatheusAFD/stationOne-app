@@ -1,5 +1,6 @@
 import { gql, useQuery } from "@apollo/client";
 import { NavLink, useParams } from "react-router-dom";
+import { ButtonSetps } from "../../components/ButtonSteps";
 import { Header } from "../../components/Header";
 import { LoadingCircle } from "../../components/LoadingCircle";
 
@@ -97,19 +98,7 @@ export function Product() {
         })}
       </section>
 
-      <div className="flex justify-around gap-3 fixed bottom-0 left-0 right-0 z-10 bg-white h-20">
-        <ul className="flex gap-20 mt-2 shadow-3xl w-full justify-center py-2 items-center">
-          <NavLink
-            to={`/`}
-            className="flex justify-center items-center bg-orange-900 w-[299px] h-9 rounded-full text-[14px] font-bold uppercase tracking-widest"
-            onClick={(event) => {
-              event.preventDefault();
-            }}
-          >
-            start order
-          </NavLink>
-        </ul>
-      </div>
+      <ButtonSetps nameStep="START ORDER" />
     </>
   );
 }
