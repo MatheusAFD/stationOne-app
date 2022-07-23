@@ -2,6 +2,7 @@ import { NavLink } from "react-router-dom";
 
 interface Props {
   nameStep: string;
+  onClick?: any;
 }
 
 export function ButtonSetps(props: Props) {
@@ -11,6 +12,7 @@ export function ButtonSetps(props: Props) {
         <NavLink
           to={`/home/food/start-order`}
           className="flex justify-center items-center bg-orange-900 w-[299px] h-9 rounded-full text-[14px] font-bold uppercase tracking-widest"
+          onClick={props.onClick}
         >
           {props.nameStep}
         </NavLink>

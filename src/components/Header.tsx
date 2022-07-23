@@ -4,7 +4,7 @@ import { NavLink, useNavigate } from "react-router-dom";
 interface HeaderProps {
   hasIcon?: true | false;
   hasBack?: true | false;
-  title?: string;
+  title: string;
 }
 
 export function Header(props: HeaderProps) {
