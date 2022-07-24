@@ -17,7 +17,11 @@ export function StepActive(props: StepOrder) {
           }
         )}
       >
-        {activeStep === 0 && <>{1}</>}
+        {activeStep === 0 && (
+          <>
+            <p className="animate-pulse"> {activeStep + 1}</p>
+          </>
+        )}
         {activeStep > 0 && (
           <>
             <Check size={24} color="#049f19" weight="bold" />
@@ -38,7 +42,11 @@ export function StepActive(props: StepOrder) {
           }
         )}
       >
-        {activeStep === 1 && <>{activeStep + 1}</>}
+        {activeStep === 1 && (
+          <>
+            <p className="animate-pulse"> {activeStep + 1}</p>
+          </>
+        )}
         {activeStep > 1 && (
           <>
             <Check size={24} color="#049f19" weight="bold" />
@@ -59,7 +67,11 @@ export function StepActive(props: StepOrder) {
           }
         )}
       >
-        {activeStep === 2 && <>{activeStep + 1}</>}
+        {activeStep === 2 && (
+          <>
+            <p className="animate-pulse"> {activeStep + 1}</p>
+          </>
+        )}
         {activeStep > 2 && (
           <>
             <Check size={24} color="#049f19" weight="bold" />

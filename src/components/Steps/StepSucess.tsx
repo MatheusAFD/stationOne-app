@@ -19,7 +19,7 @@ export function StepSucess() {
         />
         {show && (
           <>
-            <h1 className="text-lg text-[#424242]">
+            <h1 className="text-lg text-[#424242] animate-bounce">
               Cadastro realizado com sucesso!
             </h1>
           </>

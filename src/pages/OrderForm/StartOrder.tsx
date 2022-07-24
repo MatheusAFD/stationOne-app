@@ -12,7 +12,7 @@ export function StartOrder() {
   const [step, setStep] = useState(0);
   const [message] = useState([
     "SET PICKUP TIME",
-    "SET LOCATION DELIVERY",
+    "SET LOCATION",
     "CONFIRM YOUR DATA",
     "SUCESS",
   ]);
