@@ -1,3 +1,5 @@
+import { Check } from "phosphor-react";
+
 export function StepTwo() {
   return (
     <section className="p-4">

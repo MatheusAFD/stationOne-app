@@ -1,6 +1,6 @@
 interface PropsInput {
   nameLabel?: string;
-  value: any;
+  value?: any;
   className?: string;
 }
 

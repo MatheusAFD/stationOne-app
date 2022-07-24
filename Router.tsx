@@ -18,13 +18,12 @@ export function Router() {
       <Route path="/login" element={<Login />} />
       <Route path="/signup" element={<Signup />} />
       <Route path="/resetpassword/" element={<PasswordReset />} />
-      <Route path="/home/food" element={[<Food />, <TabMenu />]} />
-      <Route path="/home/food/:slug" element={<Product />} />
-      <Route path="/home/order" element={[<Order />, <TabMenu />]} />
-      <Route path="/home/food/start-order" element={<StartOrder />} />
-
-      <Route path="/home/profile" element={[<Profile />, <TabMenu />]} />
-      <Route path="/home/profile/edit" element={<ProfileSettings />} />
+      <Route path="/food" element={[<Food />, <TabMenu />]} />
+      <Route path="/food/:slug" element={<Product />} />
+      <Route path="/order" element={[<Order />, <TabMenu />]} />
+      <Route path="/food/start-order" element={<StartOrder />} />
+      <Route path="/profile" element={[<Profile />, <TabMenu />]} />
+      <Route path="/profile/edit" element={<ProfileSettings />} />
     </Routes>
   );
 }

@@ -12,10 +12,7 @@ export function Header(props: HeaderProps) {
   return (
     <header className="w-full bg-[#862924] max-h-14 h-14 shadow-4xl">
       {props.hasIcon && (
-        <NavLink
-          to="/home/profile/edit"
-          className="absolute right-3 m-auto py-4"
-        >
+        <NavLink to="/profile/edit" className="absolute right-3 m-auto py-4">
           <GearSix
             size={24}
             color="#ffffff"
@@ -26,16 +23,16 @@ export function Header(props: HeaderProps) {
       )}
 
       {props.hasBack && (
-        <div className="flex justify-around items-center py-3">
+        <div className="flex justify-around items-center p-3 ">
           <NavLink to={""} onClick={() => navigate(-1)}>
             <ArrowLeft
               size={24}
               color="#ffffff"
               weight="bold"
-              className="ml-[-2.3rem]"
+              className="ml-[-2.3rem] absolute left-12 top-3  "
             />
           </NavLink>
-          <h1 className="text-white font-semibold text-xl capitalize">
+          <h1 className="text-white font-semibold text-xl capitalize ">
             {props.title}
           </h1>
           <h1></h1>

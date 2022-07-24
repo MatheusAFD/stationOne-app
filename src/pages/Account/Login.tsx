@@ -55,7 +55,7 @@ export function Login() {
       );
 
       if (isValidPassword) {
-        navigate("/home/food");
+        navigate("/food");
         SaveUserData(data);
       }
       if (!isValidPassword) {
@@ -65,7 +65,7 @@ export function Login() {
   }
 
   if (sessionStorage.getItem("logged") == "1") {
-    navigate("/home/food");
+    navigate("/food");
   }
 
   return (
