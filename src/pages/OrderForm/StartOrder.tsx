@@ -6,6 +6,7 @@ import { StepActive } from "../../components/StepActive";
 import { StepOne } from "../../components/Steps/StepOne";
 import { StepThree } from "../../components/Steps/StepThree";
 import { StepTwo } from "../../components/Steps/StepTwo";
+import { StepSucess } from "../../components/Steps/StepSucess";
 
 export function StartOrder() {
   const [step, setStep] = useState(0);
@@ -13,7 +14,16 @@ export function StartOrder() {
     "SET PICKUP TIME",
     "SET LOCATION DELIVERY",
     "CONFIRM YOUR DATA",
+    "SUCESS",
   ]);
+
+  function handleButton(e: FormEvent) {
+    e?.preventDefault();
+    if (step <= 2) {
+      setStep(step + 1);
+    }
+  }
+
   return (
     <>
       <Header hasBack={true} title={message[step]} />
@@ -24,15 +34,10 @@ export function StartOrder() {
         {step === 0 && <StepOne />}
         {step === 1 && <StepTwo />}
         {step === 2 && <StepThree />}
+        {step === 3 && <StepSucess />}
       </div>
 
-      <ButtonSetps
-        nameStep={message[step]}
-        onClick={(e: FormEvent) => {
-          e?.preventDefault();
-          setStep(step + 1);
-        }}
-      />
+      <ButtonSetps nameStep={message[step]} onClick={handleButton} />
     </>
   );
 }

@@ -1,4 +1,5 @@
 import classNames from "classnames";
+import { Check } from "phosphor-react";
 
 interface StepOrder {
   activeStep?: any;
@@ -16,7 +17,12 @@ export function StepActive(props: StepOrder) {
           }
         )}
       >
-        {activeStep >= 0 ? <>{1}</> : <></>}
+        {activeStep === 0 && <>{1}</>}
+        {activeStep > 0 && (
+          <>
+            <Check size={24} color="#049f19" weight="bold" />
+          </>
+        )}
       </span>
       <div
         className={classNames(" w-28 h-4 bg-[#e0e0e0] -ml-1 -z-[0]", {
@@ -32,12 +38,17 @@ export function StepActive(props: StepOrder) {
           }
         )}
       >
-        {activeStep >= 1 ? <>{2}</> : <></>}
+        {activeStep === 1 && <>{activeStep + 1}</>}
+        {activeStep > 1 && (
+          <>
+            <Check size={24} color="#049f19" weight="bold" />
+          </>
+        )}
       </span>
       <div
         className={classNames(" w-28 h-4 bg-[#e0e0e0] -ml-1 -z-[0]", {
           "!bg-orange-900 transform transition-all duration-500 ease-out scale-100":
-            activeStep === 2,
+            activeStep >= 2,
         })}
       ></div>
       <span
@@ -48,7 +59,12 @@ export function StepActive(props: StepOrder) {
           }
         )}
       >
-        {activeStep >= 2 ? <>{3}</> : <></>}
+        {activeStep === 2 && <>{activeStep + 1}</>}
+        {activeStep > 2 && (
+          <>
+            <Check size={24} color="#049f19" weight="bold" />
+          </>
+        )}
       </span>
     </div>
   );
