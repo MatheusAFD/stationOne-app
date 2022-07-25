@@ -1,8 +1,9 @@
 import { NavLink } from "react-router-dom";
 import { MapPin } from "phosphor-react";
 import { gql, useQuery } from "@apollo/client";
-import { LoadingCircle } from "../../components/LoadingCircle";
 import { Header } from "../../components/Header";
+import { useState } from "react";
+import { DebounceInput } from "react-debounce-input";
 interface GetFoodQueryResponse {
   shops: {
     id: string;
@@ -15,8 +16,8 @@ interface GetFoodQueryResponse {
 }
 
 const GET_FOOD_QUERY = gql`
-  query MyQuery {
-    shops {
+  query MyQuery($search: String) {
+    shops(where: { name_starts_with: $search }) {
       id
       imgLogoProduto
       name
@@ -28,20 +29,25 @@ const GET_FOOD_QUERY = gql`
 `;
 
 export function Food() {
-  const { data } = useQuery<GetFoodQueryResponse>(GET_FOOD_QUERY);
-
-  if (!data) {
-    return <LoadingCircle />;
-  }
+  const [search, setSearch] = useState("");
+  const { data } = useQuery<GetFoodQueryResponse>(GET_FOOD_QUERY, {
+    variables: { search },
+  });
 
   return (
     <>
       <Header />
       <div className="flex justify-center items-center">
-        <input
+        <DebounceInput
+          element="input"
           type="text"
           placeholder="Search..."
+          minLength={3}
           className=" w-[376px] h-10 px-6 border mt-8 rounded-full border-[#bdbdbd]"
+          debounceTimeout={500}
+          onChange={(e) => {
+            setSearch(e.target.value);
+          }}
         />
       </div>
 
