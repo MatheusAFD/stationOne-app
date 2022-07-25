@@ -4,6 +4,7 @@ import { NavLink, useNavigate } from "react-router-dom";
 import { InputAccount } from "../../components/InputAccount";
 import { Logo } from "../../components/Logo";
 import bcrypt from "bcryptjs";
+import { DebounceInput } from "react-debounce-input";
 
 interface GetUserQueryResponse {
   userContent: {
@@ -32,7 +33,6 @@ export function Login() {
   const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-
   const { data } = useQuery<GetUserQueryResponse>(GET_USER_QUERY, {
     variables: { email },
   });
@@ -84,15 +84,17 @@ export function Login() {
               Email
             </label>
 
-            <input
-              onBlur={(e) => {
+            <DebounceInput
+              placeholder="Enter email..."
+              element="input"
+              type="email"
+              id="email"
+              minLength={15}
+              className="border rounded-[4.5px] pl-[10px] h-10 w-[358px] "
+              debounceTimeout={1000}
+              onChange={(e) => {
                 setEmail(e.target.value);
               }}
-              type="email"
-              name=""
-              id="email"
-              placeholder="Enter email..."
-              className="border rounded-[4.5px] pl-[10px] h-10 w-[358px] "
             />
           </div>
 
