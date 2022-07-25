@@ -21,7 +21,7 @@ export function Router() {
       <Route path="/food" element={[<Food />, <TabMenu />]} />
       <Route path="/food/:slug" element={<Product />} />
       <Route path="/order" element={[<Order />, <TabMenu />]} />
-      <Route path="/food/start-order" element={<StartOrder />} />
+      <Route path="/food/:slug/start-order" element={<StartOrder />} />
       <Route path="/profile" element={[<Profile />, <TabMenu />]} />
       <Route path="/profile/edit" element={<ProfileSettings />} />
     </Routes>
