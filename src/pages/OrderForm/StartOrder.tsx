@@ -40,15 +40,14 @@ const GET_SHOP_INFO_QUERY = gql`
 `;
 
 export function StartOrder() {
+  const { slug } = useParams();
   const [step, setStep] = useState(0);
   const [message] = useState([
     "SET PICKUP TIME",
     "SET PRODUCT",
-    "CONFIRM YOUR DATA",
+    "CONFIRM YOUR ORDER",
     "SUCESS",
   ]);
-
-  const { slug } = useParams();
   const { data } = useQuery<GET_RESPONSE_SHOP_QUERY>(GET_SHOP_INFO_QUERY, {
     variables: {
       slug,
@@ -78,10 +77,11 @@ export function StartOrder() {
         )}
         {step === 1 && <StepTwo object={data?.shops[0].products} />}
         {step === 2 && <StepThree />}
-        {step === 3 && <StepSucess />}
       </div>
 
-      <ButtonSetps nameStep={message[step]} onClick={handleButton} />
+      {step < 2 && (
+        <ButtonSetps nameStep={message[step]} onClick={handleButton} />
+      )}
     </>
   );
 }
