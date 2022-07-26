@@ -1,25 +1,32 @@
-import { gql, useMutation, useQuery } from "@apollo/client";
 import { Header } from "../../components/Header";
+import { gql, useMutation, useQuery } from "@apollo/client";
+import { format } from "date-fns";
+import ptBR from "date-fns/locale/pt-BR";
+import { LoadingCircle } from "../../components/LoadingCircle";
 
 interface GET_ORDER_BY_EMAIL {
   orders: {
     price: number;
     qtdProduct: number;
+    createdAt: any;
     products: {
       nome: string;
       price: number;
+      imgUrl: string;
     }[];
   }[];
 }
 
 const GET_ORDER_BY_EMAIL = gql`
   query MyQuery($email: String) {
-    orders(where: { userContent: { email: $email } }) {
+    orders(where: { userContent: { email: $email } }, orderBy: createdAt_DESC) {
       price
       qtdProduct
+      createdAt
       products {
         nome
         price
+        imgUrl
       }
     }
   }
@@ -50,16 +57,25 @@ export function Order() {
   }
 
   const email = localStorage.getItem("email");
-  const { data } = useQuery<GET_ORDER_BY_EMAIL>(GET_ORDER_BY_EMAIL, {
+  const { data, loading } = useQuery<GET_ORDER_BY_EMAIL>(GET_ORDER_BY_EMAIL, {
     variables: {
       email,
     },
   });
 
+  function formatData(date: Date) {
+    const createDate = new Date(date);
+    const availableDateFormatted = format(createDate, "d 'de' MMM 'de' yyy ", {
+      locale: ptBR,
+    });
+
+    return availableDateFormatted;
+  }
+
   return (
     <>
       <Header />
-      <div className="flex p-4 gap-4">
+      <div className="flex p-4 gap-4 lg:justify-center">
         <p className="py-5 text-[#757575]">My Orders</p>
         <input
           type="submit"
@@ -69,18 +85,43 @@ export function Order() {
         />
       </div>
 
-      <div className="flex flex-col flex-wrap lg:flex-row ">
-        {data?.orders.map((item) => {
-          return (
-            <div className="p-4 flex m-auto flex-col shadow w-[360px] mb-5 text-gray-600 last:mb-20 lg:last:mb-5">
-              <p>{item.products[0].nome}</p>
-              <p>Preço unitário: R$ {item.products[0].price}</p>
-              <p>Quantidades compradas: {item.qtdProduct}</p>
-              <p>Preço total: R$ {item.price}</p>
-            </div>
-          );
-        })}
-      </div>
+      {loading === true ? (
+        <LoadingCircle />
+      ) : (
+        <>
+          <div className="flex flex-col w-1/3 lg:m-auto gap-4 ">
+            {data?.orders.map((item) => {
+              return (
+                <div className="p-4 flex lg:w-full w-[360px] gap-2 shadow last:mb-20">
+                  <div className="relative">
+                    <img
+                      src={item.products[0].imgUrl}
+                      alt=""
+                      className="w-24 h-24 object-cover "
+                    />
+                    {item.qtdProduct > 1 && (
+                      <span className="absolute bottom-0 right-0 rounded-full flex justify-center items-center w-5 h-5 bg-white shadow text-sm">
+                        {item.qtdProduct}
+                      </span>
+                    )}
+                  </div>
+                  <div>
+                    <p className="text-center text-gray-800 font-semibold text-lg mb-2">
+                      {item.products[0].nome}
+                    </p>
+                    <p className="text-sm text-gray-600">
+                      Pedido em: {formatData(item.createdAt)}
+                    </p>
+                    <p className="text-sm text-gray-600">
+                      Preço total: R$ {item.price}
+                    </p>
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+        </>
+      )}
     </>
   );
 }
