@@ -12,10 +12,12 @@
 
 <h2>Project Screenshots:</h2>
 
-<img src="https://i.imgur.com/aotaKz1.png" alt="project-screenshot" width="331" height="663/">
-<img src="https://imgur.com/itT6Hwv.png" alt="project-screenshot" width="331" height="663/">
-<img src="https://imgur.com/ZBHd3Kw.png" alt="project-screenshot" width="331" height="663/">
-<img src="https://imgur.com/kSVBTJl.png" alt="project-screenshot" width="331" height="663/">
+<div style="display:flex; flex-wrap: wrap">
+  <img src="https://i.imgur.com/aotaKz1.png" alt="project-screenshot" width="331" height="663/">
+  <img src="https://imgur.com/itT6Hwv.png" alt="project-screenshot" width="331" height="663/">
+  <img src="https://imgur.com/ZBHd3Kw.png" alt="project-screenshot" width="331" height="663/">
+  <img src="https://imgur.com/kSVBTJl.png" alt="project-screenshot" width="331" height="663/">
+</div>
 
 <h2>🧐 Features</h2>
 
