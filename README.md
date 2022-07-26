@@ -12,7 +12,7 @@
 
 <h2>Project Screenshots:</h2>
 
-<div style="display:flex; flex-wrap: wrap">
+<div style="display:flex; flex-wrap: wrap; justify-content: center;">
   <img src="https://i.imgur.com/aotaKz1.png" alt="project-screenshot" width="331" height="663/">
   <img src="https://imgur.com/itT6Hwv.png" alt="project-screenshot" width="331" height="663/">
   <img src="https://imgur.com/ZBHd3Kw.png" alt="project-screenshot" width="331" height="663/">
