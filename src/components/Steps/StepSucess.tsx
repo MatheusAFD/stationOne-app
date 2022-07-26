@@ -1,13 +1,19 @@
 import { useState } from "react";
 import { Player } from "@lottiefiles/react-lottie-player";
 import animationData from "./animation.json";
+import { useNavigate } from "react-router-dom";
 
 export function StepSucess() {
   const [show, setShow] = useState(false);
+  const navigate = useNavigate();
+
+  setTimeout(() => {
+    navigate("/order");
+  }, 8000);
 
   return (
     <>
-      <div>
+      <div className="flex flex-col justify-center items-center">
         <Player
           keepLastFrame
           autoplay
@@ -20,7 +26,7 @@ export function StepSucess() {
         {show && (
           <>
             <h1 className="text-lg text-[#424242] animate-bounce">
-              Cadastro realizado com sucesso!
+              Pedido realizado com sucesso!
             </h1>
           </>
         )}

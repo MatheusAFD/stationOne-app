@@ -1,4 +1,5 @@
 import { Route, Routes } from "react-router-dom";
+import { StepSucess } from "./src/components/Steps/StepSucess";
 import { TabMenu } from "./src/components/TabMenu";
 import { Login } from "./src/pages/Account/Login";
 import { PasswordReset } from "./src/pages/Account/PasswordReset";
@@ -21,7 +22,8 @@ export function Router() {
       <Route path="/food" element={[<Food />, <TabMenu />]} />
       <Route path="/food/:slug" element={<Product />} />
       <Route path="/order" element={[<Order />, <TabMenu />]} />
-      <Route path="/food/start-order" element={<StartOrder />} />
+      <Route path="/food/:slug/start-order" element={<StartOrder />} />
+      <Route path="/finish-order/sucess" element={<StepSucess />} />
       <Route path="/profile" element={[<Profile />, <TabMenu />]} />
       <Route path="/profile/edit" element={<ProfileSettings />} />
     </Routes>

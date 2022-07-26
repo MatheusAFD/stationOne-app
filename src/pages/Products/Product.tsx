@@ -14,6 +14,7 @@ interface GetProductsQueryResponse {
     deliveryIn: string;
     shop: {
       imgLogoLoja: string;
+      slugFood: string;
     };
   }[];
 }
@@ -29,6 +30,7 @@ const GET_PRODUCTS_QUERY = gql`
       deliveryIn
       shop {
         imgLogoLoja
+        slugFood
       }
     }
   }
@@ -98,7 +100,10 @@ export function Product() {
         })}
       </section>
 
-      <ButtonSetps nameStep="START ORDER" />
+      <ButtonSetps
+        nameStep="START ORDER"
+        slug={data.products[0].shop.slugFood}
+      />
     </>
   );
 }
