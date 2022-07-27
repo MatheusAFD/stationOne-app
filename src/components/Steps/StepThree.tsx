@@ -64,7 +64,7 @@ export function StepThree() {
 
   return (
     <div>
-      <div className="shadow w-[360px] mt-10 rounded">
+      <div className="shadow mt-10 rounded w-[95%] max-w-[410px] m-auto">
         {data?.products.map((item) => {
           return (
             <div>

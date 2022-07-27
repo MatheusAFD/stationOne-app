@@ -61,29 +61,29 @@ export function Product() {
           height={190}
         />
 
-        <div className="relative top-[-30px] w-[358px] h-16 bg-white rounded">
+        <div className="relative top-[-30px] w-[95%] max-w-[370px] h-16 bg-white rounded">
           <h2 className="text-center mt-3 font-bold text-xl capitalize text-[#424242]">
             {slugFormatted}
           </h2>
         </div>
       </div>
 
-      <section className="flex flex-col justify-center items-center lg:flex-row lg:place-items-start lg:flex-wrap">
+      <section className="flex flex-col items-center md:flex-row md:gap-4 md:justify-center md:flex-wrap">
         {data?.products.map((product) => {
           return (
             <div
               key={product.id}
-              className="flex flex-col items-center px-4 mb-7 last:mb-24"
+              className="w-[95%] max-w-[410px] flex flex-col items-center mb-7 last:mb-24 lg:last:mb-7"
             >
               <p className="font-semibold text-sm text-[#9E9E9E] place-self-start mb-3">
                 {product.deliveryIn}
               </p>
-              <div className="w-[362px] h-[255px] shadow rounded">
+              <div className="w-full h-[255px] shadow rounded">
                 <img
                   src={product.imgUrl}
                   alt=""
                   className="h-48 w-full object-cover "
-                  width={390}
+                  width={350}
                   height={190}
                 />
 

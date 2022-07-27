@@ -87,21 +87,24 @@ export function Signup() {
     <>
       <>
         <form
-          className="lg:mt-12 sans max-w-lg lg:m-auto sm:m-auto sm:items-center"
+          className="lg:mt-12 sans m-auto sm:items-center max-w-[358px]"
           onSubmit={handleUser}
         >
           <Logo name="Signup" />
 
-          <div className="flex flex-col m-auto items-center w-[358px]">
-            <div className="mt-12 mb-4">
-              <label htmlFor="name" className="block text-sm text-[#424242]">
+          <div className="flex flex-col justify-center">
+            <div className="mb-4 mt-12 w-full flex flex-col items-center">
+              <label
+                htmlFor="name"
+                className="block text-sm text-[#424242] place-self-start px-2"
+              >
                 Full Name
               </label>
               <input
                 type="text"
                 id="name"
                 placeholder="Full Name"
-                className="border rounded-[4.5px] pl-[10px] h-10 w-[358px] mt-[10px]"
+                className="border rounded-[4.5px] pl-[10px] h-10 mt-[10px] w-[95%] max-w-[358px]"
                 onChange={(e) => {
                   setName(e.target.value);
                 }}
@@ -109,25 +112,28 @@ export function Signup() {
               />
             </div>
 
-            <div className="mb-4">
-              <label htmlFor="name" className="block text-sm text-[#424242]">
+            <div className="mb-4 w-full flex flex-col items-center ">
+              <label
+                htmlFor="name"
+                className="block text-sm text-[#424242] place-self-start px-2"
+              >
                 Phone Number
               </label>
 
               <InputMask
                 mask="(99) 9 9999-9999"
                 placeholder="(00) 0 0000-0000"
-                className="border rounded-[4.5px] pl-[10px] h-10 w-[358px] mt-[10px]"
+                className="border rounded-[4.5px] pl-[10px] h-10 mt-[10px] w-[95%] max-w-[358px]"
                 onChange={(e) => {
                   setPhone(e.target.value);
                 }}
               />
             </div>
 
-            <div className="mb-4">
+            <div className="mb-4 w-full flex flex-col items-center ">
               <label
                 htmlFor="email"
-                className="block text-sm text-[#424242] mb-[10px]"
+                className="block text-sm text-[#424242] mb-[10px] place-self-start px-2"
               >
                 Email
               </label>
@@ -136,17 +142,17 @@ export function Signup() {
                 type="email"
                 id="email"
                 placeholder="Enter email..."
-                className="border rounded-[4.5px] pl-[10px] h-10 w-[358px] "
+                className="border rounded-[4.5px] pl-[10px] h-10 w-[95%] max-w-[358px]"
                 onChange={(e) => {
                   setEmail(e.target.value);
                 }}
               />
             </div>
 
-            <div className="mb-4">
+            <div className="mb-4 w-full flex flex-col items-center ">
               <label
                 htmlFor="password"
-                className="block text-sm text-[#424242]"
+                className="block text-sm text-[#424242] place-self-start px-2"
               >
                 Password
               </label>
@@ -154,21 +160,20 @@ export function Signup() {
                 type="password"
                 id="password"
                 placeholder="Enter password..."
-                className="border rounded-[4.5px] pl-[10px] h-10 w-[358px] mt-[10px]"
+                className="border rounded-[4.5px] pl-[10px] h-10 mt-[10px] w-[95%] max-w-[358px]"
                 onChange={(e) => {
                   setPassword(e.target.value);
                 }}
                 maxLength={11}
                 minLength={6}
               />
+              <InputAccount
+                disabled={loading}
+                value="signup"
+                size="sm"
+                class="bg-orange-900 h-10 mt-9 text-white disabled:opacity-60 w-[95%] max-w-[358px]"
+              />
             </div>
-
-            <InputAccount
-              disabled={loading}
-              value="signup"
-              size="sm"
-              class="bg-orange-900 h-10 mt-9 text-white w-[358px] disabled:opacity-60"
-            />
           </div>
           <NavLink
             to="/login"
@@ -177,7 +182,7 @@ export function Signup() {
             <InputAccount
               value="already have an account?"
               size="sm"
-              class="w-[358px] h-9 mt-9 text-[#999999] font-bold border tracking-widest "
+              class="w-[95%] max-w-[358px] h-9 mt-9 text-[#999999] font-bold border tracking-widest "
             />
           </NavLink>
         </form>
