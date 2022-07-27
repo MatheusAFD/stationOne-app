@@ -43,7 +43,7 @@ export function Food() {
           type="text"
           placeholder="Search..."
           minLength={3}
-          className=" w-[376px] h-10 px-6 border mt-8 rounded-full border-[#bdbdbd]"
+          className="w-[95%] max-w-[370px] h-10 px-6 border mt-8 rounded-full border-[#bdbdbd]"
           debounceTimeout={500}
           onChange={(e) => {
             setSearch(e.target.value);
@@ -55,7 +55,7 @@ export function Food() {
         {data?.shops.map((product) => {
           return (
             <div
-              className=" mt-4 w-[376px] shadow-md rounded-xl last:mb-24 "
+              className=" mt-4 w-[95%] max-w-[370px] shadow-md rounded-xl last:mb-24 "
               key={product.id}
             >
               <h2 className="w-full h-12 bg-brown-900 flex items-center justify-center text-white text-xl font-bold rounded-t-xl">

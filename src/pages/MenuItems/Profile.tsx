@@ -40,7 +40,7 @@ export function Profile() {
           </p>
         </div>
 
-        <div className="flex bg-[#28a0e5] w-[307px] items-center gap-3 rounded-[5px] mt-3 p-1 lg:mb-20">
+        <div className="flex bg-[#28a0e5] w-[307px] items-center gap-3 rounded-[5px] mt-3 p-1 mb-20">
           <IconStripe />
           <p className="text-white font-semibold text-sm leading-none">
             Connect with Stripe

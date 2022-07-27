@@ -1,8 +1,8 @@
-import { Header } from "../../components/Header";
+import { useEffect, useState } from "react";
 import { gql, useMutation, useQuery } from "@apollo/client";
 import { format } from "date-fns";
 import ptBR from "date-fns/locale/pt-BR";
-import { LoadingCircle } from "../../components/LoadingCircle";
+import { Header } from "../../components/Header";
 
 interface GET_ORDER_BY_EMAIL {
   orders: {
@@ -44,6 +44,7 @@ const PUBLISH_ORDERS = gql`
 `;
 
 export function Order() {
+  const [isShowOrder, setIsShowOrder] = useState(true);
   const [publishOrder] = useMutation(PUBLISH_ORDERS);
 
   async function handleButtonAtt() {
@@ -57,11 +58,13 @@ export function Order() {
   }
 
   const email = localStorage.getItem("email");
-  const { data, loading } = useQuery<GET_ORDER_BY_EMAIL>(GET_ORDER_BY_EMAIL, {
+  const { data } = useQuery<GET_ORDER_BY_EMAIL>(GET_ORDER_BY_EMAIL, {
     variables: {
       email,
     },
   });
+
+  console.log(data?.orders.length);
 
   function formatData(date: Date) {
     const createDate = new Date(date);
@@ -71,6 +74,10 @@ export function Order() {
 
     return availableDateFormatted;
   }
+
+  useEffect(() => {
+    if (data?.orders.length == 0) setIsShowOrder(false);
+  });
 
   return (
     <>
@@ -85,14 +92,16 @@ export function Order() {
         />
       </div>
 
-      {loading === true ? (
-        <LoadingCircle />
+      {isShowOrder === false ? (
+        <span className="flex justify-center text-[#848484] font-semibold">
+          No List Items
+        </span>
       ) : (
         <>
-          <div className="flex flex-col w-1/3 lg:m-auto gap-4 ">
-            {data?.orders.map((item) => {
+          <section className="flex flex-col items-center md:flex-row md:gap-4 md:justify-center md:flex-wrap">
+            {data?.orders.map((item, key) => {
               return (
-                <div className="p-4 flex lg:w-full w-[360px] gap-2 shadow last:mb-20">
+                <div className="w-[95%] max-w-[410px] flex items-center mb-7 last:mb-20 lg:last:mb-7 gap-2 p-4 shadow ">
                   <div className="relative">
                     <img
                       src={item.products[0].imgUrl}
@@ -119,7 +128,7 @@ export function Order() {
                 </div>
               );
             })}
-          </div>
+          </section>
         </>
       )}
     </>

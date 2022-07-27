@@ -20,7 +20,7 @@ export function ProfileSettings() {
   return (
     <>
       <Header hasBack={true} title="My Profile" />
-      <div className="p-4 flex flex-col justify-center items-center">
+      <div className="flex flex-col sans m-auto  max-w-[370px] lg:mt-12 p-4">
         <InputEdit nameLabel="Full Name" value={localStorage.getItem("name")} />
 
         <label
@@ -51,7 +51,7 @@ export function ProfileSettings() {
         <InputAccount
           value="save"
           size="sm"
-          class="bg-orange-900 h-10 mt-10 text-white w-[358px] uppercase"
+          class="bg-orange-900 h-10 mt-10 text-white w-[100%] uppercase"
         />
 
         <button

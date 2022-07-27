@@ -24,12 +24,16 @@ export function Header(props: HeaderProps) {
 
       {props.hasBack && (
         <div className="flex justify-around items-center p-3 ">
-          <NavLink to={""} onClick={() => navigate(-1)}>
+          <NavLink
+            to={""}
+            onClick={() => navigate(-1)}
+            className="flex items-center"
+          >
             <ArrowLeft
               size={24}
               color="#ffffff"
               weight="bold"
-              className="ml-[-2.3rem] absolute left-12 top-3  "
+              className="ml-[-2.3rem] absolute left-12"
             />
           </NavLink>
           <h1 className="text-white font-semibold text-xl capitalize ">
