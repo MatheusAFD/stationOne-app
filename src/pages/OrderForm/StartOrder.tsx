@@ -6,8 +6,7 @@ import { StepActive } from "../../components/StepActive";
 import { StepOne } from "../../components/Steps/StepOne";
 import { StepThree } from "../../components/Steps/StepThree";
 import { StepTwo } from "../../components/Steps/StepTwo";
-import { StepSucess } from "../../components/Steps/StepSucess";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { gql, useQuery } from "@apollo/client";
 
 interface GET_RESPONSE_SHOP_QUERY {
@@ -40,6 +39,7 @@ const GET_SHOP_INFO_QUERY = gql`
 `;
 
 export function StartOrder() {
+  const navigate = useNavigate();
   const { slug } = useParams();
   const [step, setStep] = useState(0);
   const [message] = useState([
@@ -48,6 +48,7 @@ export function StartOrder() {
     "CONFIRM YOUR ORDER",
     "SUCESS",
   ]);
+
   const { data } = useQuery<GET_RESPONSE_SHOP_QUERY>(GET_SHOP_INFO_QUERY, {
     variables: {
       slug,
@@ -61,9 +62,22 @@ export function StartOrder() {
     }
   }
 
+  function handleButtonBack() {
+    if (step > 0) {
+      setStep(step - 1);
+    } else {
+      navigate(-1);
+    }
+  }
+
   return (
     <>
-      <Header hasBack={true} title={message[step]} />
+      <Header
+        hasBack={true}
+        title={message[step]}
+        returnNav={handleButtonBack}
+      />
+
       <div className="w-[390x] h-16 bg-[#f5f5f5] -z-10 ">
         <StepActive activeStep={step} />
       </div>

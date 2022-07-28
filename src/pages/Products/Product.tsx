@@ -1,5 +1,5 @@
 import { gql, useQuery } from "@apollo/client";
-import { NavLink, useParams } from "react-router-dom";
+import { NavLink, useNavigate, useParams } from "react-router-dom";
 import { ButtonSetps } from "../../components/ButtonSteps";
 import { Header } from "../../components/Header";
 import { LoadingCircle } from "../../components/LoadingCircle";
@@ -37,6 +37,7 @@ const GET_PRODUCTS_QUERY = gql`
 `;
 
 export function Product() {
+  const navigate = useNavigate();
   const { slug } = useParams();
   const slugFormatted = slug?.replace("-", " ");
   const { data } = useQuery<GetProductsQueryResponse>(GET_PRODUCTS_QUERY, {
@@ -49,9 +50,15 @@ export function Product() {
     return <LoadingCircle />;
   }
 
+  sessionStorage.clear();
+
   return (
     <>
-      <Header hasBack={true} title={slugFormatted} />
+      <Header
+        hasBack={true}
+        title={slugFormatted}
+        returnNav={navigate("/food")}
+      />
       <div className="flex flex-col items-center">
         <img
           src={data.products[0].shop.imgLogoLoja}
