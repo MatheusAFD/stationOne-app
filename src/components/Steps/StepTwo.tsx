@@ -73,7 +73,6 @@ export function StepTwo(props: StepTwoProps) {
         set={setCounterProduct}
         id_item={selected.id}
       />
-      ;
     </div>
   );
 }
