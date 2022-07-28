@@ -2,7 +2,7 @@ import { ArrowLeft, GearSix } from "phosphor-react";
 import { NavLink } from "react-router-dom";
 
 interface HeaderProps {
-  returnNav: any;
+  returnNav?: any;
   hasIcon?: true | false;
   hasBack?: true | false;
   title?: string | string[];
