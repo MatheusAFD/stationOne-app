@@ -57,8 +57,11 @@ export function Product() {
       <Header
         hasBack={true}
         title={slugFormatted}
-        returnNav={navigate("/food")}
+        returnNav={() => {
+          navigate(-1);
+        }}
       />
+
       <div className="flex flex-col items-center">
         <img
           src={data.products[0].shop.imgLogoLoja}

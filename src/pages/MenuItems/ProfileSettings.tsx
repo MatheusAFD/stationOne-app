@@ -19,7 +19,13 @@ export function ProfileSettings() {
 
   return (
     <>
-      <Header hasBack={true} title="My Profile" returnNav={navigate(-1)} />
+      <Header
+        hasBack={true}
+        title="My Profile"
+        returnNav={() => {
+          navigate(-1);
+        }}
+      />
       <div className="flex flex-col sans m-auto  max-w-[370px] lg:mt-12 p-4">
         <InputEdit nameLabel="Full Name" value={localStorage.getItem("name")} />
 
