@@ -1,14 +1,14 @@
 import { ArrowLeft, GearSix } from "phosphor-react";
-import { NavLink, useNavigate } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
 interface HeaderProps {
+  returnNav?: any;
   hasIcon?: true | false;
   hasBack?: true | false;
   title?: string | string[];
 }
 
 export function Header(props: HeaderProps) {
-  const navigate = useNavigate();
   return (
     <header className="w-full bg-[#862924] max-h-14 h-14 shadow-4xl">
       {props.hasIcon && (
@@ -26,7 +26,7 @@ export function Header(props: HeaderProps) {
         <div className="flex justify-around items-center p-3 ">
           <NavLink
             to={""}
-            onClick={() => navigate(-1)}
+            onClick={props.returnNav}
             className="flex items-center"
           >
             <ArrowLeft

@@ -68,12 +68,10 @@ export function StepTwo(props: StepTwoProps) {
           </div>
         </RadioGroup>
       </div>
-
       <CounterProduct
         setted={counterProduct}
         set={setCounterProduct}
         id_item={selected.id}
-        quantity={counterProduct}
       />
     </div>
   );
