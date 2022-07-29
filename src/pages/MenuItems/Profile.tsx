@@ -1,8 +1,11 @@
 import { useNavigate } from "react-router-dom";
 import { Header } from "../../components/Header";
 import { IconStripe } from "../../components/IconStripe";
+import { verifyNotLogged } from "../../utils/verifyLogged";
 
 export function Profile() {
+  verifyNotLogged();
+
   return (
     <>
       <Header hasIcon={true} />

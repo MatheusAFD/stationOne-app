@@ -1,9 +1,10 @@
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import { MapPin } from "phosphor-react";
 import { gql, useQuery } from "@apollo/client";
 import { Header } from "../../components/Header";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { DebounceInput } from "react-debounce-input";
+import { verifyNotLogged } from "../../utils/verifyLogged";
 interface GetFoodQueryResponse {
   shops: {
     id: string;
@@ -30,9 +31,12 @@ const GET_FOOD_QUERY = gql`
 
 export function Food() {
   const [search, setSearch] = useState("");
+  const navigate = useNavigate();
   const { data } = useQuery<GetFoodQueryResponse>(GET_FOOD_QUERY, {
     variables: { search },
   });
+
+  verifyNotLogged();
 
   return (
     <>
