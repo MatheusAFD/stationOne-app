@@ -1,5 +1,5 @@
 import { gql, useQuery } from "@apollo/client";
-import { NavLink, useNavigate, useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { ButtonSetps } from "../../components/ButtonSteps";
 import { Header } from "../../components/Header";
 import { LoadingCircle } from "../../components/LoadingCircle";

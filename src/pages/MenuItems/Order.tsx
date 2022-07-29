@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
-import { gql, useMutation, useQuery } from "@apollo/client";
-
+import { gql, useQuery } from "@apollo/client";
 import { Header } from "../../components/Header";
 import { verifyNotLogged } from "../../utils/verifyLogged";
 import { formatData } from "../../utils/formatDate";

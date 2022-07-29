@@ -1,8 +1,4 @@
-interface ClassProps {
-  class?: string;
-}
-
-export function Detail(props: ClassProps) {
+export function Detail(props: { class?: string }) {
   return (
     <div className={`display flex  gap-x-3 ${props.class}`}>
       <span className="detail"></span>

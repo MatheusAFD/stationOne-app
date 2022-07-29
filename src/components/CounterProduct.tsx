@@ -1,5 +1,5 @@
 import { Minus, Plus } from "phosphor-react";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 
 interface CounterProps {
   set: any;

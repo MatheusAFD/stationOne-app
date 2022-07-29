@@ -1,13 +1,12 @@
-import { Header } from "../../components/Header";
-
 import { FormEvent, useState } from "react";
+import { useNavigate, useParams } from "react-router-dom";
+import { gql, useQuery } from "@apollo/client";
 import { ButtonSetps } from "../../components/ButtonSteps";
+import { Header } from "../../components/Header";
 import { StepActive } from "../../components/StepActive";
 import { StepOne } from "../../components/Steps/StepOne";
 import { StepThree } from "../../components/Steps/StepThree";
 import { StepTwo } from "../../components/Steps/StepTwo";
-import { useNavigate, useParams } from "react-router-dom";
-import { gql, useQuery } from "@apollo/client";
 
 interface GET_RESPONSE_SHOP_QUERY {
   shops: {
