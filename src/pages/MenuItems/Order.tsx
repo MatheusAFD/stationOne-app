@@ -67,7 +67,7 @@ export function Order() {
           <section className="flex flex-col items-center md:flex-row md:gap-4 md:justify-center md:flex-wrap">
             {data?.orders.map((item, key) => {
               return (
-                <div className="w-[95%] max-w-[410px] flex items-center mb-7 last:mb-20 lg:last:mb-20 gap-2 p-4 shadow ">
+                <div className="w-[95%] max-w-[410px] flex items-center mb-7 last:mb-20 lg:last:mb-7 gap-2 p-4 shadow ">
                   <div className="relative">
                     <img
                       src={item.products[0].imgUrl}
