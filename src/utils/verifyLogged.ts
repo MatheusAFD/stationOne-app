@@ -1,14 +1,10 @@
 function verifyLogged() {
-  localStorage.getItem("logged") === "1"
-    ? window.location.replace("/food")
-    : "";
+  localStorage.getItem("logged") === "1" ? location.replace("/food") : "";
 }
 
 function verifyNotLogged() {
   {
-    localStorage.getItem("logged") === null
-      ? window.location.replace("/login")
-      : "";
+    localStorage.getItem("logged") === null ? location.replace("/login") : "";
   }
 }
 

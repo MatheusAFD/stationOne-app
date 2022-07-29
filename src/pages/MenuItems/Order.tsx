@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
 import { gql, useMutation, useQuery } from "@apollo/client";
-import { format } from "date-fns";
-import ptBR from "date-fns/locale/pt-BR";
+
 import { Header } from "../../components/Header";
 import { verifyNotLogged } from "../../utils/verifyLogged";
+import { formatData } from "../../utils/formatDate";
 
 interface GET_ORDER_BY_EMAIL {
   orders: {
@@ -46,28 +46,11 @@ export function Order() {
     },
   });
 
-  verifyNotLogged();
-
-  async function handleButtonAtt() {
-    window.location.reload();
-  }
-
-  function formatData(date: Date) {
-    const createDate = new Date(date);
-    const availableDateFormatted = format(
-      createDate,
-      "d 'de' MMM 'de' yyy 'ás' kk':'mm'h'",
-      {
-        locale: ptBR,
-      }
-    );
-
-    return availableDateFormatted;
-  }
-
   useEffect(() => {
     if (data?.orders.length == 0) setIsShowOrder(false);
   });
+
+  verifyNotLogged();
 
   return (
     <>
