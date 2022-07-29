@@ -47,7 +47,7 @@ export function StepThree() {
     },
   });
   const [createOrder] = useMutation(CREATE_ORDER);
-  const fullprice = data?.products[0].price * quantity;
+  const fullprice = +(data?.products[0].price * quantity).toFixed(2);
 
   async function handleButtonCreate(e: FormEvent) {
     await createOrder({
@@ -83,12 +83,12 @@ export function StepThree() {
           );
         })}
       </div>
-      <div className="flex justify-center py-10">
+      <div className="flex justify-center py-10 ">
         <input
           type="submit"
           value="Confirmar pedido"
           onClick={handleButtonCreate}
-          className="shadow p-4 rounded text-gray-600 cursor-pointer border-2 border-orange-900"
+          className="shadow p-4 rounded text-gray-600 cursor-pointer border-2 border-orange-900 transition-colors hover:bg-orange-900 hover:text-white"
         />
       </div>
     </div>

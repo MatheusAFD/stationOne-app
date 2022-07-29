@@ -3,6 +3,7 @@ import { gql, useMutation, useQuery } from "@apollo/client";
 import { format } from "date-fns";
 import ptBR from "date-fns/locale/pt-BR";
 import { Header } from "../../components/Header";
+import { verifyNotLogged } from "../../utils/verifyLogged";
 
 interface GET_ORDER_BY_EMAIL {
   orders: {
@@ -19,7 +20,11 @@ interface GET_ORDER_BY_EMAIL {
 
 const GET_ORDER_BY_EMAIL = gql`
   query MyQuery($email: String) {
-    orders(where: { userContent: { email: $email } }, orderBy: createdAt_DESC) {
+    orders(
+      where: { userContent: { email: $email } }
+      orderBy: createdAt_DESC
+      stage: DRAFT
+    ) {
       price
       qtdProduct
       createdAt
@@ -32,31 +37,8 @@ const GET_ORDER_BY_EMAIL = gql`
   }
 `;
 
-const PUBLISH_ORDERS = gql`
-  mutation MyMutation($email: String) {
-    publishManyOrders(
-      to: PUBLISHED
-      where: { userContent: { email: $email } }
-    ) {
-      count
-    }
-  }
-`;
-
 export function Order() {
   const [isShowOrder, setIsShowOrder] = useState(true);
-  const [publishOrder] = useMutation(PUBLISH_ORDERS);
-
-  async function handleButtonAtt() {
-    await publishOrder({
-      variables: {
-        email: localStorage.getItem("email"),
-      },
-    });
-
-    window.location.reload();
-  }
-
   const email = localStorage.getItem("email");
   const { data } = useQuery<GET_ORDER_BY_EMAIL>(GET_ORDER_BY_EMAIL, {
     variables: {
@@ -64,13 +46,21 @@ export function Order() {
     },
   });
 
-  console.log(data?.orders.length);
+  verifyNotLogged();
+
+  async function handleButtonAtt() {
+    window.location.reload();
+  }
 
   function formatData(date: Date) {
     const createDate = new Date(date);
-    const availableDateFormatted = format(createDate, "d 'de' MMM 'de' yyy ", {
-      locale: ptBR,
-    });
+    const availableDateFormatted = format(
+      createDate,
+      "d 'de' MMM 'de' yyy 'ás' kk':'mm'h'",
+      {
+        locale: ptBR,
+      }
+    );
 
     return availableDateFormatted;
   }
@@ -84,12 +74,6 @@ export function Order() {
       <Header />
       <div className="flex p-4 gap-4 lg:justify-center">
         <p className="py-5 text-[#757575]">My Orders</p>
-        <input
-          type="submit"
-          value="Atualizar pedidos"
-          className="p-4 shadow cursor-pointer border-2 hover:border-orange-900"
-          onClick={handleButtonAtt}
-        />
       </div>
 
       {isShowOrder === false ? (
@@ -101,7 +85,7 @@ export function Order() {
           <section className="flex flex-col items-center md:flex-row md:gap-4 md:justify-center md:flex-wrap">
             {data?.orders.map((item, key) => {
               return (
-                <div className="w-[95%] max-w-[410px] flex items-center mb-7 last:mb-20 lg:last:mb-7 gap-2 p-4 shadow ">
+                <div className="w-[95%] max-w-[410px] flex items-center mb-7 last:mb-20 lg:last:mb-20 gap-2 p-4 shadow ">
                   <div className="relative">
                     <img
                       src={item.products[0].imgUrl}
@@ -109,7 +93,7 @@ export function Order() {
                       className="w-24 h-24 object-cover "
                     />
                     {item.qtdProduct > 1 && (
-                      <span className="absolute bottom-0 right-0 rounded-full flex justify-center items-center w-5 h-5 bg-white shadow text-sm">
+                      <span className="absolute bottom-0 right-0 rounded-full flex justify-center items-center w-7 h-7 bg-white shadow text-sm">
                         {item.qtdProduct}
                       </span>
                     )}
@@ -118,11 +102,15 @@ export function Order() {
                     <p className="text-center text-gray-800 font-semibold text-lg mb-2">
                       {item.products[0].nome}
                     </p>
-                    <p className="text-sm text-gray-600">
-                      Pedido em: {formatData(item.createdAt)}
+                    <p className="text-sm text-gray-600 mb-2">
+                      Pedido em <br /> {formatData(item.createdAt)}
                     </p>
                     <p className="text-sm text-gray-600">
-                      Preço total: R$ {item.price}
+                      Preço total:{" "}
+                      {new Intl.NumberFormat("pt-BR", {
+                        style: "currency",
+                        currency: "BRL",
+                      }).format(item.price)}
                     </p>
                   </div>
                 </div>

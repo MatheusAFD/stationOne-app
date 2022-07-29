@@ -31,9 +31,13 @@ export function CounterProduct(props: CounterProps) {
     <div className="flex flex-col items-center justify-center py-10">
       <p className="mb-5 text-sm text-[#862924]">Quantidade</p>
       <div className="flex gap-5 ">
-        <Minus size={20} className="cursor-pointer" onClick={decrement} />
+        <button>
+          <Minus size={20} className="cursor-pointer" onClick={decrement} />
+        </button>
         {props.setted}
-        <Plus size={20} className="cursor-pointer" onClick={increment} />
+        <button>
+          <Plus size={20} className="cursor-pointer" onClick={increment} />
+        </button>
       </div>
     </div>
   );

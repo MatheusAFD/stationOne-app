@@ -3,9 +3,12 @@ import { useNavigate } from "react-router-dom";
 import { Header } from "../../components/Header";
 import { InputAccount } from "../../components/InputAccount";
 import { InputEdit } from "../../components/InputEdit";
+import { verifyNotLogged } from "../../utils/verifyLogged";
 
 export function ProfileSettings() {
   const navigate = useNavigate();
+
+  verifyNotLogged();
 
   function Redirect() {
     localStorage.setItem("logged", "0");

@@ -62,7 +62,7 @@ npm install
 
 <p>6. Create an .env file in the project root with this code</p>
 
-- <a href="https://imgur.com/a/A3TJvlq" target="_blank" rel="noreferrer">How to get your tokens</a>
+- <a href="https://bit.ly/3zaeKD6" target="_blank" rel="noreferrer">How to get your tokens in notion</a>
 
 ```
 VITE_APP_CLIENT_URI = "YOUR CONTENT API TOKEN"

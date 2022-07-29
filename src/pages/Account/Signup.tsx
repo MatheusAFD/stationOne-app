@@ -1,10 +1,11 @@
-import { gql, useMutation } from "@apollo/client";
-import { FormEvent, useEffect, useState } from "react";
+import { FormEvent, useState } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
-import { InputAccount } from "../../components/InputAccount";
-import { Logo } from "../../components/Logo";
+import { gql, useMutation } from "@apollo/client";
 import bcrypt from "bcryptjs";
 import InputMask from "react-input-mask";
+import { InputAccount } from "../../components/InputAccount";
+import { Logo } from "../../components/Logo";
+import { verifyLogged } from "../../utils/verifyLogged";
 
 const CREATE_USER_MUTATION = gql`
   mutation createUserContent(
@@ -27,25 +28,16 @@ const CREATE_USER_MUTATION = gql`
   }
 `;
 
-const UPDATE_STAGE_STATUS = gql`
-  mutation MyMutation($email: String!) {
-    publishUserContent(where: { email: $email }, to: PUBLISHED) {
-      id
-    }
-  }
-`;
-
 export function Signup() {
   const navigate = useNavigate();
-
   const [name, setName] = useState("");
   const [phone, setPhone] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
-
   const [createUser] = useMutation(CREATE_USER_MUTATION);
-  const [updateStatus] = useMutation(UPDATE_STAGE_STATUS);
+
+  verifyLogged();
 
   async function encrypt() {
     let saltRounds = 12;
@@ -59,7 +51,6 @@ export function Signup() {
 
     try {
       const passHash = await encrypt();
-
       await createUser({
         variables: {
           name,
@@ -69,13 +60,7 @@ export function Signup() {
           featured: true,
         },
       });
-
-      await updateStatus({
-        variables: {
-          email,
-        },
-      });
-
+      navigate("/login");
       setLoading(false);
     } catch (err) {
       setLoading(false);

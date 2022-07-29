@@ -1,8 +1,11 @@
 import { NavLink } from "react-router-dom";
 import { InputAccount } from "../../components/InputAccount";
 import HomeImg from "../../assets/img/Logo.jpg";
+import { verifyLogged } from "../../utils/verifyLogged";
 
 export function Index() {
+  verifyLogged();
+
   return (
     <>
       <div className="flex justify-center items-center mt-[107px]  ">
