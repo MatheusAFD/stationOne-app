@@ -125,7 +125,7 @@ export function Login() {
               disabled={loading}
               value="login"
               size="sm"
-              class="bg-orange-900 h-10 mt-9 text-white w-[95%] max-w-[358px] disabled:opacity-60"
+              class="bg-orange-900 h-10 mt-9 text-white w-[95%] max-w-[358px] disabled:opacity-60 "
             />
 
             <NavLink
@@ -140,12 +140,12 @@ export function Login() {
 
       <NavLink
         to="/signup"
-        className="flex justify-center pb-5 800tall:absolute 800tall:bottom-0 800tall:right-0 800tall:left-0"
+        className="flex justify-center pb-5 800tall:absolute 800tall:bottom-0 800tall:right-0 800tall:left-0 "
       >
         <InputAccount
           value="sign up"
           size="sm"
-          class="w-[95%] max-w-[358px] h-9 mt-9 text-[#999999] font-bold border tracking-widest place-content-end "
+          class="w-[95%] max-w-[358px] h-9 mt-9 text-[#999999] font-bold border tracking-widest place-content-end hover:bg-slate-100 hover:text-black"
         />
       </NavLink>
     </>

@@ -8,6 +8,10 @@ interface CounterProps {
 }
 
 export function CounterProduct(props: CounterProps) {
+  useEffect(() => {
+    saveProduct();
+  }, [props.setted]);
+
   function saveProduct() {
     sessionStorage.setItem("id", props.id_item);
     sessionStorage.setItem("quantity", `${props.setted}`);
@@ -22,10 +26,6 @@ export function CounterProduct(props: CounterProps) {
       props.setted <= 1 ? <></> : props.set(props.setted - 1);
     }
   }
-
-  useEffect(() => {
-    saveProduct();
-  });
 
   return (
     <div className="flex flex-col items-center justify-center py-10">

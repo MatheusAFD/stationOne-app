@@ -1,5 +1,4 @@
 import { NavLink } from "react-router-dom";
-
 interface Props {
   nameStep: string;
   onClick?: any;
@@ -12,7 +11,7 @@ export function ButtonSetps(props: Props) {
       <ul className="flex gap-20 mt-2 shadow-3xl w-full justify-center py-2 items-center">
         <NavLink
           to={`/food/${props.slug}/start-order`}
-          className="flex justify-center items-center bg-orange-900 w-[299px] h-9 rounded-full text-[14px] font-bold uppercase tracking-widest"
+          className="flex justify-center items-center bg-orange-900 w-[299px] h-9 rounded-full text-[14px] font-bold uppercase tracking-widest hover:brightness-90"
           onClick={props.onClick}
         >
           {props.nameStep}

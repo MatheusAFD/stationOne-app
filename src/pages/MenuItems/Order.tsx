@@ -47,7 +47,7 @@ export function Order() {
 
   useEffect(() => {
     if (data?.orders.length == 0) setIsShowOrder(false);
-  });
+  }, []);
 
   verifyNotLogged();
 

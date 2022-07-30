@@ -88,7 +88,7 @@ export function StepThree() {
           type="submit"
           value="Confirmar pedido"
           onClick={handleButtonCreate}
-          className="shadow p-4 rounded text-gray-600 cursor-pointer border-2 border-orange-900 transition-colors hover:bg-orange-900 hover:text-white"
+          className="shadow p-4 rounded text-gray-600 cursor-pointer border-2 bg-gray-200 border-orange-900 transition-colors hover:bg-orange-900 hover:text-white"
         />
       </div>
     </div>
