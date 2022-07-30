@@ -1,11 +1,7 @@
 import classNames from "classnames";
 import { Check } from "phosphor-react";
 
-interface StepOrder {
-  activeStep?: any;
-}
-
-export function StepActive(props: StepOrder) {
+export function StepActive(props: { activeStep?: any }) {
   const activeStep = props.activeStep;
   return (
     <div className="flex  h-full items-center justify-center">

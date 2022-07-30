@@ -2,7 +2,7 @@ import { NavLink, useNavigate } from "react-router-dom";
 import { MapPin } from "phosphor-react";
 import { gql, useQuery } from "@apollo/client";
 import { Header } from "../../components/Header";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { DebounceInput } from "react-debounce-input";
 import { verifyNotLogged } from "../../utils/verifyLogged";
 interface GetFoodQueryResponse {

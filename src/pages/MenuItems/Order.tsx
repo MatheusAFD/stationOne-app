@@ -1,9 +1,8 @@
 import { useEffect, useState } from "react";
-import { gql, useMutation, useQuery } from "@apollo/client";
-import { format } from "date-fns";
-import ptBR from "date-fns/locale/pt-BR";
+import { gql, useQuery } from "@apollo/client";
 import { Header } from "../../components/Header";
 import { verifyNotLogged } from "../../utils/verifyLogged";
+import { formatData } from "../../utils/formatDate";
 
 interface GET_ORDER_BY_EMAIL {
   orders: {
@@ -46,28 +45,11 @@ export function Order() {
     },
   });
 
-  verifyNotLogged();
-
-  async function handleButtonAtt() {
-    window.location.reload();
-  }
-
-  function formatData(date: Date) {
-    const createDate = new Date(date);
-    const availableDateFormatted = format(
-      createDate,
-      "d 'de' MMM 'de' yyy 'ás' kk':'mm'h'",
-      {
-        locale: ptBR,
-      }
-    );
-
-    return availableDateFormatted;
-  }
-
   useEffect(() => {
     if (data?.orders.length == 0) setIsShowOrder(false);
-  });
+  }, []);
+
+  verifyNotLogged();
 
   return (
     <>
@@ -85,7 +67,7 @@ export function Order() {
           <section className="flex flex-col items-center md:flex-row md:gap-4 md:justify-center md:flex-wrap">
             {data?.orders.map((item, key) => {
               return (
-                <div className="w-[95%] max-w-[410px] flex items-center mb-7 last:mb-20 lg:last:mb-20 gap-2 p-4 shadow ">
+                <div className="w-[95%] max-w-[410px] flex items-center mb-7 last:mb-20 lg:last:mb-7 gap-2 p-4 shadow ">
                   <div className="relative">
                     <img
                       src={item.products[0].imgUrl}
