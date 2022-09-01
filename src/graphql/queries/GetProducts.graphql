@@ -1,0 +1,14 @@
+query GetProducts($slug: String!) {
+  products(where: { shop: { slug_ends_with: $slug } }) {
+    id
+    nome
+    price
+    imgUrl
+    description
+    deliveryIn
+    shop {
+      imgLogoLoja
+      slugFood
+    }
+  }
+}

@@ -1,32 +1,11 @@
 import { FormEvent, useState } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
-import { gql, useMutation } from "@apollo/client";
 import bcrypt from "bcryptjs";
 import InputMask from "react-input-mask";
 import { InputAccount } from "../../components/InputAccount";
 import { Logo } from "../../components/Logo";
 import { verifyLogged } from "../../utils/verifyLogged";
-
-const CREATE_USER_MUTATION = gql`
-  mutation createUserContent(
-    $name: String!
-    $email: String!
-    $password: String!
-    $phone: String!
-  ) {
-    createUserContent(
-      data: {
-        name: $name
-        email: $email
-        password: $password
-        phone: $phone
-        avatarURL: "https://i.imgur.com/eWAvJId.png"
-      }
-    ) {
-      id
-    }
-  }
-`;
+import { useCreateUserContentMutation } from "../../graphql/generated";
 
 export function Signup() {
   const navigate = useNavigate();
@@ -35,7 +14,7 @@ export function Signup() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
-  const [createUser] = useMutation(CREATE_USER_MUTATION);
+  const [createUser] = useCreateUserContentMutation();
 
   verifyLogged();
 
@@ -57,7 +36,6 @@ export function Signup() {
           email,
           phone,
           password: passHash,
-          featured: true,
         },
       });
       navigate("/login");

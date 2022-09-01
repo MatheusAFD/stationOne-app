@@ -2,7 +2,7 @@ import { NavLink } from "react-router-dom";
 interface Props {
   nameStep: string;
   onClick?: any;
-  slug?: string;
+  slug?: any;
 }
 
 export function ButtonSetps(props: Props) {

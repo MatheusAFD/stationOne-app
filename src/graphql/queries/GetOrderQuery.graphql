@@ -1,0 +1,16 @@
+query GetOrderQuery($email: String) {
+  orders(
+    where: { userContent: { email: $email } }
+    orderBy: createdAt_DESC
+    stage: DRAFT
+  ) {
+    price
+    qtdProduct
+    createdAt
+    products {
+      nome
+      price
+      imgUrl
+    }
+  }
+}

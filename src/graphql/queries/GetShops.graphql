@@ -1,0 +1,10 @@
+query GetShops($search: String) {
+  shops(where: { name_starts_with: $search }) {
+    id
+    imgLogoProduto
+    name
+    description
+    address
+    slug
+  }
+}

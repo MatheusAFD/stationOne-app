@@ -1,41 +1,12 @@
+import { useGetShopInfoQuery } from "../../graphql/generated";
 import { FormEvent, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import { gql, useQuery } from "@apollo/client";
 import { ButtonSetps } from "../../components/ButtonSteps";
 import { Header } from "../../components/Header";
 import { StepActive } from "../../components/StepActive";
 import { StepOne } from "../../components/Steps/StepOne";
 import { StepThree } from "../../components/Steps/StepThree";
 import { StepTwo } from "../../components/Steps/StepTwo";
-
-interface GET_RESPONSE_SHOP_QUERY {
-  shops: {
-    name: String;
-    address: String;
-    openingHours: string;
-    products: {
-      nome: string;
-      price: number;
-      description: string;
-    };
-  }[];
-}
-
-const GET_SHOP_INFO_QUERY = gql`
-  query MyQuery($slug: String) {
-    shops(where: { slugFood: $slug }) {
-      name
-      address
-      openingHours
-      products {
-        nome
-        price
-        description
-        id
-      }
-    }
-  }
-`;
 
 export function StartOrder() {
   const navigate = useNavigate();
@@ -48,7 +19,7 @@ export function StartOrder() {
     "SUCESS",
   ]);
 
-  const { data } = useQuery<GET_RESPONSE_SHOP_QUERY>(GET_SHOP_INFO_QUERY, {
+  const { data } = useGetShopInfoQuery({
     variables: {
       slug,
     },

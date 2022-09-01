@@ -1,0 +1,13 @@
+query GetShopInfo($slug: String) {
+  shops(where: { slugFood: $slug }) {
+    name
+    address
+    openingHours
+    products {
+      nome
+      price
+      description
+      id
+    }
+  }
+}

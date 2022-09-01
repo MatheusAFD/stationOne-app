@@ -5,35 +5,14 @@ import { InputAccount } from "../../components/InputAccount";
 import { Logo } from "../../components/Logo";
 import bcrypt from "bcryptjs";
 import { verifyLogged } from "../../utils/verifyLogged";
-interface GetUserQueryResponse {
-  userContent: {
-    name: string;
-    email: string;
-    password: string;
-    phone: string;
-    avatarURL: string;
-  };
-}
-
-const GET_USER_QUERY = gql`
-  query GetUserByEmail($email: String) {
-    userContent(where: { email: $email }, stage: DRAFT) {
-      id
-      name
-      email
-      password
-      phone
-      avatarURL
-    }
-  }
-`;
+import { useGetUserByEmailLazyQuery } from "../../graphql/generated";
 
 export function Login() {
   const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
-  const [getData] = useLazyQuery<GetUserQueryResponse>(GET_USER_QUERY);
+  const [getData] = useGetUserByEmailLazyQuery();
 
   verifyLogged();
 
@@ -52,6 +31,8 @@ export function Login() {
       },
     });
 
+    console.log(returnUser.data);
+
     return returnUser.data;
   }
 
@@ -61,7 +42,7 @@ export function Login() {
 
     const dataUser = await returnUser();
 
-    if (email === dataUser?.userContent.email) {
+    if (email === dataUser?.userContent?.email) {
       const isValidPassword = await bcrypt.compare(
         password,
         dataUser.userContent.password

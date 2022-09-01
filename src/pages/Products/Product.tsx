@@ -3,44 +3,13 @@ import { useNavigate, useParams } from "react-router-dom";
 import { ButtonSetps } from "../../components/ButtonSteps";
 import { Header } from "../../components/Header";
 import { LoadingCircle } from "../../components/LoadingCircle";
-
-interface GetProductsQueryResponse {
-  products: {
-    id: string;
-    nome: string;
-    imgUrl: string;
-    price: number;
-    description: string;
-    deliveryIn: string;
-    shop: {
-      imgLogoLoja: string;
-      slugFood: string;
-    };
-  }[];
-}
-
-const GET_PRODUCTS_QUERY = gql`
-  query MyQuery($slug: String!) {
-    products(where: { shop: { slug_ends_with: $slug } }) {
-      id
-      nome
-      price
-      imgUrl
-      description
-      deliveryIn
-      shop {
-        imgLogoLoja
-        slugFood
-      }
-    }
-  }
-`;
+import { useGetProductsQuery } from "../../graphql/generated";
 
 export function Product() {
   const navigate = useNavigate();
-  const { slug } = useParams();
+  const { slug } = useParams<{ slug: string | any }>();
   const slugFormatted = slug?.replace("-", " ");
-  const { data } = useQuery<GetProductsQueryResponse>(GET_PRODUCTS_QUERY, {
+  const { data } = useGetProductsQuery({
     variables: {
       slug,
     },
@@ -64,7 +33,7 @@ export function Product() {
 
       <div className="flex flex-col items-center">
         <img
-          src={data.products[0].shop.imgLogoLoja}
+          src={data.products[0].shop?.imgLogoLoja}
           alt=""
           className="w-[390px] h-[190px] object-cover"
           width={390}
@@ -112,7 +81,7 @@ export function Product() {
 
       <ButtonSetps
         nameStep="START ORDER"
-        slug={data.products[0].shop.slugFood}
+        slug={data.products[0].shop?.slugFood}
       />
     </>
   );

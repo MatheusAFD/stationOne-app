@@ -1,38 +1,14 @@
 import { NavLink, useNavigate } from "react-router-dom";
 import { MapPin } from "phosphor-react";
-import { gql, useQuery } from "@apollo/client";
 import { Header } from "../../components/Header";
 import { useState } from "react";
 import { DebounceInput } from "react-debounce-input";
 import { verifyNotLogged } from "../../utils/verifyLogged";
-interface GetFoodQueryResponse {
-  shops: {
-    id: string;
-    imgLogoProduto: string;
-    name: string;
-    description: string;
-    address: string;
-    slug: string;
-  }[];
-}
-
-const GET_FOOD_QUERY = gql`
-  query MyQuery($search: String) {
-    shops(where: { name_starts_with: $search }) {
-      id
-      imgLogoProduto
-      name
-      description
-      address
-      slug
-    }
-  }
-`;
+import { useGetShopsQuery } from "../../graphql/generated";
 
 export function Food() {
   const [search, setSearch] = useState("");
-  const navigate = useNavigate();
-  const { data } = useQuery<GetFoodQueryResponse>(GET_FOOD_QUERY, {
+  const { data } = useGetShopsQuery({
     variables: { search },
   });
 
