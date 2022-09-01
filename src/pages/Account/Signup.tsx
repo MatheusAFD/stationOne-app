@@ -1,5 +1,5 @@
 import { FormEvent, useState } from "react";
-import { NavLink, useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import bcrypt from "bcryptjs";
 import InputMask from "react-input-mask";
 import { InputAccount } from "../../components/InputAccount";
@@ -138,7 +138,7 @@ export function Signup() {
               />
             </div>
           </div>
-          <NavLink
+          <Link
             to="/login"
             className="flex justify-center pb-5 800tall:absolute 800tall:bottom-0 800tall:right-0 800tall:left-0"
           >
@@ -147,7 +147,7 @@ export function Signup() {
               size="sm"
               class="w-[95%] max-w-[358px] h-9 mt-9 text-[#999999] font-bold border tracking-widest "
             />
-          </NavLink>
+          </Link>
         </form>
       </>
     </>

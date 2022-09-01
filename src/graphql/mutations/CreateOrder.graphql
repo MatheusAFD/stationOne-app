@@ -1,4 +1,4 @@
-mutation CreateOrder($price: Float, $quantity: Int!, $email: String, $id: ID) {
+mutation CreateOrder($price: Float!, $quantity: Int!, $email: String, $id: ID) {
   createOrder(
     data: {
       products: { connect: { id: $id } }

@@ -1688,7 +1688,7 @@ export type Order = Node & {
   history: Array<Version>;
   /** The unique identifier */
   id: Scalars['ID'];
-  price?: Maybe<Scalars['Float']>;
+  price: Scalars['Float'];
   products: Array<Product>;
   /** The time the document was published. Null on documents in draft stage. */
   publishedAt?: Maybe<Scalars['DateTime']>;
@@ -1781,7 +1781,7 @@ export type OrderConnection = {
 
 export type OrderCreateInput = {
   createdAt?: InputMaybe<Scalars['DateTime']>;
-  price?: InputMaybe<Scalars['Float']>;
+  price: Scalars['Float'];
   products?: InputMaybe<ProductCreateManyInlineInput>;
   qtdProduct: Scalars['Int'];
   updatedAt?: InputMaybe<Scalars['DateTime']>;
@@ -2164,9 +2164,9 @@ export type Product = Node & {
   history: Array<Version>;
   /** The unique identifier */
   id: Scalars['ID'];
-  imgUrl?: Maybe<Scalars['String']>;
+  imgUrl: Scalars['String'];
   nome?: Maybe<Scalars['String']>;
-  price?: Maybe<Scalars['Float']>;
+  price: Scalars['Float'];
   /** The time the document was published. Null on documents in draft stage. */
   publishedAt?: Maybe<Scalars['DateTime']>;
   /** User that last published this document */
@@ -2249,9 +2249,9 @@ export type ProductCreateInput = {
   createdAt?: InputMaybe<Scalars['DateTime']>;
   deliveryIn?: InputMaybe<Scalars['String']>;
   description?: InputMaybe<Scalars['String']>;
-  imgUrl?: InputMaybe<Scalars['String']>;
+  imgUrl: Scalars['String'];
   nome?: InputMaybe<Scalars['String']>;
-  price?: InputMaybe<Scalars['Float']>;
+  price: Scalars['Float'];
   shop?: InputMaybe<ShopCreateOneInlineInput>;
   slug: Scalars['String'];
   updatedAt?: InputMaybe<Scalars['DateTime']>;
@@ -4173,7 +4173,7 @@ export type Shop = Node & {
   history: Array<Version>;
   /** The unique identifier */
   id: Scalars['ID'];
-  imgLogoLoja?: Maybe<Scalars['String']>;
+  imgLogoLoja: Scalars['String'];
   imgLogoProduto: Scalars['String'];
   name: Scalars['String'];
   openingHours?: Maybe<Scalars['String']>;
@@ -4266,7 +4266,7 @@ export type ShopCreateInput = {
   address?: InputMaybe<Scalars['String']>;
   createdAt?: InputMaybe<Scalars['DateTime']>;
   description: Scalars['String'];
-  imgLogoLoja?: InputMaybe<Scalars['String']>;
+  imgLogoLoja: Scalars['String'];
   imgLogoProduto: Scalars['String'];
   name: Scalars['String'];
   openingHours?: InputMaybe<Scalars['String']>;
@@ -5946,7 +5946,7 @@ export enum _SystemDateTimeFieldVariation {
 }
 
 export type CreateOrderMutationVariables = Exact<{
-  price?: InputMaybe<Scalars['Float']>;
+  price: Scalars['Float'];
   quantity: Scalars['Int'];
   email?: InputMaybe<Scalars['String']>;
   id?: InputMaybe<Scalars['ID']>;
@@ -5970,28 +5970,28 @@ export type GetOrderQueryQueryVariables = Exact<{
 }>;
 
 
-export type GetOrderQueryQuery = { __typename?: 'Query', orders: Array<{ __typename?: 'Order', price?: number | null, qtdProduct: number, createdAt: any, products: Array<{ __typename?: 'Product', nome?: string | null, price?: number | null, imgUrl?: string | null }> }> };
+export type GetOrderQueryQuery = { __typename?: 'Query', orders: Array<{ __typename?: 'Order', price: number, qtdProduct: number, createdAt: any, products: Array<{ __typename?: 'Product', nome?: string | null, price: number, imgUrl: string }> }> };
 
 export type GetProductInfoQueryVariables = Exact<{
   id?: InputMaybe<Scalars['ID']>;
 }>;
 
 
-export type GetProductInfoQuery = { __typename?: 'Query', products: Array<{ __typename?: 'Product', nome?: string | null, price?: number | null, imgUrl?: string | null, id: string }> };
+export type GetProductInfoQuery = { __typename?: 'Query', products: Array<{ __typename?: 'Product', nome?: string | null, price: number, imgUrl: string, id: string }> };
 
 export type GetProductsQueryVariables = Exact<{
   slug: Scalars['String'];
 }>;
 
 
-export type GetProductsQuery = { __typename?: 'Query', products: Array<{ __typename?: 'Product', id: string, nome?: string | null, price?: number | null, imgUrl?: string | null, description?: string | null, deliveryIn?: string | null, shop?: { __typename?: 'Shop', imgLogoLoja?: string | null, slugFood?: string | null } | null }> };
+export type GetProductsQuery = { __typename?: 'Query', products: Array<{ __typename?: 'Product', id: string, nome?: string | null, price: number, imgUrl: string, description?: string | null, deliveryIn?: string | null, shop?: { __typename?: 'Shop', imgLogoLoja: string, slugFood?: string | null } | null }> };
 
 export type GetShopInfoQueryVariables = Exact<{
   slug?: InputMaybe<Scalars['String']>;
 }>;
 
 
-export type GetShopInfoQuery = { __typename?: 'Query', shops: Array<{ __typename?: 'Shop', name: string, address?: string | null, openingHours?: string | null, products: Array<{ __typename?: 'Product', nome?: string | null, price?: number | null, description?: string | null, id: string }> }> };
+export type GetShopInfoQuery = { __typename?: 'Query', shops: Array<{ __typename?: 'Shop', name: string, address?: string | null, openingHours?: string | null, products: Array<{ __typename?: 'Product', nome?: string | null, price: number, description?: string | null, id: string }> }> };
 
 export type GetShopsQueryVariables = Exact<{
   search?: InputMaybe<Scalars['String']>;
@@ -6009,7 +6009,7 @@ export type GetUserByEmailQuery = { __typename?: 'Query', userContent?: { __type
 
 
 export const CreateOrderDocument = gql`
-    mutation CreateOrder($price: Float, $quantity: Int!, $email: String, $id: ID) {
+    mutation CreateOrder($price: Float!, $quantity: Int!, $email: String, $id: ID) {
   createOrder(
     data: {products: {connect: {id: $id}}, price: $price, qtdProduct: $quantity, userContent: {connect: {email: $email}}}
   ) {

@@ -1,4 +1,4 @@
-import { NavLink, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { MapPin } from "phosphor-react";
 import { Header } from "../../components/Header";
 import { useState } from "react";
@@ -59,14 +59,14 @@ export function Food() {
                   {product.description}
                 </p>
 
-                <NavLink
+                <Link
                   to={`/${product.slug}`}
                   className="flex justify-center items-center mt-8 mb-4"
                 >
                   <p className="flex justify-center items-center bg-orange-900 w-[164px] h-9 rounded-full text-[14px] font-bold uppercase tracking-widest">
                     ver produtos
                   </p>
-                </NavLink>
+                </Link>
               </div>
             </div>
           );
