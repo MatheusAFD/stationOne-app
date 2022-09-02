@@ -1,0 +1,10 @@
+query GetUserByEmail($email: String) {
+  userContent(where: { email: $email }, stage: DRAFT) {
+    id
+    name
+    email
+    password
+    phone
+    avatarURL
+  }
+}

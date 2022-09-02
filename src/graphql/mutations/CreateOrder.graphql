@@ -1,0 +1,12 @@
+mutation CreateOrder($price: Float!, $quantity: Int!, $email: String, $id: ID) {
+  createOrder(
+    data: {
+      products: { connect: { id: $id } }
+      price: $price
+      qtdProduct: $quantity
+      userContent: { connect: { email: $email } }
+    }
+  ) {
+    id
+  }
+}

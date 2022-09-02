@@ -1,39 +1,17 @@
 import { FormEvent, useState } from "react";
-import { NavLink, useNavigate } from "react-router-dom";
-import { gql, useLazyQuery } from "@apollo/client";
+import { Link, useNavigate } from "react-router-dom";
 import { InputAccount } from "../../components/InputAccount";
 import { Logo } from "../../components/Logo";
 import bcrypt from "bcryptjs";
 import { verifyLogged } from "../../utils/verifyLogged";
-interface GetUserQueryResponse {
-  userContent: {
-    name: string;
-    email: string;
-    password: string;
-    phone: string;
-    avatarURL: string;
-  };
-}
-
-const GET_USER_QUERY = gql`
-  query GetUserByEmail($email: String) {
-    userContent(where: { email: $email }, stage: DRAFT) {
-      id
-      name
-      email
-      password
-      phone
-      avatarURL
-    }
-  }
-`;
+import { useGetUserByEmailLazyQuery } from "../../graphql/generated";
 
 export function Login() {
   const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
-  const [getData] = useLazyQuery<GetUserQueryResponse>(GET_USER_QUERY);
+  const [getData] = useGetUserByEmailLazyQuery();
 
   verifyLogged();
 
@@ -52,6 +30,8 @@ export function Login() {
       },
     });
 
+    console.log(returnUser.data);
+
     return returnUser.data;
   }
 
@@ -61,7 +41,7 @@ export function Login() {
 
     const dataUser = await returnUser();
 
-    if (email === dataUser?.userContent.email) {
+    if (email === dataUser?.userContent?.email) {
       const isValidPassword = await bcrypt.compare(
         password,
         dataUser.userContent.password
@@ -128,17 +108,17 @@ export function Login() {
               class="bg-orange-900 h-10 mt-9 text-white w-[95%] max-w-[358px] disabled:opacity-60 "
             />
 
-            <NavLink
+            <Link
               to="/resetpassword"
               className="tracking-widest uppercase mt-5 text-[#999999] text-sm font-bold "
             >
               forgot password?
-            </NavLink>
+            </Link>
           </div>
         </div>
       </form>
 
-      <NavLink
+      <Link
         to="/signup"
         className="flex justify-center pb-5 800tall:absolute 800tall:bottom-0 800tall:right-0 800tall:left-0 "
       >
@@ -147,7 +127,7 @@ export function Login() {
           size="sm"
           class="w-[95%] max-w-[358px] h-9 mt-9 text-[#999999] font-bold border tracking-widest place-content-end hover:bg-slate-100 hover:text-black"
         />
-      </NavLink>
+      </Link>
     </>
   );
 }

@@ -1,53 +1,20 @@
-import { gql, useMutation, useQuery } from "@apollo/client";
 import { FormEvent } from "react";
 import { useNavigate } from "react-router-dom";
-
-interface PRODUCT_INFO_PROPS {
-  products: {
-    id: string;
-    nome: string;
-    price: any;
-    imgUrl: string;
-  }[];
-}
-
-const GET_PRODUCT_INFO = gql`
-  query MyQuery($id: ID) {
-    products(where: { id: $id }) {
-      nome
-      price
-      imgUrl
-      id
-    }
-  }
-`;
-
-const CREATE_ORDER = gql`
-  mutation MyMutation($price: Float, $quantity: Int!, $email: String, $id: ID) {
-    createOrder(
-      data: {
-        products: { connect: { id: $id } }
-        price: $price
-        qtdProduct: $quantity
-        userContent: { connect: { email: $email } }
-      }
-    ) {
-      id
-    }
-  }
-`;
+import { useCreateOrderMutation } from "../../graphql/generated";
+import { useGetProductInfoQuery } from "../../graphql/generated";
 
 export function StepThree() {
   const navigate = useNavigate();
   const id = sessionStorage.getItem("id");
   const quantity = Number(sessionStorage.getItem("quantity"));
-  const { data } = useQuery<PRODUCT_INFO_PROPS>(GET_PRODUCT_INFO, {
+  const { data } = useGetProductInfoQuery({
     variables: {
       id,
     },
   });
-  const [createOrder] = useMutation(CREATE_ORDER);
-  const fullprice = +(data?.products[0].price * quantity).toFixed(2);
+
+  const [createOrder] = useCreateOrderMutation();
+  const fullprice = +(Number(data?.products[0].price) * quantity).toFixed(2);
 
   async function handleButtonCreate(e: FormEvent) {
     await createOrder({
@@ -86,7 +53,7 @@ export function StepThree() {
       <div className="flex justify-center py-10 ">
         <input
           type="submit"
-          value="Confirmar pedido"
+          value="Confirmar pedido."
           onClick={handleButtonCreate}
           className="shadow p-4 rounded text-gray-600 cursor-pointer border-2 bg-gray-200 border-orange-900 transition-colors hover:bg-orange-900 hover:text-white"
         />

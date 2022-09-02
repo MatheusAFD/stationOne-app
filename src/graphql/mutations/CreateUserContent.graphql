@@ -1,0 +1,18 @@
+mutation CreateUserContent(
+  $name: String!
+  $email: String!
+  $password: String!
+  $phone: String!
+) {
+  createUserContent(
+    data: {
+      name: $name
+      email: $email
+      password: $password
+      phone: $phone
+      avatarURL: "https://i.imgur.com/eWAvJId.png"
+    }
+  ) {
+    id
+  }
+}

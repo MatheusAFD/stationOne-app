@@ -1,45 +1,13 @@
 import { useEffect, useState } from "react";
-import { gql, useQuery } from "@apollo/client";
 import { Header } from "../../components/Header";
 import { verifyNotLogged } from "../../utils/verifyLogged";
 import { formatData } from "../../utils/formatDate";
-
-interface GET_ORDER_BY_EMAIL {
-  orders: {
-    price: number;
-    qtdProduct: number;
-    createdAt: any;
-    products: {
-      nome: string;
-      price: number;
-      imgUrl: string;
-    }[];
-  }[];
-}
-
-const GET_ORDER_BY_EMAIL = gql`
-  query MyQuery($email: String) {
-    orders(
-      where: { userContent: { email: $email } }
-      orderBy: createdAt_DESC
-      stage: DRAFT
-    ) {
-      price
-      qtdProduct
-      createdAt
-      products {
-        nome
-        price
-        imgUrl
-      }
-    }
-  }
-`;
-
+import { useGetOrderQueryQuery } from "../../graphql/generated";
 export function Order() {
   const [isShowOrder, setIsShowOrder] = useState(true);
   const email = localStorage.getItem("email");
-  const { data } = useQuery<GET_ORDER_BY_EMAIL>(GET_ORDER_BY_EMAIL, {
+
+  const { data } = useGetOrderQueryQuery({
     variables: {
       email,
     },
@@ -64,10 +32,10 @@ export function Order() {
         </span>
       ) : (
         <>
-          <section className="flex flex-col items-center md:flex-row md:gap-4 md:justify-center md:flex-wrap">
+          <section className="flex flex-col items-center md:flex-row md:gap-4 md:justify-center md:flex-wrap mb-10">
             {data?.orders.map((item, key) => {
               return (
-                <div className="w-[95%] max-w-[410px] flex items-center mb-7 last:mb-20 lg:last:mb-7 gap-2 p-4 shadow ">
+                <div className="w-[95%] max-w-[410px] flex items-center mb-7 last:mb-20 lg:last:mb-7 gap-2 p-4 shadow">
                   <div className="relative">
                     <img
                       src={item.products[0].imgUrl}
