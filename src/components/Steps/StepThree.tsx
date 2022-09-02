@@ -53,7 +53,7 @@ export function StepThree() {
       <div className="flex justify-center py-10 ">
         <input
           type="submit"
-          value="Confirmar pedido"
+          value="Confirmar pedido."
           onClick={handleButtonCreate}
           className="shadow p-4 rounded text-gray-600 cursor-pointer border-2 bg-gray-200 border-orange-900 transition-colors hover:bg-orange-900 hover:text-white"
         />
