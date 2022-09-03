@@ -5,6 +5,7 @@ import { Logo } from "../../components/Logo";
 import bcrypt from "bcryptjs";
 import { verifyLogged } from "../../utils/verifyLogged";
 import { useGetUserByEmailLazyQuery } from "../../graphql/generated";
+import { InputRegister } from "../../components/InputRegister";
 
 export function Login() {
   const navigate = useNavigate();
@@ -12,6 +13,9 @@ export function Login() {
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
   const [getData] = useGetUserByEmailLazyQuery();
+
+  console.log(email);
+  console.log(password);
 
   verifyLogged();
 
@@ -64,42 +68,20 @@ export function Login() {
         onSubmit={handleLoginUser}
       >
         <Logo name="Login" />
-        <div className="flex flex-col justify-center">
-          <div className="mb-4 mt-12 w-full flex flex-col items-center">
-            <label
-              htmlFor="email"
-              className="block text-sm text-[#424242] mb-[10px] place-self-start px-2"
-            >
-              Email
-            </label>
-            <input
-              type="email"
-              placeholder="Enter email..."
-              className="border rounded-[4.5px] pl-[10px] h-10 w-[95%] max-w-[358px] "
-              onChange={(e) => {
-                setEmail(e.target.value);
-              }}
-            />
-          </div>
+        <div className="flex flex-col justify-center mt-12">
+          <InputRegister
+            setProps={setEmail}
+            label="Email"
+            type="email"
+            placeholder="Enter email..."
+          />
+          <InputRegister
+            label="Password"
+            setProps={setPassword}
+            type="password"
+            placeholder="Enter email..."
+          />
 
-          <div className="mb-4 flex flex-col items-center">
-            <label
-              htmlFor="password"
-              className="block text-sm text-[#424242] place-self-start px-2"
-            >
-              Password
-            </label>
-            <input
-              onChange={(e) => {
-                setPassword(e.target.value);
-              }}
-              type="password"
-              name=""
-              id="password"
-              placeholder="Enter password..."
-              className="border rounded-[4.5px] pl-[10px] h-10 w-[95%] max-w-[358px] mt-[10px]"
-            />
-          </div>
           <div className="flex flex-col items-center">
             <InputAccount
               disabled={loading}

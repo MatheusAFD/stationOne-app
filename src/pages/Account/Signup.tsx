@@ -6,6 +6,7 @@ import { InputAccount } from "../../components/InputAccount";
 import { Logo } from "../../components/Logo";
 import { verifyLogged } from "../../utils/verifyLogged";
 import { useCreateUserContentMutation } from "../../graphql/generated";
+import { InputRegister } from "../../components/InputRegister";
 
 export function Signup() {
   const navigate = useNavigate();
@@ -55,25 +56,13 @@ export function Signup() {
         >
           <Logo name="Signup" />
 
-          <div className="flex flex-col justify-center">
-            <div className="mb-4 mt-12 w-full flex flex-col items-center">
-              <label
-                htmlFor="name"
-                className="block text-sm text-[#424242] place-self-start px-2"
-              >
-                Full Name
-              </label>
-              <input
-                type="text"
-                id="name"
-                placeholder="Full Name"
-                className="border rounded-[4.5px] pl-[10px] h-10 mt-[10px] w-[95%] max-w-[358px]"
-                onChange={(e) => {
-                  setName(e.target.value);
-                }}
-                maxLength={40}
-              />
-            </div>
+          <div className="flex flex-col justify-center mt-12">
+            <InputRegister
+              label="Full Name"
+              setProps={setName}
+              type="text"
+              placeholder="Full Name"
+            />
 
             <div className="mb-4 w-full flex flex-col items-center ">
               <label
@@ -93,50 +82,25 @@ export function Signup() {
               />
             </div>
 
-            <div className="mb-4 w-full flex flex-col items-center ">
-              <label
-                htmlFor="email"
-                className="block text-sm text-[#424242] mb-[10px] place-self-start px-2"
-              >
-                Email
-              </label>
+            <InputRegister
+              label="Email"
+              setProps={setEmail}
+              type="email"
+              placeholder="Enter email..."
+            />
 
-              <input
-                type="email"
-                id="email"
-                placeholder="Enter email..."
-                className="border rounded-[4.5px] pl-[10px] h-10 w-[95%] max-w-[358px]"
-                onChange={(e) => {
-                  setEmail(e.target.value);
-                }}
-              />
-            </div>
-
-            <div className="mb-4 w-full flex flex-col items-center ">
-              <label
-                htmlFor="password"
-                className="block text-sm text-[#424242] place-self-start px-2"
-              >
-                Password
-              </label>
-              <input
-                type="password"
-                id="password"
-                placeholder="Enter password..."
-                className="border rounded-[4.5px] pl-[10px] h-10 mt-[10px] w-[95%] max-w-[358px]"
-                onChange={(e) => {
-                  setPassword(e.target.value);
-                }}
-                maxLength={11}
-                minLength={6}
-              />
-              <InputAccount
-                disabled={loading}
-                value="signup"
-                size="sm"
-                class="bg-orange-900 h-10 mt-9 text-white disabled:opacity-60 w-[95%] max-w-[358px]"
-              />
-            </div>
+            <InputRegister
+              label="Password"
+              setProps={setPassword}
+              type="password"
+              placeholder="Enter password..."
+            />
+            <InputAccount
+              disabled={loading}
+              value="signup"
+              size="sm"
+              class="bg-orange-900 h-10 mt-9 text-white disabled:opacity-60 w-[95%] max-w-[358px]"
+            />
           </div>
           <Link
             to="/login"

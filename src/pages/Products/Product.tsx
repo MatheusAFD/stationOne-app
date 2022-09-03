@@ -1,4 +1,3 @@
-import { gql, useQuery } from "@apollo/client";
 import { useNavigate, useParams } from "react-router-dom";
 import { ButtonSetps } from "../../components/ButtonSteps";
 import { Header } from "../../components/Header";

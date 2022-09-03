@@ -3,6 +3,7 @@ import { Header } from "../../components/Header";
 import { verifyNotLogged } from "../../utils/verifyLogged";
 import { formatData } from "../../utils/formatDate";
 import { useGetOrderQueryQuery } from "../../graphql/generated";
+
 export function Order() {
   const [isShowOrder, setIsShowOrder] = useState(true);
   const email = localStorage.getItem("email");
