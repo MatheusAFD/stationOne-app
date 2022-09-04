@@ -2156,8 +2156,8 @@ export type Product = Node & {
   createdAt: Scalars['DateTime'];
   /** User that created this document */
   createdBy?: Maybe<User>;
-  deliveryIn?: Maybe<Scalars['String']>;
-  description?: Maybe<Scalars['String']>;
+  deliveryIn: Scalars['String'];
+  description: Scalars['String'];
   /** Get the document in other stages */
   documentInStages: Array<Product>;
   /** List of Product versions */
@@ -2165,7 +2165,7 @@ export type Product = Node & {
   /** The unique identifier */
   id: Scalars['ID'];
   imgUrl: Scalars['String'];
-  nome?: Maybe<Scalars['String']>;
+  name: Scalars['String'];
   price: Scalars['Float'];
   /** The time the document was published. Null on documents in draft stage. */
   publishedAt?: Maybe<Scalars['DateTime']>;
@@ -2247,10 +2247,10 @@ export type ProductConnection = {
 export type ProductCreateInput = {
   cl612orr04l5501uk4ii50rp6?: InputMaybe<OrderCreateManyInlineInput>;
   createdAt?: InputMaybe<Scalars['DateTime']>;
-  deliveryIn?: InputMaybe<Scalars['String']>;
-  description?: InputMaybe<Scalars['String']>;
+  deliveryIn: Scalars['String'];
+  description: Scalars['String'];
   imgUrl: Scalars['String'];
-  nome?: InputMaybe<Scalars['String']>;
+  name: Scalars['String'];
   price: Scalars['Float'];
   shop?: InputMaybe<ShopCreateOneInlineInput>;
   slug: Scalars['String'];
@@ -2382,25 +2382,25 @@ export type ProductManyWhereInput = {
   imgUrl_not_starts_with?: InputMaybe<Scalars['String']>;
   /** All values starting with the given string. */
   imgUrl_starts_with?: InputMaybe<Scalars['String']>;
-  nome?: InputMaybe<Scalars['String']>;
+  name?: InputMaybe<Scalars['String']>;
   /** All values containing the given string. */
-  nome_contains?: InputMaybe<Scalars['String']>;
+  name_contains?: InputMaybe<Scalars['String']>;
   /** All values ending with the given string. */
-  nome_ends_with?: InputMaybe<Scalars['String']>;
+  name_ends_with?: InputMaybe<Scalars['String']>;
   /** All values that are contained in given list. */
-  nome_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  name_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
   /** All values that are not equal to given value. */
-  nome_not?: InputMaybe<Scalars['String']>;
+  name_not?: InputMaybe<Scalars['String']>;
   /** All values not containing the given string. */
-  nome_not_contains?: InputMaybe<Scalars['String']>;
+  name_not_contains?: InputMaybe<Scalars['String']>;
   /** All values not ending with the given string */
-  nome_not_ends_with?: InputMaybe<Scalars['String']>;
+  name_not_ends_with?: InputMaybe<Scalars['String']>;
   /** All values that are not contained in given list. */
-  nome_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  name_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
   /** All values not starting with the given string. */
-  nome_not_starts_with?: InputMaybe<Scalars['String']>;
+  name_not_starts_with?: InputMaybe<Scalars['String']>;
   /** All values starting with the given string. */
-  nome_starts_with?: InputMaybe<Scalars['String']>;
+  name_starts_with?: InputMaybe<Scalars['String']>;
   price?: InputMaybe<Scalars['Float']>;
   /** All values greater than the given value. */
   price_gt?: InputMaybe<Scalars['Float']>;
@@ -2484,8 +2484,8 @@ export enum ProductOrderByInput {
   IdDesc = 'id_DESC',
   ImgUrlAsc = 'imgUrl_ASC',
   ImgUrlDesc = 'imgUrl_DESC',
-  NomeAsc = 'nome_ASC',
-  NomeDesc = 'nome_DESC',
+  NameAsc = 'name_ASC',
+  NameDesc = 'name_DESC',
   PriceAsc = 'price_ASC',
   PriceDesc = 'price_DESC',
   PublishedAtAsc = 'publishedAt_ASC',
@@ -2501,7 +2501,7 @@ export type ProductUpdateInput = {
   deliveryIn?: InputMaybe<Scalars['String']>;
   description?: InputMaybe<Scalars['String']>;
   imgUrl?: InputMaybe<Scalars['String']>;
-  nome?: InputMaybe<Scalars['String']>;
+  name?: InputMaybe<Scalars['String']>;
   price?: InputMaybe<Scalars['Float']>;
   shop?: InputMaybe<ShopUpdateOneInlineInput>;
   slug?: InputMaybe<Scalars['String']>;
@@ -2528,7 +2528,7 @@ export type ProductUpdateManyInput = {
   deliveryIn?: InputMaybe<Scalars['String']>;
   description?: InputMaybe<Scalars['String']>;
   imgUrl?: InputMaybe<Scalars['String']>;
-  nome?: InputMaybe<Scalars['String']>;
+  name?: InputMaybe<Scalars['String']>;
   price?: InputMaybe<Scalars['Float']>;
 };
 
@@ -2677,25 +2677,25 @@ export type ProductWhereInput = {
   imgUrl_not_starts_with?: InputMaybe<Scalars['String']>;
   /** All values starting with the given string. */
   imgUrl_starts_with?: InputMaybe<Scalars['String']>;
-  nome?: InputMaybe<Scalars['String']>;
+  name?: InputMaybe<Scalars['String']>;
   /** All values containing the given string. */
-  nome_contains?: InputMaybe<Scalars['String']>;
+  name_contains?: InputMaybe<Scalars['String']>;
   /** All values ending with the given string. */
-  nome_ends_with?: InputMaybe<Scalars['String']>;
+  name_ends_with?: InputMaybe<Scalars['String']>;
   /** All values that are contained in given list. */
-  nome_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  name_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
   /** All values that are not equal to given value. */
-  nome_not?: InputMaybe<Scalars['String']>;
+  name_not?: InputMaybe<Scalars['String']>;
   /** All values not containing the given string. */
-  nome_not_contains?: InputMaybe<Scalars['String']>;
+  name_not_contains?: InputMaybe<Scalars['String']>;
   /** All values not ending with the given string */
-  nome_not_ends_with?: InputMaybe<Scalars['String']>;
+  name_not_ends_with?: InputMaybe<Scalars['String']>;
   /** All values that are not contained in given list. */
-  nome_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  name_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
   /** All values not starting with the given string. */
-  nome_not_starts_with?: InputMaybe<Scalars['String']>;
+  name_not_starts_with?: InputMaybe<Scalars['String']>;
   /** All values starting with the given string. */
-  nome_starts_with?: InputMaybe<Scalars['String']>;
+  name_starts_with?: InputMaybe<Scalars['String']>;
   price?: InputMaybe<Scalars['Float']>;
   /** All values greater than the given value. */
   price_gt?: InputMaybe<Scalars['Float']>;
@@ -4161,7 +4161,7 @@ export type ScheduledReleaseWhereUniqueInput = {
 
 export type Shop = Node & {
   __typename?: 'Shop';
-  address?: Maybe<Scalars['String']>;
+  address: Scalars['String'];
   /** The time the document was created */
   createdAt: Scalars['DateTime'];
   /** User that created this document */
@@ -4176,14 +4176,14 @@ export type Shop = Node & {
   imgLogoLoja: Scalars['String'];
   imgLogoProduto: Scalars['String'];
   name: Scalars['String'];
-  openingHours?: Maybe<Scalars['String']>;
+  openingHours: Scalars['String'];
   products: Array<Product>;
   /** The time the document was published. Null on documents in draft stage. */
   publishedAt?: Maybe<Scalars['DateTime']>;
   /** User that last published this document */
   publishedBy?: Maybe<User>;
   scheduledIn: Array<ScheduledOperation>;
-  slug?: Maybe<Scalars['String']>;
+  slug: Scalars['String'];
   slugFood?: Maybe<Scalars['String']>;
   /** System stage field */
   stage: Stage;
@@ -4263,15 +4263,15 @@ export type ShopConnection = {
 };
 
 export type ShopCreateInput = {
-  address?: InputMaybe<Scalars['String']>;
+  address: Scalars['String'];
   createdAt?: InputMaybe<Scalars['DateTime']>;
   description: Scalars['String'];
   imgLogoLoja: Scalars['String'];
   imgLogoProduto: Scalars['String'];
   name: Scalars['String'];
-  openingHours?: InputMaybe<Scalars['String']>;
+  openingHours: Scalars['String'];
   products?: InputMaybe<ProductCreateManyInlineInput>;
-  slug?: InputMaybe<Scalars['String']>;
+  slug: Scalars['String'];
   slugFood?: InputMaybe<Scalars['String']>;
   updatedAt?: InputMaybe<Scalars['DateTime']>;
 };
@@ -5970,35 +5970,35 @@ export type GetOrderQueryQueryVariables = Exact<{
 }>;
 
 
-export type GetOrderQueryQuery = { __typename?: 'Query', orders: Array<{ __typename?: 'Order', price: number, qtdProduct: number, createdAt: any, products: Array<{ __typename?: 'Product', nome?: string | null, price: number, imgUrl: string }> }> };
+export type GetOrderQueryQuery = { __typename?: 'Query', orders: Array<{ __typename?: 'Order', price: number, qtdProduct: number, createdAt: any, products: Array<{ __typename?: 'Product', name: string, price: number, imgUrl: string }> }> };
 
 export type GetProductInfoQueryVariables = Exact<{
   id?: InputMaybe<Scalars['ID']>;
 }>;
 
 
-export type GetProductInfoQuery = { __typename?: 'Query', products: Array<{ __typename?: 'Product', nome?: string | null, price: number, imgUrl: string, id: string }> };
+export type GetProductInfoQuery = { __typename?: 'Query', products: Array<{ __typename?: 'Product', name: string, price: number, imgUrl: string, id: string }> };
 
 export type GetProductsQueryVariables = Exact<{
   slug: Scalars['String'];
 }>;
 
 
-export type GetProductsQuery = { __typename?: 'Query', products: Array<{ __typename?: 'Product', id: string, nome?: string | null, price: number, imgUrl: string, description?: string | null, deliveryIn?: string | null, shop?: { __typename?: 'Shop', imgLogoLoja: string, slugFood?: string | null } | null }> };
+export type GetProductsQuery = { __typename?: 'Query', products: Array<{ __typename?: 'Product', id: string, name: string, price: number, imgUrl: string, description: string, deliveryIn: string, shop?: { __typename?: 'Shop', imgLogoLoja: string, slugFood?: string | null } | null }> };
 
 export type GetShopInfoQueryVariables = Exact<{
   slug?: InputMaybe<Scalars['String']>;
 }>;
 
 
-export type GetShopInfoQuery = { __typename?: 'Query', shops: Array<{ __typename?: 'Shop', name: string, address?: string | null, openingHours?: string | null, products: Array<{ __typename?: 'Product', nome?: string | null, price: number, description?: string | null, id: string }> }> };
+export type GetShopInfoQuery = { __typename?: 'Query', shops: Array<{ __typename?: 'Shop', name: string, address: string, openingHours: string, products: Array<{ __typename?: 'Product', name: string, price: number, description: string, id: string }> }> };
 
 export type GetShopsQueryVariables = Exact<{
   search?: InputMaybe<Scalars['String']>;
 }>;
 
 
-export type GetShopsQuery = { __typename?: 'Query', shops: Array<{ __typename?: 'Shop', id: string, imgLogoProduto: string, name: string, description: string, address?: string | null, slug?: string | null }> };
+export type GetShopsQuery = { __typename?: 'Query', shops: Array<{ __typename?: 'Shop', id: string, imgLogoProduto: string, name: string, description: string, address: string, slug: string }> };
 
 export type GetUserByEmailQueryVariables = Exact<{
   email?: InputMaybe<Scalars['String']>;
@@ -6095,7 +6095,7 @@ export const GetOrderQueryDocument = gql`
     qtdProduct
     createdAt
     products {
-      nome
+      name
       price
       imgUrl
     }
@@ -6133,7 +6133,7 @@ export type GetOrderQueryQueryResult = Apollo.QueryResult<GetOrderQueryQuery, Ge
 export const GetProductInfoDocument = gql`
     query GetProductInfo($id: ID) {
   products(where: {id: $id}) {
-    nome
+    name
     price
     imgUrl
     id
@@ -6172,7 +6172,7 @@ export const GetProductsDocument = gql`
     query GetProducts($slug: String!) {
   products(where: {shop: {slug_ends_with: $slug}}) {
     id
-    nome
+    name
     price
     imgUrl
     description
@@ -6219,7 +6219,7 @@ export const GetShopInfoDocument = gql`
     address
     openingHours
     products {
-      nome
+      name
       price
       description
       id

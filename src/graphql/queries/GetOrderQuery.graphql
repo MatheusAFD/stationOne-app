@@ -8,7 +8,7 @@ query GetOrderQuery($email: String) {
     qtdProduct
     createdAt
     products {
-      nome
+      name
       price
       imgUrl
     }

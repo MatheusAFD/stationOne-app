@@ -1,18 +1,18 @@
 import { useGetShopInfoQuery } from "../../graphql/generated";
 import { FormEvent, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import { ButtonSetps } from "../../components/ButtonSteps";
-import { Header } from "../../components/Header";
-import { StepActive } from "../../components/StepActive";
-import { StepOne } from "../../components/Steps/StepOne";
-import { StepThree } from "../../components/Steps/StepThree";
-import { StepTwo } from "../../components/Steps/StepTwo";
+import { ButtonSetps } from "../../components/Button/ButtonSteps";
+import { Header } from "../../components/Header/Header";
+import { StepActive } from "../../components/StepOrder/StepActive";
+import { StepOne } from "../../components/StepOrder/StepOne";
+import { StepThree } from "../../components/StepOrder/StepThree";
+import { StepTwo } from "../../components/StepOrder/StepTwo";
 
 export function StartOrder() {
   const navigate = useNavigate();
-  const { slug } = useParams();
+  const { slug } = useParams<string>();
   const [step, setStep] = useState(0);
-  const [message] = useState([
+  const [message] = useState<string[]>([
     "SET PICKUP TIME",
     "SET PRODUCT",
     "CONFIRM YOUR ORDER",

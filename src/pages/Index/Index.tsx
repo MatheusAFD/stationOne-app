@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { InputAccount } from "../../components/InputAccount";
+import { InputAccount } from "../../components/Input/InputAccount";
 import HomeImg from "../../assets/img/Logo.jpg";
 import { verifyLogged } from "../../utils/verifyLogged";
 import { ForkKnife } from "phosphor-react";

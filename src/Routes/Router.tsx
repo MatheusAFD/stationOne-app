@@ -1,6 +1,6 @@
 import { Route, Routes } from "react-router-dom";
-import { StepSucess } from "../components/Steps/StepSucess";
-import { TabMenu } from "../components/TabMenu";
+import { StepSucess } from "../components/StepOrder/StepSucess";
+import { TabMenu } from "../components/Nav/TabMenu";
 import { Login } from "../pages/Account/Login";
 import { PasswordReset } from "../pages/Account/PasswordReset";
 import { Signup } from "../pages/Account/Signup";

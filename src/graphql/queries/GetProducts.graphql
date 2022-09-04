@@ -1,7 +1,7 @@
 query GetProducts($slug: String!) {
   products(where: { shop: { slug_ends_with: $slug } }) {
     id
-    nome
+    name
     price
     imgUrl
     description

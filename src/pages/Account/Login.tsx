@@ -1,11 +1,11 @@
 import { FormEvent, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { InputAccount } from "../../components/InputAccount";
-import { Logo } from "../../components/Logo";
 import bcrypt from "bcryptjs";
 import { verifyLogged } from "../../utils/verifyLogged";
+import { InputAccount } from "../../components/Input/InputAccount";
+import { Logo } from "../../components/Style/Logo";
 import { useGetUserByEmailLazyQuery } from "../../graphql/generated";
-import { InputRegister } from "../../components/InputRegister";
+import { InputRegister } from "../../components/Input/InputRegister";
 
 export function Login() {
   const navigate = useNavigate();
@@ -13,9 +13,6 @@ export function Login() {
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
   const [getData] = useGetUserByEmailLazyQuery();
-
-  console.log(email);
-  console.log(password);
 
   verifyLogged();
 
@@ -34,8 +31,6 @@ export function Login() {
       },
     });
 
-    console.log(returnUser.data);
-
     return returnUser.data;
   }
 
@@ -43,21 +38,29 @@ export function Login() {
     e.preventDefault();
     setLoading(true);
 
-    const dataUser = await returnUser();
+    try {
+      const dataUser = await returnUser();
 
-    if (email === dataUser?.userContent?.email) {
-      const isValidPassword = await bcrypt.compare(
-        password,
-        dataUser.userContent.password
-      );
+      if (email === dataUser?.userContent?.email) {
+        const isValidPassword = await bcrypt.compare(
+          password,
+          dataUser.userContent.password
+        );
 
-      if (isValidPassword) {
-        navigate("/food");
-        SaveUserData(dataUser);
+        if (isValidPassword) {
+          navigate("/food");
+          SaveUserData(dataUser);
+        }
+        if (!isValidPassword) {
+          return [alert("Preencha corretamente"), setLoading(false)];
+        }
+      } else {
+        alert("Preencha corretamente");
       }
-      if (!isValidPassword) {
-        return [alert("preencha corretamente"), setLoading(false)];
-      }
+    } catch (err) {
+      alert(err);
+    } finally {
+      setLoading(false);
     }
   }
 

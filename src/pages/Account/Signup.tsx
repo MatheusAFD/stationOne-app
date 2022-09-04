@@ -1,12 +1,12 @@
 import { FormEvent, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import { useCreateUserContentMutation } from "../../graphql/generated";
 import bcrypt from "bcryptjs";
 import InputMask from "react-input-mask";
-import { InputAccount } from "../../components/InputAccount";
-import { Logo } from "../../components/Logo";
+import { InputAccount } from "../../components/Input/InputAccount";
+import { Logo } from "../../components/Style/Logo";
 import { verifyLogged } from "../../utils/verifyLogged";
-import { useCreateUserContentMutation } from "../../graphql/generated";
-import { InputRegister } from "../../components/InputRegister";
+import { InputRegister } from "../../components/Input/InputRegister";
 
 export function Signup() {
   const navigate = useNavigate();
@@ -20,7 +20,7 @@ export function Signup() {
   verifyLogged();
 
   async function encrypt() {
-    let saltRounds = 12;
+    const saltRounds = 12;
     const returnHash = await bcrypt.hash(password, saltRounds);
     return returnHash;
   }
@@ -42,8 +42,9 @@ export function Signup() {
       navigate("/login");
       setLoading(false);
     } catch (err) {
+      alert("Erro ao cadastrar!");
+    } finally {
       setLoading(false);
-      navigate("/login");
     }
   }
 
@@ -58,10 +59,11 @@ export function Signup() {
 
           <div className="flex flex-col justify-center mt-12">
             <InputRegister
-              label="Full Name"
+              label="Full Name *"
               setProps={setName}
               type="text"
               placeholder="Full Name"
+              minLength={10}
             />
 
             <div className="mb-4 w-full flex flex-col items-center ">
@@ -69,7 +71,7 @@ export function Signup() {
                 htmlFor="name"
                 className="block text-sm text-[#424242] place-self-start px-2"
               >
-                Phone Number
+                Phone Number *
               </label>
 
               <InputMask
@@ -79,21 +81,23 @@ export function Signup() {
                 onChange={(e) => {
                   setPhone(e.target.value);
                 }}
+                minLength={11}
               />
             </div>
 
             <InputRegister
-              label="Email"
+              label="Email *"
               setProps={setEmail}
               type="email"
               placeholder="Enter email..."
             />
 
             <InputRegister
-              label="Password"
+              label="Password *"
               setProps={setPassword}
               type="password"
               placeholder="Enter password..."
+              minLength={6}
             />
             <InputAccount
               disabled={loading}

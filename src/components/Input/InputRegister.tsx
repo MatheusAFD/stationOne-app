@@ -5,6 +5,7 @@ interface InputProps {
   type: HTMLInputTypeAttribute;
   placeholder: string;
   label: string;
+  minLength?: number;
 }
 
 export function InputRegister(props: InputProps) {
@@ -23,6 +24,8 @@ export function InputRegister(props: InputProps) {
         onChange={(e) => {
           props.setProps(e.target.value);
         }}
+        minLength={props.minLength}
+        required={true}
       />
     </div>
   );

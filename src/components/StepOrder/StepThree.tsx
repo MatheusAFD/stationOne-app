@@ -38,7 +38,7 @@ export function StepThree() {
               <img src={item.imgUrl} alt="" />
               <div className="p-4 flex justify-around text-gray-600">
                 <div>
-                  <p>{item.nome}</p>
+                  <p>{item.name}</p>
                   <p>Preço: R$ {item.price} </p>
                 </div>
                 <div>
@@ -55,7 +55,7 @@ export function StepThree() {
           type="submit"
           value="Confirmar pedido."
           onClick={handleButtonCreate}
-          className="shadow p-4 rounded text-gray-600 cursor-pointer border-2 bg-gray-200 border-orange-900 transition-colors hover:bg-orange-900 hover:text-white"
+          className="shadow p-4 rounded text-gray-600 cursor-pointer border-2 bg-gray-100 border-orange-900 transition-colors hover:bg-orange-900 hover:text-white"
         />
       </div>
     </div>
