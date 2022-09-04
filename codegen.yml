@@ -1,5 +1,5 @@
 overwrite: true
-schema: "https://api-sa-east-1.hygraph.com/v2/cl58gna3u56yy01ui4z3r527n/master"
+schema: ${VITE_APP_CLIENT_URI}
 documents: "./src/graphql/**/*.graphql"
 
 generates:

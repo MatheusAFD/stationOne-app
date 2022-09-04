@@ -4,7 +4,7 @@ import animationData from "./animation.json";
 import { useNavigate } from "react-router-dom";
 
 export function StepSucess() {
-  const [show, setShow] = useState(false);
+  const [show, setShow] = useState<boolean>(false);
   const navigate = useNavigate();
 
   setTimeout(() => {

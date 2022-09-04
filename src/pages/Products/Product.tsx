@@ -1,8 +1,8 @@
-import { gql, useQuery } from "@apollo/client";
 import { useNavigate, useParams } from "react-router-dom";
-import { ButtonSetps } from "../../components/ButtonSteps";
-import { Header } from "../../components/Header";
-import { LoadingCircle } from "../../components/LoadingCircle";
+import { ButtonSetps } from "../../components/Button/ButtonSteps";
+import { CardProduct } from "../../components/Card/CardProduct";
+import { Header } from "../../components/Header/Header";
+import { LoadingCircle } from "../../components/Loading/LoadingCircle";
 import { useGetProductsQuery } from "../../graphql/generated";
 
 export function Product() {
@@ -48,35 +48,21 @@ export function Product() {
       </div>
 
       <section className="flex flex-col items-center md:flex-row md:gap-4 md:justify-center md:flex-wrap">
-        {data?.products.map((product) => {
-          return (
-            <div
-              key={product.id}
-              className="w-[95%] max-w-[410px] flex flex-col items-center mb-7 last:mb-24 lg:last:mb-7"
-            >
-              <p className="font-semibold text-sm text-[#9E9E9E] place-self-start mb-3">
-                {product.deliveryIn}
-              </p>
-              <div className="w-full h-[255px] shadow rounded">
-                <img
-                  src={product.imgUrl}
-                  alt=""
-                  className="h-48 w-full object-cover "
-                  width={350}
-                  height={190}
-                />
-
-                <div className="flex justify-between p-3 text-[#424242]">
-                  <div>
-                    <h3 className="text-base font-semibold">{product.nome}</h3>
-                    <p className="text-sm">{product.description}</p>
-                  </div>
-                  <span className="text-sm">R$ {product.price}</span>
-                </div>
-              </div>
-            </div>
-          );
-        })}
+        {data?.products.map(
+          ({ id, imgUrl, name, price, deliveryIn, description }) => {
+            return (
+              <CardProduct
+                id={id}
+                name={name}
+                deliveryIn={deliveryIn}
+                price={price}
+                description={description}
+                key={id}
+                img={imgUrl}
+              />
+            );
+          }
+        )}
       </section>
 
       <ButtonSetps

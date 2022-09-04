@@ -1,8 +1,9 @@
 import { useEffect, useState } from "react";
-import { Header } from "../../components/Header";
-import { verifyNotLogged } from "../../utils/verifyLogged";
-import { formatData } from "../../utils/formatDate";
 import { useGetOrderQueryQuery } from "../../graphql/generated";
+import { verifyNotLogged } from "../../utils/verifyLogged";
+import { Header } from "../../components/Header/Header";
+import { CardOrder } from "../../components/Card/CardOrder";
+
 export function Order() {
   const [isShowOrder, setIsShowOrder] = useState(true);
   const email = localStorage.getItem("email");
@@ -33,39 +34,20 @@ export function Order() {
       ) : (
         <>
           <section className="flex flex-col items-center md:flex-row md:gap-4 md:justify-center md:flex-wrap mb-10">
-            {data?.orders.map((item, key) => {
-              return (
-                <div className="w-[95%] max-w-[410px] flex items-center mb-7 last:mb-20 lg:last:mb-7 gap-2 p-4 shadow">
-                  <div className="relative">
-                    <img
-                      src={item.products[0].imgUrl}
-                      alt=""
-                      className="w-24 h-24 object-cover "
-                    />
-                    {item.qtdProduct > 1 && (
-                      <span className="absolute bottom-0 right-0 rounded-full flex justify-center items-center w-7 h-7 bg-white shadow text-sm">
-                        {item.qtdProduct}
-                      </span>
-                    )}
-                  </div>
-                  <div>
-                    <p className="text-center text-gray-800 font-semibold text-lg mb-2">
-                      {item.products[0].nome}
-                    </p>
-                    <p className="text-sm text-gray-600 mb-2">
-                      Pedido em <br /> {formatData(item.createdAt)}
-                    </p>
-                    <p className="text-sm text-gray-600">
-                      Preço total:{" "}
-                      {new Intl.NumberFormat("pt-BR", {
-                        style: "currency",
-                        currency: "BRL",
-                      }).format(item.price)}
-                    </p>
-                  </div>
-                </div>
-              );
-            })}
+            {data?.orders.map(
+              ({ createdAt, price, products, qtdProduct }, key) => {
+                return (
+                  <CardOrder
+                    date={createdAt}
+                    img={products[0].imgUrl}
+                    name={products[0].name}
+                    price={price}
+                    quantityProduct={qtdProduct}
+                    key={key}
+                  />
+                );
+              }
+            )}
           </section>
         </>
       )}

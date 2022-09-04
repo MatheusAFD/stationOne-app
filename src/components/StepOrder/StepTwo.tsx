@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { RadioGroup } from "@headlessui/react";
-import { CheckCircle, Minus, Plus } from "phosphor-react";
-import { CounterProduct } from "../CounterProduct";
+import { CheckCircle } from "phosphor-react";
+import { CounterProduct } from "../Counter/CounterProduct";
 
 interface StepTwoProps {
   object?: any;
@@ -15,8 +15,6 @@ export function StepTwo(props: StepTwoProps) {
     <div className="w-full px-4 py-16">
       <div className="mx-auto w-full max-w-md">
         <RadioGroup value={selected} onChange={setSelected}>
-          <RadioGroup.Label className="sr-only">Server size</RadioGroup.Label>
-
           <div className="space-y-2">
             {props.object?.map((item: any) => (
               <RadioGroup.Option
@@ -43,7 +41,7 @@ export function StepTwo(props: StepTwoProps) {
                               checked ? "text-white" : "text-gray-900"
                             }`}
                           >
-                            {item.nome}
+                            {item.name}
                           </RadioGroup.Label>
                           <RadioGroup.Description
                             as="span"
@@ -68,6 +66,7 @@ export function StepTwo(props: StepTwoProps) {
           </div>
         </RadioGroup>
       </div>
+
       <CounterProduct
         setted={counterProduct}
         set={setCounterProduct}

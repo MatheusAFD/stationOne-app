@@ -1,8 +1,8 @@
 import { Power } from "phosphor-react";
 import { useNavigate } from "react-router-dom";
-import { Header } from "../../components/Header";
-import { InputAccount } from "../../components/InputAccount";
-import { InputEdit } from "../../components/InputEdit";
+import { Header } from "../../components/Header/Header";
+import { InputAccount } from "../../components/Input/InputAccount";
+import { InputEdit } from "../../components/Input/InputEdit";
 import { verifyNotLogged } from "../../utils/verifyLogged";
 
 export function ProfileSettings() {

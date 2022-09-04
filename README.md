@@ -52,10 +52,10 @@ cd stationOne-app
 <p>4. Install dependencies</p>
 
 ```
-npm install
+"npm install" OR "yarn"
 ```
 
-<p>5. Clone GraphCMS Project</p>
+<p>5. Clone Hygraph Project</p>
 
 [![Clone project](https://hygraph.com/button)](https://app.hygraph.com/clone/7a1945ef307b4d9c8cb4f7a8ee57f682?name=Doces%20%7C%20P%C3%A2tissier%20-%20Matheus%20Ara%C3%BAjo)
 </br>
@@ -74,7 +74,7 @@ VITE_API_ACESS_TOKEN  = "YOUR API AUTH TOKEN"
 ```
 (Terminal -> Your path of the project)
 
-npm run dev
+"npm run dev" | "yarn dev"
 ```
 
 <h2>💻 Built with</h2>

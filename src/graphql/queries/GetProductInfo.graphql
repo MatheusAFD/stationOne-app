@@ -1,6 +1,6 @@
 query GetProductInfo($id: ID) {
   products(where: { id: $id }) {
-    nome
+    name
     price
     imgUrl
     id
