@@ -9,6 +9,7 @@ export function Product() {
   const navigate = useNavigate();
   const { slug } = useParams<{ slug: string | any }>();
   const slugFormatted = slug?.replace("-", " ");
+
   const { data } = useGetProductsQuery({
     variables: {
       slug,

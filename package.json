@@ -23,8 +23,7 @@
     "react-debounce-input": "^3.3.0",
     "react-dom": "^18.0.0",
     "react-input-mask": "^2.0.4",
-    "react-router-dom": "^6.3.0",
-    "react-toastify": "^9.0.7"
+    "react-router-dom": "^6.3.0"
   },
   "devDependencies": {
     "@graphql-codegen/cli": "^2.12.0",
