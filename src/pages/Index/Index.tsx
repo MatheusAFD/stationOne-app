@@ -1,8 +1,10 @@
 import { Link } from "react-router-dom";
+import { ForkKnife } from "phosphor-react";
+
+import { verifyLogged } from "../../utils/verify-logged";
+
 import { InputAccount } from "../../components/Input/InputAccount";
 import HomeImg from "../../assets/img/Logo.jpg";
-import { verifyLogged } from "../../utils/verifyLogged";
-import { ForkKnife } from "phosphor-react";
 
 export function Index() {
   verifyLogged();
@@ -30,7 +32,7 @@ export function Index() {
         <Link to="/login" className="flex ">
           <InputAccount
             value="log in"
-            size="sm"
+            sizeText="sm"
             class={`border border-[#862924] text-[#862924] ')] w-[299px] h-9 tracking-widest uppercase }`}
           />
         </Link>

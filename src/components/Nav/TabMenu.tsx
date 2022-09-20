@@ -1,5 +1,5 @@
-import { Note, Truck, UserCircle } from "phosphor-react";
 import { NavLink } from "react-router-dom";
+import { Note, Truck, UserCircle } from "phosphor-react";
 
 export function TabMenu() {
   const menuItems = {

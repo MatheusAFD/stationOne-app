@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { RadioGroup } from "@headlessui/react";
 import { CheckCircle } from "phosphor-react";
+
 import { CounterProduct } from "../Counter/CounterProduct";
 
 interface StepTwoProps {

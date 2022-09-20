@@ -1,11 +1,6 @@
-import { HTMLInputTypeAttribute } from "react";
-
-interface InputProps {
-  setProps: any;
-  type: HTMLInputTypeAttribute;
-  placeholder: string;
+import { InputHTMLAttributes } from "react";
+interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
   label: string;
-  minLength?: number;
 }
 
 export function InputRegister(props: InputProps) {
@@ -18,13 +13,8 @@ export function InputRegister(props: InputProps) {
         {props.label}
       </label>
       <input
-        type={props.type}
-        placeholder={props.placeholder}
+        {...props}
         className="border rounded-[4.5px] pl-[10px] h-10 w-[95%] max-w-[358px] "
-        onChange={(e) => {
-          props.setProps(e.target.value);
-        }}
-        minLength={props.minLength}
         required={true}
       />
     </div>

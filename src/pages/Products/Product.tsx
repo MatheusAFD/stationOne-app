@@ -1,9 +1,11 @@
 import { useNavigate, useParams } from "react-router-dom";
+
+import { useGetProductsQuery } from "../../graphql/generated";
+
 import { ButtonSetps } from "../../components/Button/ButtonSteps";
 import { CardProduct } from "../../components/Card/CardProduct";
 import { Header } from "../../components/Header/Header";
 import { LoadingCircle } from "../../components/Loading/LoadingCircle";
-import { useGetProductsQuery } from "../../graphql/generated";
 
 export function Product() {
   const navigate = useNavigate();
@@ -53,12 +55,12 @@ export function Product() {
           ({ id, imgUrl, name, price, deliveryIn, description }) => {
             return (
               <CardProduct
+                key={id}
                 id={id}
                 name={name}
                 deliveryIn={deliveryIn}
                 price={price}
                 description={description}
-                key={id}
                 img={imgUrl}
               />
             );

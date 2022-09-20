@@ -1,6 +1,9 @@
 import { useEffect, useState } from "react";
+
 import { useGetOrderQueryQuery } from "../../graphql/generated";
-import { verifyNotLogged } from "../../utils/verifyLogged";
+
+import { verifyNotLogged } from "../../utils/verify-logged";
+
 import { Header } from "../../components/Header/Header";
 import { CardOrder } from "../../components/Card/CardOrder";
 
@@ -38,12 +41,12 @@ export function Order() {
               ({ createdAt, price, products, qtdProduct }, key) => {
                 return (
                   <CardOrder
+                    key={key}
                     date={createdAt}
                     img={products[0].imgUrl}
                     name={products[0].name}
                     price={price}
                     quantityProduct={qtdProduct}
-                    key={key}
                   />
                 );
               }

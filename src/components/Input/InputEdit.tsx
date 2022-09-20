@@ -16,10 +16,9 @@ export function InputEdit(props: PropsInput) {
 
       <input
         type="email"
-        name=""
         id={props.nameLabel}
+        defaultValue={props.value}
         className="border rounded-[4.5px] pl-[10px] h-10 w-[100%] "
-        value={props.value}
       />
     </div>
   );

@@ -5970,14 +5970,14 @@ export type GetOrderQueryQueryVariables = Exact<{
 }>;
 
 
-export type GetOrderQueryQuery = { __typename?: 'Query', orders: Array<{ __typename?: 'Order', price: number, qtdProduct: number, createdAt: any, products: Array<{ __typename?: 'Product', name: string, price: number, imgUrl: string }> }> };
+export type GetOrderQueryQuery = { __typename?: 'Query', orders: Array<{ __typename?: 'Order', id: string, price: number, qtdProduct: number, createdAt: any, products: Array<{ __typename?: 'Product', name: string, price: number, imgUrl: string }> }> };
 
 export type GetProductInfoQueryVariables = Exact<{
   id?: InputMaybe<Scalars['ID']>;
 }>;
 
 
-export type GetProductInfoQuery = { __typename?: 'Query', products: Array<{ __typename?: 'Product', name: string, price: number, imgUrl: string, id: string }> };
+export type GetProductInfoQuery = { __typename?: 'Query', products: Array<{ __typename?: 'Product', id: string, name: string, price: number, imgUrl: string }> };
 
 export type GetProductsQueryVariables = Exact<{
   slug: Scalars['String'];
@@ -5991,7 +5991,7 @@ export type GetShopInfoQueryVariables = Exact<{
 }>;
 
 
-export type GetShopInfoQuery = { __typename?: 'Query', shops: Array<{ __typename?: 'Shop', name: string, address: string, openingHours: string, products: Array<{ __typename?: 'Product', name: string, price: number, description: string, id: string }> }> };
+export type GetShopInfoQuery = { __typename?: 'Query', shops: Array<{ __typename?: 'Shop', id: string, name: string, address: string, openingHours: string, products: Array<{ __typename?: 'Product', name: string, price: number, description: string, id: string }> }> };
 
 export type GetShopsQueryVariables = Exact<{
   search?: InputMaybe<Scalars['String']>;
@@ -6091,6 +6091,7 @@ export const GetOrderQueryDocument = gql`
     orderBy: createdAt_DESC
     stage: DRAFT
   ) {
+    id
     price
     qtdProduct
     createdAt
@@ -6133,6 +6134,7 @@ export type GetOrderQueryQueryResult = Apollo.QueryResult<GetOrderQueryQuery, Ge
 export const GetProductInfoDocument = gql`
     query GetProductInfo($id: ID) {
   products(where: {id: $id}) {
+    id
     name
     price
     imgUrl
@@ -6215,6 +6217,7 @@ export type GetProductsQueryResult = Apollo.QueryResult<GetProductsQuery, GetPro
 export const GetShopInfoDocument = gql`
     query GetShopInfo($slug: String) {
   shops(where: {slugFood: $slug}) {
+    id
     name
     address
     openingHours

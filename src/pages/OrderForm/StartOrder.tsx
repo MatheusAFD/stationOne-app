@@ -1,6 +1,8 @@
-import { useGetShopInfoQuery } from "../../graphql/generated";
 import { FormEvent, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
+
+import { useGetShopInfoQuery } from "../../graphql/generated";
+
 import { ButtonSetps } from "../../components/Button/ButtonSteps";
 import { Header } from "../../components/Header/Header";
 import { StepActive } from "../../components/StepOrder/StepActive";

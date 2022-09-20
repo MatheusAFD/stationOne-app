@@ -1,8 +1,11 @@
 import { useState } from "react";
 import { DebounceInput } from "react-debounce-input";
+
 import { useGetShopsQuery } from "../../graphql/generated";
+
+import { verifyNotLogged } from "../../utils/verify-logged";
+
 import { Header } from "../../components/Header/Header";
-import { verifyNotLogged } from "../../utils/verifyLogged";
 import { CardStore } from "../../components/Card/CardStore";
 
 export function Food() {
@@ -35,6 +38,7 @@ export function Food() {
           ({ name, description, id, imgLogoProduto, address, slug }) => {
             return (
               <CardStore
+                key={id}
                 name={name}
                 address={address}
                 slug={slug}
