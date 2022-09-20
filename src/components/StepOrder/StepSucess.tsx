@@ -1,7 +1,8 @@
 import { useState } from "react";
-import { Player } from "@lottiefiles/react-lottie-player";
-import animationData from "./animation.json";
 import { useNavigate } from "react-router-dom";
+import { Player } from "@lottiefiles/react-lottie-player";
+
+import animationData from "./animation.json";
 
 export function StepSucess() {
   const [show, setShow] = useState<boolean>(false);

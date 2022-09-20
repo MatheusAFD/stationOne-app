@@ -1,11 +1,13 @@
 import { FormEvent, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { useCreateUserContentMutation } from "../../graphql/generated";
 import bcrypt from "bcryptjs";
 import InputMask from "react-input-mask";
+
+import { useCreateUserContentMutation } from "../../graphql/generated";
+
 import { InputAccount } from "../../components/Input/InputAccount";
 import { Logo } from "../../components/Style/Logo";
-import { verifyLogged } from "../../utils/verifyLogged";
+import { verifyLogged } from "../../utils/verify-logged";
 import { InputRegister } from "../../components/Input/InputRegister";
 
 export function Signup() {
@@ -60,7 +62,7 @@ export function Signup() {
           <div className="flex flex-col justify-center mt-12">
             <InputRegister
               label="Full Name *"
-              setProps={setName}
+              onChange={(e) => setName(e.target.value)}
               type="text"
               placeholder="Full Name"
               minLength={10}
@@ -87,14 +89,14 @@ export function Signup() {
 
             <InputRegister
               label="Email *"
-              setProps={setEmail}
               type="email"
               placeholder="Enter email..."
+              onChange={(e) => setEmail(e.target.value)}
             />
 
             <InputRegister
               label="Password *"
-              setProps={setPassword}
+              onChange={(e) => setPassword(e.target.value)}
               type="password"
               placeholder="Enter password..."
               minLength={6}
@@ -102,7 +104,7 @@ export function Signup() {
             <InputAccount
               disabled={loading}
               value="signup"
-              size="sm"
+              sizeText="sm"
               class="bg-orange-900 h-10 mt-9 text-white disabled:opacity-60 w-[95%] max-w-[358px]"
             />
           </div>
@@ -112,7 +114,7 @@ export function Signup() {
           >
             <InputAccount
               value="already have an account?"
-              size="sm"
+              sizeText="sm"
               class="w-[95%] max-w-[358px] h-9 mt-9 text-[#999999] font-bold border tracking-widest "
             />
           </Link>

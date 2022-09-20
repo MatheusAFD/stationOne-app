@@ -1,4 +1,4 @@
-import { formatData } from "../../utils/formatDate";
+import { formatData } from "../../utils/format-date";
 
 interface CardOrderProps {
   name: string;

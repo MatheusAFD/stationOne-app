@@ -1,5 +1,6 @@
 import { FormEvent } from "react";
 import { useNavigate } from "react-router-dom";
+
 import { useCreateOrderMutation } from "../../graphql/generated";
 import { useGetProductInfoQuery } from "../../graphql/generated";
 
@@ -34,7 +35,7 @@ export function StepThree() {
       <div className="shadow mt-10 rounded w-[95%] max-w-[410px] m-auto">
         {data?.products.map((item) => {
           return (
-            <div>
+            <div key={item.id}>
               <img src={item.imgUrl} alt="" />
               <div className="p-4 flex justify-around text-gray-600">
                 <div>

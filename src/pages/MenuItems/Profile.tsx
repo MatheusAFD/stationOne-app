@@ -1,6 +1,7 @@
+import { verifyNotLogged } from "../../utils/verify-logged";
+
 import { Header } from "../../components/Header/Header";
 import { IconStripe } from "../../components/Style/IconStripe";
-import { verifyNotLogged } from "../../utils/verifyLogged";
 
 export function Profile() {
   verifyNotLogged();

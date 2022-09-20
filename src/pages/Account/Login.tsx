@@ -1,10 +1,14 @@
 import { FormEvent, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import bcrypt from "bcryptjs";
-import { verifyLogged } from "../../utils/verifyLogged";
+
+import { useGetUserByEmailLazyQuery } from "../../graphql/generated";
+
+import { verifyLogged } from "../../utils/verify-logged";
+import { saveUserData } from "../../utils/save-user-data";
+
 import { InputAccount } from "../../components/Input/InputAccount";
 import { Logo } from "../../components/Style/Logo";
-import { useGetUserByEmailLazyQuery } from "../../graphql/generated";
 import { InputRegister } from "../../components/Input/InputRegister";
 
 export function Login() {
@@ -15,14 +19,6 @@ export function Login() {
   const [getData] = useGetUserByEmailLazyQuery();
 
   verifyLogged();
-
-  function SaveUserData(data: any) {
-    localStorage.setItem("logged", "1");
-    localStorage.setItem("name", data.userContent.name);
-    localStorage.setItem("phone", data.userContent.phone);
-    localStorage.setItem("email", data.userContent.email);
-    localStorage.setItem("avatarURL", data.userContent.avatarURL);
-  }
 
   async function returnUser() {
     const returnUser = await getData({
@@ -49,7 +45,7 @@ export function Login() {
 
         if (isValidPassword) {
           navigate("/food");
-          SaveUserData(dataUser);
+          saveUserData(dataUser);
         }
         if (!isValidPassword) {
           return [alert("Preencha corretamente"), setLoading(false)];
@@ -73,14 +69,14 @@ export function Login() {
         <Logo name="Login" />
         <div className="flex flex-col justify-center mt-12">
           <InputRegister
-            setProps={setEmail}
+            onChange={(e) => setEmail(e.target.value)}
             label="Email"
             type="email"
             placeholder="Enter email..."
           />
           <InputRegister
             label="Password"
-            setProps={setPassword}
+            onChange={(e) => setPassword(e.target.value)}
             type="password"
             placeholder="Enter email..."
           />
@@ -89,7 +85,7 @@ export function Login() {
             <InputAccount
               disabled={loading}
               value="login"
-              size="sm"
+              sizeText="sm"
               class="bg-orange-900 h-10 mt-9 text-white w-[95%] max-w-[358px] disabled:opacity-60 "
             />
 
@@ -109,7 +105,7 @@ export function Login() {
       >
         <InputAccount
           value="sign up"
-          size="sm"
+          sizeText="sm"
           class="w-[95%] max-w-[358px] h-9 mt-9 text-[#999999] font-bold border tracking-widest place-content-end hover:bg-slate-100 hover:text-black"
         />
       </Link>

@@ -4,6 +4,7 @@ query GetOrderQuery($email: String) {
     orderBy: createdAt_DESC
     stage: DRAFT
   ) {
+    id
     price
     qtdProduct
     createdAt

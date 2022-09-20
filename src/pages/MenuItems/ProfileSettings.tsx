@@ -1,9 +1,11 @@
 import { Power } from "phosphor-react";
 import { useNavigate } from "react-router-dom";
+
+import { verifyNotLogged } from "../../utils/verify-logged";
+
 import { Header } from "../../components/Header/Header";
 import { InputAccount } from "../../components/Input/InputAccount";
 import { InputEdit } from "../../components/Input/InputEdit";
-import { verifyNotLogged } from "../../utils/verifyLogged";
 
 export function ProfileSettings() {
   const navigate = useNavigate();
@@ -59,7 +61,7 @@ export function ProfileSettings() {
         <InputEdit nameLabel="Email" value={localStorage.getItem("email")} />
         <InputAccount
           value="save"
-          size="sm"
+          sizeText="sm"
           class="bg-orange-900 h-10 mt-10 text-white w-[100%] uppercase"
         />
 
