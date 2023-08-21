@@ -1,23 +1,19 @@
-import { verifyNotLogged } from "../../utils/verify-logged";
-
-import { Header } from "../../components/Header/Header";
-import { IconStripe } from "../../components/Style/IconStripe";
+import { Header } from '../../components/Header/Header'
+import { IconStripe } from '../../components/Style/IconStripe'
 
 export function Profile() {
-  verifyNotLogged();
-
   return (
     <>
       <Header hasIcon={true} />
       <div className=" flex flex-col justify-center items-center text-center ">
         <h1 className="text-[26px] font-semibold mt-6">
-          {" "}
-          {localStorage.getItem("name")}
+          {' '}
+          {localStorage.getItem('name')}
         </h1>
 
         <div className="flex justify-center items-center mt-5 ">
           <img
-            src={localStorage.getItem("avatarURL") || ""}
+            src={localStorage.getItem('avatarURL') || ''}
             alt=""
             className="max-h-[160px] rounded-full"
             width={160}
@@ -28,12 +24,12 @@ export function Profile() {
         <div className="mt-11">
           <span className="text-gray-500 text-sm">Phone Number</span>
 
-          <p className="text-xl">{localStorage.getItem("phone")}</p>
+          <p className="text-xl">{localStorage.getItem('phone')}</p>
         </div>
 
         <div className="mt-9">
           <span className="text-gray-500 text-sm">Email</span>
-          <p className="text-xl">{localStorage.getItem("email")}</p>
+          <p className="text-xl">{localStorage.getItem('email')}</p>
         </div>
 
         <div className="bg-[#dd3300] rounded-[5px] mt-[53px] max-w-[307px]">
@@ -51,5 +47,5 @@ export function Profile() {
         </div>
       </div>
     </>
-  );
+  )
 }

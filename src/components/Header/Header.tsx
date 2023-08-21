@@ -1,17 +1,17 @@
-import { Link } from "react-router-dom";
-import { ArrowLeft, GearSix } from "phosphor-react";
+import { Link } from 'react-router-dom'
+import { ArrowLeft, GearSix } from 'phosphor-react'
 
 interface HeaderProps {
-  returnNav?: any;
-  hasIcon?: true | false;
-  hasBack?: true | false;
-  title?: string | string[];
+  returnNav?: () => void
+  hasIcon?: boolean
+  hasBack?: boolean
+  title?: string | string[]
 }
 
-export function Header(props: HeaderProps) {
+export function Header({ hasBack, hasIcon, returnNav, title }: HeaderProps) {
   return (
     <header className="w-full bg-[#862924] max-h-14 h-14 shadow-4xl">
-      {props.hasIcon && (
+      {hasIcon && (
         <Link to="/profile/edit" className="absolute right-3 m-auto py-4">
           <GearSix
             size={24}
@@ -22,9 +22,9 @@ export function Header(props: HeaderProps) {
         </Link>
       )}
 
-      {props.hasBack && (
+      {hasBack && (
         <div className="flex justify-around items-center p-3 ">
-          <Link to={""} onClick={props.returnNav} className="flex items-center">
+          <Link to={''} onClick={returnNav} className="flex items-center">
             <ArrowLeft
               size={24}
               color="#ffffff"
@@ -33,11 +33,11 @@ export function Header(props: HeaderProps) {
             />
           </Link>
           <h1 className="text-white font-semibold text-xl capitalize ">
-            {props.title}
+            {title}
           </h1>
           <h1></h1>
         </div>
       )}
     </header>
-  );
+  )
 }

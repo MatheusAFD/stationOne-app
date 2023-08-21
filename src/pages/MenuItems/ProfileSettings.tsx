@@ -1,25 +1,21 @@
-import { Power } from "phosphor-react";
-import { useNavigate } from "react-router-dom";
+import { Power } from 'phosphor-react'
+import { useNavigate } from 'react-router-dom'
 
-import { verifyNotLogged } from "../../utils/verify-logged";
-
-import { Header } from "../../components/Header/Header";
-import { InputAccount } from "../../components/Input/InputAccount";
-import { InputEdit } from "../../components/Input/InputEdit";
+import { Header } from '../../components/Header/Header'
+import { InputAccount } from '../../components/Input/InputAccount'
+import { InputEdit } from '../../components/Input/InputEdit'
 
 export function ProfileSettings() {
-  const navigate = useNavigate();
-
-  verifyNotLogged();
+  const navigate = useNavigate()
 
   function Redirect() {
-    localStorage.setItem("logged", "0");
-    return navigate("/");
+    localStorage.setItem('logged', '0')
+    return navigate('/')
   }
 
   function handleButton() {
-    Redirect();
-    localStorage.clear();
+    Redirect()
+    localStorage.clear()
   }
 
   return (
@@ -28,11 +24,14 @@ export function ProfileSettings() {
         hasBack={true}
         title="My Profile"
         returnNav={() => {
-          navigate(-1);
+          navigate(-1)
         }}
       />
       <div className="flex flex-col sans m-auto  max-w-[370px] lg:mt-12 p-4">
-        <InputEdit nameLabel="Full Name" value={localStorage.getItem("name")} />
+        <InputEdit
+          nameLabel="Full Name"
+          value={localStorage.getItem('name') as string}
+        />
 
         <label
           htmlFor="photo"
@@ -42,7 +41,7 @@ export function ProfileSettings() {
         </label>
         <div className="flex flex-col justify-start items-center mb-2 bg-zinc-200 rounded">
           <img
-            src={localStorage.getItem("avatarURL") || ""}
+            src={localStorage.getItem('avatarURL') || ''}
             alt=""
             className="w-[326px] h-[227px] object-contain"
             width={390}
@@ -55,14 +54,17 @@ export function ProfileSettings() {
 
         <InputEdit
           nameLabel="Phone Number"
-          value={localStorage.getItem("phone")}
+          value={localStorage.getItem('phone') as string}
           className="mb-4"
         />
-        <InputEdit nameLabel="Email" value={localStorage.getItem("email")} />
+        <InputEdit
+          nameLabel="Email"
+          value={localStorage.getItem('email') as string}
+        />
         <InputAccount
           value="save"
           sizeText="sm"
-          class="bg-orange-900 h-10 mt-10 text-white w-[100%] uppercase"
+          className="bg-orange-900 h-10 mt-10 text-white w-[100%] uppercase"
         />
 
         <button
@@ -74,5 +76,5 @@ export function ProfileSettings() {
         </button>
       </div>
     </>
-  );
+  )
 }

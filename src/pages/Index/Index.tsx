@@ -1,14 +1,10 @@
-import { Link } from "react-router-dom";
-import { ForkKnife } from "phosphor-react";
+import { Link } from 'react-router-dom'
+import { ForkKnife } from 'phosphor-react'
 
-import { verifyLogged } from "../../utils/verify-logged";
-
-import { InputAccount } from "../../components/Input/InputAccount";
-import HomeImg from "../../assets/img/Logo.jpg";
+import { InputAccount } from '../../components/Input/InputAccount'
+import HomeImg from '../../assets/img/Logo.jpg'
 
 export function Index() {
-  verifyLogged();
-
   return (
     <>
       <div className="flex justify-center items-center mt-[107px]  ">
@@ -33,10 +29,10 @@ export function Index() {
           <InputAccount
             value="log in"
             sizeText="sm"
-            class={`border border-[#862924] text-[#862924] ')] w-[299px] h-9 tracking-widest uppercase }`}
+            className={`border border-[#862924] text-[#862924] ')] w-[299px] h-9 tracking-widest uppercase }`}
           />
         </Link>
       </div>
     </>
-  );
+  )
 }

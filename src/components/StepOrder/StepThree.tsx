@@ -1,33 +1,37 @@
-import { FormEvent } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate } from 'react-router-dom'
 
-import { useCreateOrderMutation } from "../../graphql/generated";
-import { useGetProductInfoQuery } from "../../graphql/generated";
+import {
+  useCreateOrderMutation,
+  useGetProductInfoQuery,
+} from '../../graphql/generated'
 
 export function StepThree() {
-  const navigate = useNavigate();
-  const id = sessionStorage.getItem("id");
-  const quantity = Number(sessionStorage.getItem("quantity"));
+  const id = sessionStorage.getItem('id')
+  const quantity = Number(sessionStorage.getItem('quantity'))
+
   const { data } = useGetProductInfoQuery({
     variables: {
       id,
     },
-  });
+  })
 
-  const [createOrder] = useCreateOrderMutation();
-  const fullprice = +(Number(data?.products[0].price) * quantity).toFixed(2);
+  const navigate = useNavigate()
 
-  async function handleButtonCreate(e: FormEvent) {
+  const [createOrder] = useCreateOrderMutation()
+  const fullprice = +(Number(data?.products[0].price) * quantity).toFixed(2)
+
+  async function handleButtonCreate() {
     await createOrder({
       variables: {
-        id: id,
+        id,
         price: fullprice,
-        quantity: quantity,
-        email: localStorage.getItem("email"),
+        quantity,
+        email: localStorage.getItem('email'),
       },
-    });
+      refetchQueries: ['GetOrderQuery'],
+    })
 
-    navigate("/finish-order/sucess");
+    navigate('/finish-order/sucess')
   }
 
   return (
@@ -48,7 +52,7 @@ export function StepThree() {
                 </div>
               </div>
             </div>
-          );
+          )
         })}
       </div>
       <div className="flex justify-center py-10 ">
@@ -60,5 +64,5 @@ export function StepThree() {
         />
       </div>
     </div>
-  );
+  )
 }

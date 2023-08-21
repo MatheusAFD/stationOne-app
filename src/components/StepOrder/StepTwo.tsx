@@ -1,16 +1,18 @@
-import { useState } from "react";
-import { RadioGroup } from "@headlessui/react";
-import { CheckCircle } from "phosphor-react";
+import { useState } from 'react'
+import { RadioGroup } from '@headlessui/react'
+import { CheckCircle } from 'phosphor-react'
 
-import { CounterProduct } from "../Counter/CounterProduct";
+import { CounterProduct } from '../Counter/CounterProduct'
 
 interface StepTwoProps {
-  object?: any;
+  object?: any
 }
 
 export function StepTwo(props: StepTwoProps) {
-  const [selected, setSelected] = useState(props.object[0]);
-  const [counterProduct, setCounterProduct] = useState(1);
+  const [selected, setSelected] = useState(props.object[0])
+  const [counterProduct, setCounterProduct] = useState(1)
+
+  console.log('object', props?.object)
 
   return (
     <div className="w-full px-4 py-16">
@@ -24,10 +26,10 @@ export function StepTwo(props: StepTwoProps) {
                 className={({ active, checked }) =>
                   `${
                     active
-                      ? "ring-2 ring-white ring-opacity-60 ring-offset-2 ring-offset-orange-900"
-                      : ""
+                      ? 'ring-2 ring-white ring-opacity-60 ring-offset-2 ring-offset-orange-900'
+                      : ''
                   }
-                  ${checked ? "bg-[#852a23]  text-white" : "bg-white"}
+                  ${checked ? 'bg-[#852a23]  text-white' : 'bg-white'}
                     relative flex cursor-pointer rounded-lg px-5 py-4 shadow-md focus:outline-none`
                 }
               >
@@ -39,7 +41,7 @@ export function StepTwo(props: StepTwoProps) {
                           <RadioGroup.Label
                             as="p"
                             className={`font-medium  ${
-                              checked ? "text-white" : "text-gray-900"
+                              checked ? 'text-white' : 'text-gray-900'
                             }`}
                           >
                             {item.name}
@@ -47,10 +49,10 @@ export function StepTwo(props: StepTwoProps) {
                           <RadioGroup.Description
                             as="span"
                             className={`inline ${
-                              checked ? "text-sky-100" : "text-gray-500"
+                              checked ? 'text-sky-100' : 'text-gray-500'
                             }`}
                           >
-                            <span>R$ {item.price}</span>{" "}
+                            <span>R$ {item.price}</span>{' '}
                           </RadioGroup.Description>
                         </div>
                       </div>
@@ -71,8 +73,8 @@ export function StepTwo(props: StepTwoProps) {
       <CounterProduct
         setted={counterProduct}
         set={setCounterProduct}
-        id_item={selected.id}
+        itemId={selected.id}
       />
     </div>
-  );
+  )
 }

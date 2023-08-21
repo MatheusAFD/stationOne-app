@@ -1,16 +1,15 @@
-import { InputHTMLAttributes } from "react";
-interface DataProps extends InputHTMLAttributes<HTMLInputElement> {
-  class: string;
-  sizeText: string;
+import { InputHTMLAttributes } from 'react'
+interface IDataProps extends InputHTMLAttributes<HTMLInputElement> {
+  className: string
+  sizeText: string
 }
 
-export function InputAccount(props: DataProps) {
+export function InputAccount({ sizeText, className, ...props }: IDataProps) {
   return (
     <input
-      disabled={props.disabled}
       type="submit"
-      value={props.value}
-      className={`${props.class} rounded-3xl text-${props.sizeText} cursor-pointer uppercase hover:brightness-90`}
+      className={` ${className} rounded-3xl text-${sizeText} cursor-pointer uppercase hover:brightness-90`}
+      {...props}
     />
-  );
+  )
 }
