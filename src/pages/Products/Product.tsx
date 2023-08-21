@@ -1,28 +1,28 @@
-import { useNavigate, useParams } from "react-router-dom";
+import { useNavigate, useParams } from 'react-router-dom'
 
-import { useGetProductsQuery } from "../../graphql/generated";
+import { useGetProductsQuery } from '../../graphql/generated'
 
-import { ButtonSetps } from "../../components/Button/ButtonSteps";
-import { CardProduct } from "../../components/Card/CardProduct";
-import { Header } from "../../components/Header/Header";
-import { LoadingCircle } from "../../components/Loading/LoadingCircle";
+import { ButtonSteps } from '../../components/Button/ButtonSteps'
+import { CardProduct } from '../../components/Card/CardProduct'
+import { Header } from '../../components/Header/Header'
+import { LoadingCircle } from '../../components/Loading/LoadingCircle'
 
 export function Product() {
-  const navigate = useNavigate();
-  const { slug } = useParams<{ slug: string | any }>();
-  const slugFormatted = slug?.replace("-", " ");
+  const navigate = useNavigate()
+  const { slug } = useParams<{ slug: string }>()
+  const slugFormatted = slug?.replace('-', ' ')
 
   const { data } = useGetProductsQuery({
     variables: {
-      slug,
+      slug: slug as string,
     },
-  });
+  })
 
   if (!data) {
-    return <LoadingCircle />;
+    return <LoadingCircle />
   }
 
-  sessionStorage.clear();
+  sessionStorage.clear()
 
   return (
     <>
@@ -30,7 +30,7 @@ export function Product() {
         hasBack={true}
         title={slugFormatted}
         returnNav={() => {
-          navigate(-1);
+          navigate(-1)
         }}
       />
 
@@ -63,15 +63,15 @@ export function Product() {
                 description={description}
                 img={imgUrl}
               />
-            );
-          }
+            )
+          },
         )}
       </section>
 
-      <ButtonSetps
+      <ButtonSteps
         nameStep="START ORDER"
-        slug={data.products[0].shop?.slugFood}
+        slug={data?.products[0]?.shop?.slugFood}
       />
     </>
-  );
+  )
 }

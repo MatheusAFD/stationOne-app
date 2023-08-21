@@ -1,27 +1,17 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState } from 'react'
 
-import { useGetOrderQueryQuery } from "../../graphql/generated";
-
-import { verifyNotLogged } from "../../utils/verify-logged";
-
-import { Header } from "../../components/Header/Header";
-import { CardOrder } from "../../components/Card/CardOrder";
+import { Header } from '../../components/Header/Header'
+import { CardOrder } from '../../components/Card/CardOrder'
+import { useGetOrder } from '../../common/hooks/order/useGetOrder'
 
 export function Order() {
-  const [isShowOrder, setIsShowOrder] = useState(true);
-  const email = localStorage.getItem("email");
+  const [isShowOrder, setIsShowOrder] = useState(true)
 
-  const { data } = useGetOrderQueryQuery({
-    variables: {
-      email,
-    },
-  });
+  const { data } = useGetOrder()
 
   useEffect(() => {
-    if (data?.orders.length == 0) setIsShowOrder(false);
-  }, [data]);
-
-  verifyNotLogged();
+    if (data?.orders.length === 0) setIsShowOrder(false)
+  }, [data])
 
   return (
     <>
@@ -48,12 +38,12 @@ export function Order() {
                     price={price}
                     quantityProduct={qtdProduct}
                   />
-                );
-              }
+                )
+              },
             )}
           </section>
         </>
       )}
     </>
-  );
+  )
 }

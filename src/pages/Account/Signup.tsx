@@ -1,38 +1,36 @@
-import { FormEvent, useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
-import bcrypt from "bcryptjs";
-import InputMask from "react-input-mask";
+import { FormEvent, useState } from 'react'
+import { Link, useNavigate } from 'react-router-dom'
+import bcrypt from 'bcryptjs'
+import InputMask from 'react-input-mask'
 
-import { useCreateUserContentMutation } from "../../graphql/generated";
+import { useCreateUserContentMutation } from '../../graphql/generated'
 
-import { InputAccount } from "../../components/Input/InputAccount";
-import { Logo } from "../../components/Style/Logo";
-import { verifyLogged } from "../../utils/verify-logged";
-import { InputRegister } from "../../components/Input/InputRegister";
+import { InputAccount } from '../../components/Input/InputAccount'
+import { Logo } from '../../components/Style/Logo'
+
+import { InputRegister } from '../../components/Input/InputRegister'
 
 export function Signup() {
-  const navigate = useNavigate();
-  const [name, setName] = useState("");
-  const [phone, setPhone] = useState("");
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [loading, setLoading] = useState(false);
-  const [createUser] = useCreateUserContentMutation();
-
-  verifyLogged();
+  const navigate = useNavigate()
+  const [name, setName] = useState('')
+  const [phone, setPhone] = useState('')
+  const [email, setEmail] = useState('')
+  const [password, setPassword] = useState('')
+  const [loading, setLoading] = useState(false)
+  const [createUser] = useCreateUserContentMutation()
 
   async function encrypt() {
-    const saltRounds = 12;
-    const returnHash = await bcrypt.hash(password, saltRounds);
-    return returnHash;
+    const saltRounds = 12
+    const returnHash = await bcrypt.hash(password, saltRounds)
+    return returnHash
   }
 
   async function handleUser(event: FormEvent) {
-    event.preventDefault();
-    setLoading(true);
+    event.preventDefault()
+    setLoading(true)
 
     try {
-      const passHash = await encrypt();
+      const passHash = await encrypt()
       await createUser({
         variables: {
           name,
@@ -40,13 +38,13 @@ export function Signup() {
           phone,
           password: passHash,
         },
-      });
-      navigate("/login");
-      setLoading(false);
+      })
+      navigate('/login')
+      setLoading(false)
     } catch (err) {
-      alert("Erro ao cadastrar!");
+      alert('Erro ao cadastrar!')
     } finally {
-      setLoading(false);
+      setLoading(false)
     }
   }
 
@@ -81,7 +79,7 @@ export function Signup() {
                 placeholder="(00) 0 0000-0000"
                 className="border rounded-[4.5px] pl-[10px] h-10 mt-[10px] w-[95%] max-w-[358px]"
                 onChange={(e) => {
-                  setPhone(e.target.value);
+                  setPhone(e.target.value)
                 }}
                 minLength={11}
               />
@@ -105,7 +103,7 @@ export function Signup() {
               disabled={loading}
               value="signup"
               sizeText="sm"
-              class="bg-orange-900 h-10 mt-9 text-white disabled:opacity-60 w-[95%] max-w-[358px]"
+              className="bg-orange-900 h-10 mt-9 text-white disabled:opacity-60 w-[95%] max-w-[358px]"
             />
           </div>
           <Link
@@ -115,11 +113,11 @@ export function Signup() {
             <InputAccount
               value="already have an account?"
               sizeText="sm"
-              class="w-[95%] max-w-[358px] h-9 mt-9 text-[#999999] font-bold border tracking-widest "
+              className="w-[95%] max-w-[358px] h-9 mt-9 text-[#999999] font-bold border tracking-widest "
             />
           </Link>
         </form>
       </>
     </>
-  );
+  )
 }
