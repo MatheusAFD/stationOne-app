@@ -1,11 +1,11 @@
-import { Link } from "react-router-dom";
+import { Link } from 'react-router-dom'
 
 export function PasswordReset() {
   return (
     <div className="px-4 mt-8 lg:flex lg:flex-col lg:items-center">
       <h1 className="text-2xl font-semibold">Password Reset</h1>
       <p className="text-sm text-[#777777]">
-        Enter your email address we'll send you instructions on how to reset
+        Enter your email address we will send you instructions on how to reset
         your password.
       </p>
 
@@ -33,5 +33,5 @@ export function PasswordReset() {
         CANCEL
       </Link>
     </div>
-  );
+  )
 }
